@@ -1,0 +1,2 @@
+・sample_dbをbackupファイルにバックアップする
+c:\mysql\bin>mysqldump -u root -p sample_db > F:\ACSystem\ACSystem\database\backup

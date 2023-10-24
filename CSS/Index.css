@@ -1,0 +1,119 @@
+/*
+    コードを見に来てくださった方へ、
+    「汚い」、「見にくい」、「なにこれ」
+    と思われたでしょうが、安心してください。
+
+    僕もそう思います。
+*/
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 700px;
+}
+
+.item {
+  flex-grow: 1;
+  height: 400px;
+  border-bottom: 8px solid #333;
+}
+
+.item h3 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.functionButton {
+  display: flex;
+  justify-content: space-around;
+}
+
+.functionButton .button img {
+  height: 300px;
+  width: 300px;
+}
+
+.notification {
+  flex-grow: 1;
+  border-bottom: 8px solid #333;
+}
+
+.notification-title {
+  text-align: center;
+  font-size: 40px;
+}
+
+.news-list {
+  list-style: none outside;
+  margin: 0;
+  padding: 0;
+  height: 300px;
+  overflow: auto;
+}
+
+.news-list li {
+  display: flex;
+  flex-wrap: wrap;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 20px;
+}
+
+.news-list li:first-child {
+  border-top: 1px solid #ccc;
+}
+
+.news-list li .date {
+  margin: 0;
+  min-width: 140px;
+  font-size: 16px;
+  padding: 0 20px 0 0;
+}
+
+.news-list li .category {
+  margin: 0;
+  min-width: 140px;
+  padding: 0 20px 0 0;
+}
+
+.news-list li .category span {
+  background: #e83929;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+  font-size: 12px;
+  line-height: 1;
+  width: 100px;
+}
+
+.news-list li .title {
+  margin: 0;
+}
+
+.news-list li a:hover .title {
+  color: #00f;
+}
+
+@media screen and (max-width: 767px) {
+  .news-list li a {
+    flex-wrap: wrap;
+  }
+
+  .news-list li .date {
+    min-width: 100px;
+  }
+
+  .news-list li .title {
+    margin-top: 10px;
+  }
+}

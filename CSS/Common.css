@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  overflow: hidden;
+  color: inherit;
+}
+
+.header {
+  color: #fff;
+  border-bottom: 8px solid #333;
+  width: 1920px;
+  height: 150px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+}
+
+.header h2 {
+  text-align: center;
+  font-size: 70px;
+  padding-top: 2px;
+  text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, -1px 1px 0px #000,
+    1px -1px 0px #000, 1px 0px 0px #000, -1px 0px 0px #000, 0px 1px 0px #000,
+    0px -1px 0px #000;
+  font-family: "Cherry Swash", cursive;
+}
+
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  border-left: 1px solid #cccccc;
+  justify-content: center;
+}
+
+.navigation ul li {
+  border-right: 3px solid #797979;
+  font-size: 20px;
+}
+
+.navigation ul li:last-child {
+  border: none;
+}
+
+.navigation ul li a {
+  display: block;
+  padding: 6px 20px;
+  position: relative;
+  transition: 0.3s;
+  color: white;
+}
+
+.navigation ul li a::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #31aae2;
+  transition: 0.3s;
+  transform: translateX(-50%);
+}
+
+.navigation ul li a:hover::after {
+  width: 70%;
+}
+
+.navigation ul li a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.footer {
+  width: 100%;
+}
+
+.footer .copyright {
+  text-align: center;
+}
+
+.footer .copyright p {
+  font-size: 12px;
+}
+
+.main {
+  width: 1920px;
+  height: 1080px;
+  background-color: #ececec;
+}
