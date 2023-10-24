@@ -1,5 +1,5 @@
 <?php
-include 'LoadInfomation.php';
+include 'LoadInformation.php';
 session_start();
 
 //リクエストメソッドを確認
@@ -17,4 +17,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: ../CreateAccount.php');
     exit;
 }
-?>
