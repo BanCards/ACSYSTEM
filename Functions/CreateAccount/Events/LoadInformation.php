@@ -109,8 +109,31 @@ try {
         $insertStmt->bindValue(':password', $password, PDO::PARAM_STR);
 
         if ($insertStmt->execute()) {
+
+            $table = "users";
+            $nameColumn = "name";
+            $passwordColumn = "password";
+
+            // SQLクエリの準備と実行
+            $query = "SELECT * FROM $table WHERE $nameColumn = :nameValue AND $passwordColumn = :passwordValue";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindValue(':nameValue', $name, PDO::PARAM_STR);
+            $stmt->bindValue(':passwordValue', $password, PDO::PARAM_STR);
+            $stmt->execute();
+
+            // 結果を取得
+            $result = $stmt->fetch();
+
+            //ログイン情報をセッション間で引き渡す。
+            $_SESSION['UUID'] = $result['id'];
+            $_SESSION['UserCard'] = $result['card_id'];
+            $_SESSION['UserName'] = $result['name'];
+            $_SESSION['UserEmail'] = $result['email'];
+            $_SESSION['UserRole'] = $result['role'];
+
             $pdo = null;
             header('Location:../RegisterSuccess.php');
+
             return;
         } else {
             $pdo = null;
