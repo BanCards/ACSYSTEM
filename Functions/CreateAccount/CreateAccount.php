@@ -97,7 +97,7 @@ function isEmpty($value)
                     </div>
 
                     <div class="form-item_required">
-                        <input type="text" name="name" value="" maxlength="64" placeholder="ユーザー名" />
+                        <input type="text" name="name" value="" minlength="3" maxlength="64" placeholder="ユーザー名" />
                     </div>
 
                     <div class="form-item_required">
@@ -106,11 +106,11 @@ function isEmpty($value)
                     </div>
 
                     <div class="form-item_required">
-                        <input type="password" name="password" value="" maxlength="64" placeholder="パスワード" />
+                        <input type="password" name="password" value="" minlength="8" maxlength="64" placeholder="パスワード" />
                     </div>
 
                     <div class="form-item_required">
-                        <input type="password" name="rePassword" value="" maxlength="64" placeholder="再パスワード" />
+                        <input type="password" name="rePassword" value="" minlength="8" maxlength="64" placeholder="再パスワード" />
                     </div>
 
                     <div class="submit-button">
