@@ -8,6 +8,7 @@
   text-decoration: none;
   overflow: hidden;
   color: inherit;
+  caret-color: #333;
 }
 
 .header {
