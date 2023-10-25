@@ -10,7 +10,7 @@ function setError($errorTitle, $errorMessage, $errorCode)
     $_SESSION['errorTitle'] = $errorTitle;
     $_SESSION['errorMessage'] = $errorMessage;
     $_SESSION['errorCode'] = "エラーコード : " . $errorCode;
-    header('Location:LoadInvalid.php');
+    header('Location:LoadInformationError.php');
     return;
 }
 
@@ -81,38 +81,33 @@ function isEmpty($value)
         <div class="main">
             <div class="form">
                 <h1 class="profile-title">プロフィール</h1>
-                <div class="profileItems">
+
+                <div class="profile-items">
 
                     <div class="profile-item">
-                        <div class="item">
-                            名前 : <strong>
-                                <?php
-                                if (!(isEmpty($_SESSION['UserName'])))
-                                    echo $_SESSION['UserName'];
-                                ?>
-                            </strong>
-                        </div>
+                        名前 : <strong>
+                            <?php
+                            if (!(isEmpty($_SESSION['UserName'])))
+                                echo $_SESSION['UserName'];
+                            ?>
+                        </strong>
                     </div>
 
                     <div class="profile-item">
-                        <div class="item">
-                            メールアドレス : <strong>
-                                <?php
-                                if (!(isEmpty($_SESSION['UserEmail'])))
-                                    echo $_SESSION['UserEmail'];
-                                ?>
-                            </strong>
-                        </div>
+                        メールアドレス : <strong>
+                            <?php
+                            if (!(isEmpty($_SESSION['UserEmail'])))
+                                echo $_SESSION['UserEmail'];
+                            ?>
+                        </strong>
                     </div>
 
                     <div class="profile-item">
-                        <div class="item">
-                            出席数 : <strong>
-                                <?php
-                                //TODO(出席系を確認できるなどのアイテムを考える)
-                                ?>
-                            </strong>
-                        </div>
+                        出席数 : <strong>
+                            <?php
+                            //TODO(出席系を確認できるなどのアイテムを考える)
+                            ?>
+                        </strong>
                     </div>
 
                 </div>

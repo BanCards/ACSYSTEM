@@ -23,11 +23,6 @@
 }
 
 .profile-item {
-  width: 100%;
-  padding-top: 20px;
-}
-
-.item {
   margin-top: 5px;
   margin-left: 90px;
   font-size: 1em;
@@ -35,8 +30,13 @@
   font-family: "Source Sans Pro", arial, sans-serif;
   border: 1px solid #cecece;
   background: #d7d7d7;
-  width: 80%;
+  width: 100%;
   max-width: 600px;
+  padding-top: 20px;
+}
+
+.profile-item::placeholder {
+  padding: 0;
 }
 
 .form-item_required {

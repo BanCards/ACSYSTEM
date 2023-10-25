@@ -30,7 +30,7 @@ function setError($errorTitle, $errorMessage, $errorCode)
     $_SESSION['errorTitle'] = $errorTitle;
     $_SESSION['errorMessage'] = $errorMessage;
     $_SESSION['errorCode'] = "エラーコード : " . $errorCode;
-    header('Location:../LoginInvalid.php');
+    header('Location:../LoadInformationError.php');
     return;
 }
 

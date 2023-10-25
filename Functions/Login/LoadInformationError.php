@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Common.css">
-    <link rel="stylesheet" href="CSS/RegisterInvalid.css">
+    <link rel="stylesheet" href="../../CSS/LoadInformationError.css">
 </head>
 
 <body>
@@ -54,34 +54,31 @@
         <div class="main">
 
             <div class="form">
-                <h1 class="invalidError-title">
+                <h1 class="loadError-title">
                     <?php
                     echo $_SESSION['errorTitle'];
                     unset($_SESSION['errortTitle']);
                     ?>
                 </h1>
-                <div class="invalidError">
 
-                    <div class="invalidError-items">
-                        <div class="item">
-                            <?php
-                            echo $_SESSION['errorMessage'];
-                            unset($_SESSION['errortMessage']);
-                            ?>
-                        </div>
+                <div class="loadError-items">
+
+                    <div class="loadError-item">
+                        <?php
+                        echo $_SESSION['errorMessage'];
+                        unset($_SESSION['errortMessage']);
+                        ?>
                     </div>
 
-                    <div class="invalidError-items">
-                        <div class="item">
-                            <?php
-                            echo $_SESSION['errorCode'];
-                            unset($_SESSION['errortCode']);
-                            ?>
-                        </div>
+                    <div class="loadError-item">
+                        <?php
+                        echo $_SESSION['errorCode'];
+                        unset($_SESSION['errortCode']);
+                        ?>
                     </div>
 
                     <div class="submit-button">
-                        <a href="ReadCard.html"><button type="button">カード情報再読み込み</button></a>
+                        <a href="../../Index.html"><button type="button">戻る</button></a>
                     </div>
 
                 </div>
