@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="submit-button">
-                        <a href="../../Index.html"><button type="button">戻る</button></a>
+                        <a href="Login.html"><button type="button">戻る</button></a>
                     </div>
 
                 </div>
