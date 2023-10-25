@@ -1,4 +1,31 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+//日時
+$date = date("ymdis");
+
+//セッション間でエラー系の情報引き渡す
+function setError($errorTitle, $errorMessage, $errorCode)
+{
+    $_SESSION['errorTitle'] = $errorTitle;
+    $_SESSION['errorMessage'] = $errorMessage;
+    $_SESSION['errorCode'] = "エラーコード : " . $errorCode;
+    header('Location:LoadInvalid.php');
+    return;
+}
+
+//引数の値がnullならsetError()を行う。　存在するならfalseを返す。
+function isEmpty($value)
+{
+    global $date;
+    if (empty($value)) {
+        setError("情報エラー", "ACSystemチームまでご連絡ください。", "12A_" . $date);
+        return true;
+    }
+
+    return false;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -60,7 +87,11 @@
                     <div class="form-item_required">
                         <div class="accountIndex">
                             アカウント番号 : <strong class="AccountIndexHolder">
-                                <?php echo htmlspecialchars($_SESSION['cardID']); ?>
+                                <?php
+                                if (!(isEmpty($_SESSION['cardID']))) {
+                                    echo htmlspecialchars($_SESSION['cardID']);
+                                }
+                                ?>
                             </strong>
                         </div>
                     </div>
@@ -83,15 +114,15 @@
                     </div>
 
                     <div class="submit-button">
-                        <button type="submit" name="createAccountButton" class="createAccountButton">アカウント作成</button>
+                        <button type="submit" name="createAccountButton" class="createAccountButton">作成</button>
                     </div>
 
                     <div class="submit-button">
-                        <a href="ReadCard.html"><button type="button" class="loginButton">カード情報再読み込み</button></a>
+                        <a href="ReadCard.html"><button type="button" class="loginButton">カード再読み込み</button></a>
                     </div>
 
                     <div class="submit-button">
-                        <a href="../login/LoginSelection.html">
+                        <a href="../Login/Login.html">
                             <button type="button" class="loginButton">ログイン</button></a>
                     </div>
 
