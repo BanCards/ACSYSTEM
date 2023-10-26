@@ -15,7 +15,7 @@ function setError($errorTitle, $errorMessage, $errorCode)
 }
 
 if (empty($_SESSION['UUID']) || empty($_SESSION['UserCard']) || empty($_SESSION['UserName']) || empty($_SESSION['UserRole'])) {
-    setError("ログイン情報を取得できませんでした", "ACSystemチームまでご連絡ください。", "13L_" . $date);
+    setError("ログイン情報を取得できませんでした", "ログインをしてください。", "13L_" . $date);
     return;
 }
 

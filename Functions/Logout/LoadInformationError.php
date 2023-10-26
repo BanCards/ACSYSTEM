@@ -32,7 +32,7 @@
                         </a>
                     </li>
                     <li class="contact">
-                        <a href="../../Contact/Contact.html">
+                        <a href="../Contact/Contact.html">
                             <i class="fas fa-info-circle"></i> コンタクト
                         </a>
                     </li>
@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="submit-button">
-                        <a href="../../Index.html"><button type="button">戻る</button></a>
+                        <a href="../Login/Login.html"><button type="button">ログイン</button></a>
                     </div>
 
                 </div>
