@@ -78,7 +78,7 @@ try {
     $_SESSION['UserEmail'] = $result['email'];
     $_SESSION['UserRole'] = $result['role'];
 
-    header('Location:../LoginSuccess.html');
+    header('Location:../LoadInformationSuccess.html');
 
     //DBに接続できない時の処理
 } catch (PDOException $e) {

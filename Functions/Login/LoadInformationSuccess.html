@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -8,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Common.css">
-    <link rel="stylesheet" href="CSS/RegisterSuccess.css">
+    <link rel="stylesheet" href="../../CSS/LoadInformationSuccess.css">
 </head>
 
 <body>
@@ -54,47 +52,10 @@
         <div class="main">
 
             <div class="form">
-                <h1 class="successRegister-title">ユーザーが正常に登録されました</h1>
-                <div class="successRegister-Items">
+                <h1 class="loadInformationSuccess-title">ログインしました。</h1>
 
-                    <div class="successRegister-item">
-                        <div class="item">
-                            アカウント番号 : <strong class="AccountIndexHolder">
-                                <?php
-                                echo htmlspecialchars($_SESSION['cardID']);
-                                unset($_SESSION['cardID']);
-                                ?>
-                            </strong>
-                        </div>
-                    </div>
-
-                    <div class="successRegister-item">
-                        <div class="item">
-                            お名前 : <strong class="AccountIndexHolder">
-                                <?php
-                                echo htmlspecialchars($_SESSION['name']);
-                                unset($_SESSION['name']);
-                                ?>
-                            </strong>
-                            様
-                        </div>
-                    </div>
-
-                    <div class="successRegister-item">
-                        <div class="item">
-                            メールアドレス : <strong class="AccountIndexHolder">
-                                <?php
-                                echo htmlspecialchars($_SESSION['email']);
-                                unset($_SESSION['email']);
-                                ?>
-                            </strong>
-                        </div>
-                    </div>
-
-                    <div class="submit-button">
-                        <a href="../../Index.html"><button type="button">確認</button></a>
-                    </div>
-
+                <div class="submit-button">
+                    <a href="../../Index.html"><button type="button">戻る</button></a>
                 </div>
             </div>
 

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -6,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Common.css">
-    <link rel="stylesheet" href="CSS/LogoutSuccess.css">
+    <link rel="stylesheet" href="CSS/LoadInformationSuccess.css">
 </head>
 
 <body>
@@ -30,7 +32,7 @@
                         </a>
                     </li>
                     <li class="contact">
-                        <a href="../Contact/Contact.html">
+                        <a href="../../Contact/Contact.html">
                             <i class="fas fa-info-circle"></i> コンタクト
                         </a>
                     </li>
@@ -52,10 +54,32 @@
         <div class="main">
 
             <div class="form">
-                <h1 class="successLogout-title">ログアウトしました。</h1>
+                <h1 class="loadInformationSuccess-title">ユーザーが正常に登録されました</h1>
+                <div class="loadInformationSuccess-Items">
 
-                <div class="submit-button">
-                    <a href="../../Index.html"><button type="button">戻る</button></a>
+                    <div class="loadInformationSuccess-item">
+                        アカウント番号 : <strong class="AccountIndexHolder">
+                            <?php echo htmlspecialchars($_SESSION['UserCard']); ?>
+                        </strong>
+                    </div>
+
+                    <div class="loadInformationSuccess-item">
+                        お名前 : <strong class="AccountIndexHolder">
+                            <?php echo htmlspecialchars($_SESSION['UserName']); ?>
+                        </strong>
+                        様
+                    </div>
+
+                    <div class="loadInformationSuccess-item">
+                        メールアドレス : <strong class="AccountIndexHolder">
+                            <?php echo htmlspecialchars($_SESSION['UserEmail']); ?>
+                        </strong>
+                    </div>
+
+                    <div class="submit-button">
+                        <a href="../../Index.html"><button type="button">確認</button></a>
+                    </div>
+
                 </div>
             </div>
 
