@@ -1,6 +1,5 @@
 <?php
 include 'LoadInformation.php';
-session_start();
 
 //リクエストメソッドを確認
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

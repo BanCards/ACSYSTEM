@@ -15,10 +15,6 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $repassword = $_POST['rePassword'];
 
-//セッション間で受け渡し
-$_SESSION['name'] = $name;
-$_SESSION['email'] = $email;
-
 //日時
 $date = date("ymdis");
 
@@ -131,8 +127,10 @@ try {
             $_SESSION['UserEmail'] = $result['email'];
             $_SESSION['UserRole'] = $result['role'];
 
+            unset($_SESSION['cardID']);
+
             $pdo = null;
-            header('Location:../RegisterSuccess.php');
+            header('Location:../LoadInformationSuccess.php');
 
             return;
         } else {
