@@ -85,6 +85,15 @@ function isEmpty($value)
                 <div class="profile-items">
 
                     <div class="profile-item">
+                        カード情報 : <strong>
+                            <?php
+                            if (!(isEmpty($_SESSION['UserCard'])))
+                                echo $_SESSION['UserCard'];
+                            ?>
+                        </strong>
+                    </div>
+
+                    <div class="profile-item">
                         名前 : <strong>
                             <?php
                             if (!(isEmpty($_SESSION['UserName'])))
@@ -102,14 +111,16 @@ function isEmpty($value)
                         </strong>
                     </div>
 
-                    <div class="profile-item">
-                        出席数 : <strong>
-                            <?php
-                            //TODO(出席系を確認できるなどのアイテムを考える)
-                            ?>
-                        </strong>
+                </div>
+
+                <div class="attendance-items">
+                    <div class="attendance-item">
+                        <a href="../Login/Login.html"><button type="button">出席状況を見る</button></a>
                     </div>
 
+                    <div class="attendance-item">
+                        <a href="../Login/Login.html"><button type="button">プロフィール編集</button></a>
+                    </div>
                 </div>
 
             </div>

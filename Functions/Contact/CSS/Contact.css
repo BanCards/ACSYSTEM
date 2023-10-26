@@ -75,25 +75,3 @@ button:hover,
 .button:hover {
   background: #19a08c;
 }
-
-.success-message {
-  display: none;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #9cd8a1;
-  width: 80%;
-  margin: auto;
-  color: #fafafa;
-  border-radius: 6px;
-}
-
-.error-message {
-  display: none;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #d89c9c;
-  width: 80%;
-  margin: auto;
-  color: #fafafa;
-  border-radius: 6px;
-}

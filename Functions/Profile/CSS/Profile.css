@@ -4,7 +4,7 @@
 
 .form {
   max-width: 800px;
-  height: 400px;
+  height: 500px;
   margin: auto;
   text-align: center;
   -webkit-border-radius: 6px;
@@ -56,9 +56,14 @@
   margin-top: 35px;
 }
 
+.attendance-items {
+  display: flex;
+}
+
 button {
-  margin-top: 15px;
+  margin-top: 40px;
   margin-bottom: 25px;
+  margin-left: 150px;
   background-color: #2abca7;
   padding: 12px 45px;
   border-radius: 5px;
@@ -67,8 +72,8 @@ button {
   transition: 0.5s;
   display: inline-block;
   cursor: pointer;
-  width: 30%;
   color: #fff;
+  height: 70px;
 }
 
 button:hover,

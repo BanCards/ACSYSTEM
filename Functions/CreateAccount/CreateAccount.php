@@ -106,24 +106,29 @@ function isEmpty($value)
                     </div>
 
                     <div class="form-item_required">
-                        <input type="password" name="password" value="" minlength="8" maxlength="64" placeholder="パスワード" />
+                        <input type="password" name="password" value="" minlength="8" maxlength="64"
+                            placeholder="パスワード" />
                     </div>
 
                     <div class="form-item_required">
-                        <input type="password" name="rePassword" value="" minlength="8" maxlength="64" placeholder="再パスワード" />
+                        <input type="password" name="rePassword" value="" minlength="8" maxlength="64"
+                            placeholder="再パスワード" />
                     </div>
 
                     <div class="submit-button">
                         <button type="submit" name="createAccountButton" class="createAccountButton">作成</button>
                     </div>
 
-                    <div class="submit-button">
-                        <a href="ReadCard.html"><button type="button" class="loginButton">カード再読み込み</button></a>
-                    </div>
+                    <div class="createAccount-items">
 
-                    <div class="submit-button">
-                        <a href="../Login/Login.html">
-                            <button type="button" class="loginButton">ログイン</button></a>
+                        <div class="createAccount-item">
+                            <a href="ReadCard.html"><button type="button" class="loginButton">カード再読み込み</button></a>
+                        </div>
+
+                        <div class="createAccount-item">
+                            <a href="../Login/Login.html">
+                                <button type="button" class="loginButton">ログイン</button></a>
+                        </div>
                     </div>
 
                 </form>

@@ -54,7 +54,12 @@ input {
     max-width: 600px;
 }
 
+.createAccount-items {
+    display: flex;
+}
+
 button {
+    margin-bottom: 25px;
     background-color: #2abca7;
     padding: 12px 45px;
     border-radius: 5px;
@@ -77,29 +82,21 @@ button:hover,
 }
 
 .loginButton {
-    margin-top: 10px;
+    width: 200px;
+    margin-top: 15px;
+    margin-left: 135px;
+    background-color: #2abca7;
+    padding: 12px 45px;
+    border-radius: 5px;
+    border: 1px solid #2abca7;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    height: 60px;
 }
 
-.error-message-enabled {
-    display: block;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #d89c9c;
-    width: 80%;
-    margin: auto;
-    margin-bottom: 5px;
-    color: #fafafa;
-    border-radius: 6px;
-}
-
-.error-message-disabled {
-    display: none;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #d89c9c;
-    width: 80%;
-    margin: auto;
-    margin-bottom: 5px;
-    color: #fafafa;
-    border-radius: 6px;
+.input {
+    caret-color: #333;
 }
