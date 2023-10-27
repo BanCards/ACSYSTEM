@@ -1,15 +1,15 @@
 <?php
-session_start();
+session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-//日時
-$date = date("ymdis");
+//tempのカードIDはセッション間で一旦渡しあう
+$_SESSION['cardID'] = $_POST['cardID'];
 
 //セッション間でエラー系の情報引き渡す
 function setError($errorTitle, $errorMessage, $errorCode)
 {
     $_SESSION['errorTitle'] = $errorTitle;
     $_SESSION['errorMessage'] = $errorMessage;
-    $_SESSION['errorCode'] = "エラーコード : " . $errorCode;
+    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
     header('Location:LoadInformationError.php');
     return;
 }
@@ -17,9 +17,8 @@ function setError($errorTitle, $errorMessage, $errorCode)
 //引数の値がnullならsetError()を行う。　存在するならfalseを返す。
 function isEmpty($value)
 {
-    global $date;
     if (empty($value)) {
-        setError("情報エラー", "ACSystemチームまでご連絡ください。", "12A_" . $date);
+        setError("情報エラー", "ACSystemチームまでご連絡ください。", "12A_");
         return true;
     }
 

@@ -12,9 +12,6 @@ $dsn = "mysql:dbname=$database;host=$hostname;";
 $name = $_POST['name'];
 $password = $_POST['password'];
 
-//日時
-$date = date("ymdis");
-
 //////////////////////////////// 重要 ////////////////////////////////
 //ログイン情報を最初に初期化し、初期値のままロードされるときログインを失敗した結果にする
 unset($_SESSION['UUID']);
@@ -29,7 +26,7 @@ function setError($errorTitle, $errorMessage, $errorCode)
 {
     $_SESSION['errorTitle'] = $errorTitle;
     $_SESSION['errorMessage'] = $errorMessage;
-    $_SESSION['errorCode'] = "エラーコード : " . $errorCode;
+    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
     header('Location:../LoadInformationError.php');
     return;
 }
