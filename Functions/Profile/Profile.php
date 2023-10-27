@@ -1,25 +1,22 @@
 <?php
-session_start();
-
-//日時
-$date = date("ymdis");
+include('../Utils/Utils.php');
+session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 //セッション間でエラー系の情報引き渡す
 function setError($errorTitle, $errorMessage, $errorCode)
 {
     $_SESSION['errorTitle'] = $errorTitle;
     $_SESSION['errorMessage'] = $errorMessage;
-    $_SESSION['errorCode'] = "エラーコード : " . $errorCode;
+    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
     header('Location:LoadInformationError.php');
     return;
 }
 
-//引数の値がnullならsetError()を行う。　存在するならfalseを返す。
+//引数の値がnullならsetError()を行う。 存在するならfalseを返す。
 function isEmpty($value)
 {
-    global $date;
     if (empty($value)) {
-        setError("ログイン情報エラー", "ログインしてください。", "12A_" . $date);
+        setError("ログイン情報エラー", "ログインしてください。", "12A_");
         return true;
     }
 
@@ -87,8 +84,8 @@ function isEmpty($value)
                     <div class="profile-item">
                         カード情報 : <strong>
                             <?php
-                            if (!(isEmpty($_SESSION['UserCard'])))
-                                echo $_SESSION['UserCard'];
+                            if (!(isEmpty(getUserCard())))
+                                echo getUserCard();
                             ?>
                         </strong>
                     </div>
@@ -96,8 +93,8 @@ function isEmpty($value)
                     <div class="profile-item">
                         名前 : <strong>
                             <?php
-                            if (!(isEmpty($_SESSION['UserName'])))
-                                echo $_SESSION['UserName'];
+                            if (!(isEmpty(getUserName())))
+                                echo getUserName();
                             ?>
                         </strong>
                     </div>
@@ -105,8 +102,8 @@ function isEmpty($value)
                     <div class="profile-item">
                         メールアドレス : <strong>
                             <?php
-                            if (!(isEmpty($_SESSION['UserEmail'])))
-                                echo $_SESSION['UserEmail'];
+                            if (!(isEmpty(getUserEmail())))
+                                echo getUserEmail();
                             ?>
                         </strong>
                     </div>
