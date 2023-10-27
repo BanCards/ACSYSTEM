@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_status() == PHP_SESSION_NONE ? session_start() : sleep(1); ?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -71,10 +71,10 @@
                     </div>
 
                     <div class="loadError-item">
-                            <?php
-                            echo $_SESSION['errorCode'];
-                            unset($_SESSION['errortCode']);
-                            ?>
+                        <?php
+                        echo $_SESSION['errorCode'];
+                        unset($_SESSION['errortCode']);
+                        ?>
                     </div>
 
                     <div class="submit-button">
