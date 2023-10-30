@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="submit-button">
-                        <a href="../Login/Login.html"><button type="button">ログイン</button></a>
+                        <a href="../Login/Login.php"><button type="button">ログイン</button></a>
                     </div>
 
                 </div>

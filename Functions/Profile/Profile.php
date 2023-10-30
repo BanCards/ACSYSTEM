@@ -11,6 +11,9 @@ function setError($errorTitle, $errorMessage, $errorCode)
     header('Location:LoadInformationError.php');
     return;
 }
+
+if (!(isLoggedIn()))
+    setError("ログイン情報エラー", "ログインしてください。", "12A_");
 ?>
 
 <!DOCTYPE html>
@@ -72,34 +75,19 @@ function setError($errorTitle, $errorMessage, $errorCode)
 
                     <div class="profile-item">
                         カード情報 : <strong>
-                            <?php
-                            if (isLoggedIn())
-                                echo getUserCard();
-                            else
-                                setError("ログイン情報エラー", "ログインしてください。", "12A_");
-                            ?>
+                            <?php echo getUserCard(); ?>
                         </strong>
                     </div>
 
                     <div class="profile-item">
                         名前 : <strong>
-                            <?php
-                            if (isLoggedIn())
-                                echo getUserName();
-                            else
-                                setError("ログイン情報エラー", "ログインしてください。", "12A_");
-                            ?>
+                            <?php echo getUserName(); ?>
                         </strong>
                     </div>
 
                     <div class="profile-item">
                         メールアドレス : <strong>
-                            <?php
-                            if (isLoggedIn())
-                                echo getUserEmail();
-                            else
-                                setError("ログイン情報エラー", "ログインしてください。", "12A_");
-                            ?>
+                            <?php echo getUserEmail(); ?>
                         </strong>
                     </div>
 
@@ -107,11 +95,11 @@ function setError($errorTitle, $errorMessage, $errorCode)
 
                 <div class="attendance-items">
                     <div class="attendance-item">
-                        <a href="../Login/Login.html"><button type="button">出席状況を見る</button></a>
+                        <a href="../Login/Login.php"><button type="button">出席状況を見る</button></a>
                     </div>
 
                     <div class="attendance-item">
-                        <a href="../Login/Login.html"><button type="button">プロフィール編集</button></a>
+                        <a href="../Login/Login.php"><button type="button">プロフィール編集</button></a>
                     </div>
                 </div>
 
