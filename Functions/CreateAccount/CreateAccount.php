@@ -86,11 +86,7 @@ function isEmpty($value)
                     <div class="form-item_required">
                         <div class="accountIndex">
                             アカウント番号 : <strong class="AccountIndexHolder">
-                                <?php
-                                if (!(isEmpty($_SESSION['cardID']))) {
-                                    echo htmlspecialchars($_SESSION['cardID']);
-                                }
-                                ?>
+                                <?php echo $_SESSION['cardID']; ?>
                             </strong>
                         </div>
                     </div>
@@ -100,18 +96,15 @@ function isEmpty($value)
                     </div>
 
                     <div class="form-item_required">
-                        <input type="mail" name="email" value="" pattern="[\w\-._]+@[\w\-._]+\.[A-Za-z]+"
-                            placeholder="メールアドレス" />
+                        <input type="mail" name="email" value="" pattern="[\w\-._]+@[\w\-._]+\.[A-Za-z]+" placeholder="メールアドレス" />
                     </div>
 
                     <div class="form-item_required">
-                        <input type="password" name="password" value="" minlength="8" maxlength="64"
-                            placeholder="パスワード" />
+                        <input type="password" name="password" value="" minlength="8" maxlength="64" placeholder="パスワード" />
                     </div>
 
                     <div class="form-item_required">
-                        <input type="password" name="rePassword" value="" minlength="8" maxlength="64"
-                            placeholder="再パスワード" />
+                        <input type="password" name="rePassword" value="" minlength="8" maxlength="64" placeholder="再パスワード" />
                     </div>
 
                     <div class="submit-button">
@@ -125,7 +118,7 @@ function isEmpty($value)
                         </div>
 
                         <div class="createAccount-item">
-                            <a href="../Login/Login.html">
+                            <a href="../Login/Login.php">
                                 <button type="button" class="loginButton">ログイン</button></a>
                         </div>
                     </div>

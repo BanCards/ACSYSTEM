@@ -55,30 +55,21 @@
 
             <div class="form">
                 <h1 class="loadError-title">
-                    <?php
-                    echo $_SESSION['errorTitle'];
-                    unset($_SESSION['errortTitle']);
-                    ?>
+                    <?php echo $_SESSION['errorTitle']; ?>
                 </h1>
 
                 <div class="loadError-items">
 
                     <div class="loadError-item">
-                        <?php
-                        echo $_SESSION['errorMessage'];
-                        unset($_SESSION['errortMessage']);
-                        ?>
+                        <?php echo $_SESSION['errorMessage']; ?>
                     </div>
 
                     <div class="loadError-item">
-                        <?php
-                        echo $_SESSION['errorCode'];
-                        unset($_SESSION['errortCode']);
-                        ?>
+                        <?php echo $_SESSION['errorCode']; ?>
                     </div>
 
                     <div class="submit-button">
-                        <a href="Login.html"><button type="button">戻る</button></a>
+                        <a href="Login.php"><button type="button">戻る</button></a>
                     </div>
 
                 </div>
