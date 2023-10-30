@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_status() == PHP_SESSION_NONE ? session_start() : sleep(0); ?>
 
 <!DOCTYPE html>
 <html lang="ja">

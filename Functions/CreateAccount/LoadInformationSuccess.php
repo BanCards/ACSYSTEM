@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_status() == PHP_SESSION_NONE ? session_start() : sleep(0); ?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -59,20 +59,20 @@
 
                     <div class="loadInformationSuccess-item">
                         アカウント番号 : <strong class="AccountIndexHolder">
-                            <?php echo htmlspecialchars($_SESSION['UserCard']); ?>
+                            <?php echo getUserCard(); ?>
                         </strong>
                     </div>
 
                     <div class="loadInformationSuccess-item">
                         お名前 : <strong class="AccountIndexHolder">
-                            <?php echo htmlspecialchars($_SESSION['UserName']); ?>
+                            <?php echo getUserName() ?>
                         </strong>
                         様
                     </div>
 
                     <div class="loadInformationSuccess-item">
                         メールアドレス : <strong class="AccountIndexHolder">
-                            <?php echo htmlspecialchars($_SESSION['UserEmail']); ?>
+                            <?php echo getUserEmail() ?>
                         </strong>
                     </div>
 
