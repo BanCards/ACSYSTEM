@@ -1,4 +1,5 @@
 <?php
+include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 //DB
@@ -12,15 +13,6 @@ $dsn = "mysql:dbname=$database;host=$hostname;";
 $name = $_POST['name'];
 $password = $_POST['password'];
 
-//////////////////////////////// 重要 ////////////////////////////////
-//ログイン情報を最初に初期化し、初期値のままロードされるときログインを失敗した結果にする
-unset($_SESSION['UUID']);
-unset($_SESSION['UserCard']);
-unset($_SESSION['UserName']);
-unset($_SESSION['UserEmail']);
-unset($_SESSION['UserRole']);
-//////////////////////////////////////////////////////////////////////
-
 //セッション間でエラー系の情報引き渡す
 function setError($errorTitle, $errorMessage, $errorCode)
 {
@@ -33,13 +25,13 @@ function setError($errorTitle, $errorMessage, $errorCode)
 
 //リクエストメソッドを確認
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    setError("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M_" . $date);
+    setError("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M_");
     return;
 }
 
 //空白文字チェック
 if (empty($name) || empty($password)) {
-    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_" . $date);
+    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
     return;
 }
 
@@ -64,24 +56,19 @@ try {
     //一致する結果が存在するかどうか確認
     if (!($result ? true : false)) {
         $pdo = null;
-        setError("ユーザー名またはパスワードが間違っています。", "もう一度ご確認ください。", "13L_" . $date);
+        setError("ユーザー名またはパスワードが間違っています。", "もう一度ご確認ください。", "13L_");
         return;
     }
 
     //ログイン情報をセッション間で引き渡す。
-    $_SESSION['UUID'] = $result['id'];
-    $_SESSION['UserCard'] = $result['card_id'];
-    $_SESSION['UserName'] = $result['name'];
-    $_SESSION['UserEmail'] = $result['email'];
-    $_SESSION['UserRole'] = $result['role'];
+    login($result['id'], $result['card_id'], $result['name'], $result['email'], $result['role']);
 
     header('Location:../LoadInformationSuccess.html');
 
     //DBに接続できない時の処理
 } catch (PDOException $e) {
     $pdo = null;
-    setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_" . $date);
+    setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
     echo $e;
     return;
 }
-?>

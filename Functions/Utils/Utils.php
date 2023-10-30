@@ -9,6 +9,24 @@ function isLoggedIn()
     return false;
 }
 
+function login($uuid, $card, $name, $email, $role)
+{
+    setUUID($uuid);
+    setUserCard($card);
+    setUserName($name);
+    setUserEmail($email);
+    setUserRole($role);
+}
+
+function logout()
+{
+    unset($_SESSION['UUID']);
+    unset($_SESSION['UserCard']);
+    unset($_SESSION['UserName']);
+    unset($_SESSION['UserEmail']);
+    unset($_SESSION['UserRole']);
+}
+
 function setUUID($uuid)
 {
     unset($_SESSION['UUID']);
@@ -78,5 +96,3 @@ function getUserRole()
 
     return '';
 }
-
-?>
