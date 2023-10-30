@@ -1,4 +1,7 @@
-<?php session_status() == PHP_SESSION_NONE ? session_start() : sleep(0); ?>
+<?php
+include('../Utils/Utils.php');
+session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
