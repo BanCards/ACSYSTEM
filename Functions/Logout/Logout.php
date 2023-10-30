@@ -1,3 +1,20 @@
+<?php
+include('../Utils/Utils.php');
+session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
+
+function setError($errorTitle, $errorMessage, $errorCode)
+{
+    $_SESSION['errorTitle'] = $errorTitle;
+    $_SESSION['errorMessage'] = $errorMessage;
+    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
+    header('Location:LoadInformationError.php');
+    return;
+}
+
+if (!(isLoggedIn()))
+    setError("ログイン情報エラー", "ログインしてください。", "12A_");
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -54,16 +71,8 @@
             <div class="form">
                 <h1 class="logout-title">ログアウトをしますか</h1>
 
-                <div class="logout-items">
-
-                    <div class="logout-item">
-                        <a href="../../Index.html"><button type="button">戻る</button></a>
-                    </div>
-
-                    <div class="logout-item">
-                        <a href="Events/LoadInformation.php"><button type="button"
-                                class="logoutButton">ログアウト</button></a>
-                    </div>
+                <div class="submit-button">
+                    <a href="Events/LoadInformation.php"><button type="button" class="logoutButton">ログアウト</button></a>
                 </div>
 
             </div>
