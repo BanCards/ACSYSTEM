@@ -1,21 +1,11 @@
 <?php
-
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-function setSessionError($title, $message, $code)
+function isLoggedIn()
 {
-    $_SESSION["errorTitle"] = $title;
-    $_SESSION["errorMessage"] = $message;
-    $_SESSION["errorCode"] = "エラーコード :" . $code . date("ymdis");
-    header("Location:LoadInformationErorr.php");
-}
-
-function isSessionEmpty($value)
-{
-    if (empty($value)) {
-        setSessionError("情報エラー", "ACSystemチームに連絡してください。", "14I_");
+    if (!(empty(getUUID())))
         return true;
-    }
+
     return false;
 }
 
@@ -27,8 +17,10 @@ function setUUID($uuid)
 
 function getUUID()
 {
-    if (!(isSessionEmpty($_SESSION['UUID'])))
+    if (!(empty($_SESSION['UUID'])))
         return $_SESSION['UUID'];
+
+    return '';
 }
 
 function setUserCard($card)
@@ -39,8 +31,10 @@ function setUserCard($card)
 
 function getUserCard()
 {
-    if (!(isSessionEmpty($_SESSION['UserCard'])))
+    if (!(empty($_SESSION['UserCard'])))
         return $_SESSION['UserCard'];
+
+    return '';
 }
 
 function setUserName($name)
@@ -51,8 +45,10 @@ function setUserName($name)
 
 function getUserName()
 {
-    if (!isSessionEmpty($_SESSION['UserName']))
+    if (!empty($_SESSION['UserName']))
         return $_SESSION['UserName'];
+
+    return '';
 }
 
 function setUserEmail($mail)
@@ -63,8 +59,10 @@ function setUserEmail($mail)
 
 function getUserEmail()
 {
-    if (!isSessionEmpty($_SESSION['UserEmail']))
+    if (!empty($_SESSION['UserEmail']))
         return $_SESSION['UserEmail'];
+
+    return '';
 }
 
 function setUserRole($role)
@@ -75,8 +73,10 @@ function setUserRole($role)
 
 function getUserRole()
 {
-    if (!isSessionEmpty($_SESSION['UserRole']))
+    if (!empty($_SESSION['UserRole']))
         return $_SESSION['UserRole'];
+
+    return '';
 }
 
 ?>

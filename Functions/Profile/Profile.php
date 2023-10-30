@@ -11,17 +11,6 @@ function setError($errorTitle, $errorMessage, $errorCode)
     header('Location:LoadInformationError.php');
     return;
 }
-
-//引数の値がnullならsetError()を行う。 存在するならfalseを返す。
-function isEmpty($value)
-{
-    if (empty($value)) {
-        setError("ログイン情報エラー", "ログインしてください。", "12A_");
-        return true;
-    }
-
-    return false;
-}
 ?>
 
 <!DOCTYPE html>
@@ -84,8 +73,10 @@ function isEmpty($value)
                     <div class="profile-item">
                         カード情報 : <strong>
                             <?php
-                            if (!(isEmpty(getUserCard())))
+                            if (isLoggedIn())
                                 echo getUserCard();
+                            else
+                                setError("ログイン情報エラー", "ログインしてください。", "12A_");
                             ?>
                         </strong>
                     </div>
@@ -93,8 +84,10 @@ function isEmpty($value)
                     <div class="profile-item">
                         名前 : <strong>
                             <?php
-                            if (!(isEmpty(getUserName())))
+                            if (isLoggedIn())
                                 echo getUserName();
+                            else
+                                setError("ログイン情報エラー", "ログインしてください。", "12A_");
                             ?>
                         </strong>
                     </div>
@@ -102,8 +95,10 @@ function isEmpty($value)
                     <div class="profile-item">
                         メールアドレス : <strong>
                             <?php
-                            if (!(isEmpty(getUserEmail())))
+                            if (isLoggedIn())
                                 echo getUserEmail();
+                            else
+                                setError("ログイン情報エラー", "ログインしてください。", "12A_");
                             ?>
                         </strong>
                     </div>
