@@ -74,26 +74,26 @@ $records = getUserAttendRecords();
                 <h1 class="attendrecord-title"><?php echo getUserName() ?>のプロフィール</h1>
 
                 <div class="attendance-items">
-                    <table>
-                        <div class="attendance-item">
+                    <table class="attendance-item">
+                        <thead>
                             <tr>
-                                <th id="day">
+                                <th class="table-header" id="day">
                                     <p>日付</p>
                                 </th>
-                                <th id="status">
+                                <th class="table-header" id="status">
                                     <p>状態</p>
                                 </th>
-                                <th id="comment">
-                                    <p>コメント</p>
+                                <th class="table-header" id="comment">
+                                    <p>備考</p>
                                 </th>
                             </tr>
-                        </div>
-                        <div class="attendance-item-scroll">
+                        </thead>
+                        <tbody>
                             <?php
-                            if (empty($records)) echo "<p class='attend-notfound'>情報が見つかりませんでした。</p>";
+                            if (empty($records)); //TODO(エラー出力)
                             else {
                                 foreach ($records as $record) {
-                                    echo "<tr>";
+                                    echo "<tr class='table-content'>";
                                     foreach ($record as $key => $value) {
                                         if ($key == 'id' || $key == 'user_id') continue;
                                         if ($key == 'timestamp') {
@@ -115,7 +115,7 @@ $records = getUserAttendRecords();
                                 }
                             }
                             ?>
-                        </div>
+                        </tbody>
                     </table>
                 </div>
 

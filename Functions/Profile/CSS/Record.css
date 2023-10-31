@@ -36,7 +36,7 @@ table tr {
     cursor: pointer;
 }
 
-table tr:first-child {
+table thead {
     border-bottom: solid 8px rgb(136, 136, 136);
 }
 
@@ -45,7 +45,7 @@ table th, table td {
     padding: 15px 0;
 }
 
-#day,#status {
+#day, #status {
     width: 25%;
 }
 
@@ -78,7 +78,7 @@ button:hover,
     background: #19a08c;
 }
 
-.attendance-item-scroll {
-    height: 200px;
-    overflow: auto;
+.attendance-items {
+    overflow-y: scroll;
+    height: 719px;
 }
