@@ -54,7 +54,7 @@ try {
     $result = $stmt->fetch();
 
     //一致する結果が存在するかどうか確認
-    if (!($result ? true : false)) {
+    if (!($result)) {
         $pdo = null;
         setError("ユーザー名またはパスワードが間違っています。", "もう一度ご確認ください。", "13L_");
         return;

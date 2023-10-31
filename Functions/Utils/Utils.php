@@ -110,3 +110,13 @@ function getUserAttendRecords()
 
     return '';
 }
+
+function getCurrentTime()
+{
+    $timezone = new DateTimeZone('Asia/Tokyo');
+    $now = new DateTime('now', $timezone);
+
+    return $now->format("Y-m-d H:i:s");
+}
+
+

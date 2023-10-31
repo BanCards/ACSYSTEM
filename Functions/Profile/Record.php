@@ -97,7 +97,7 @@ $records = getUserAttendRecords();
                                     foreach ($record as $key => $value) {
                                         if ($key == 'id' || $key == 'user_id') continue;
                                         if ($key == 'timestamp') {
-                                            $value = date("Y年 n月 j日", strtotime($value));
+                                            $value = date("Y年 n月 j日 G時 i分", strtotime($value));
                                         } else if ($value == 'attend') {
                                             $value = '出席';
                                         } else if ($value == 'absent') {
