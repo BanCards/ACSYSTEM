@@ -1,0 +1,84 @@
+.main {
+    padding-top: 50px;
+}
+
+.form {
+    max-width: 1500px;
+    height: 719px;
+    margin: auto;
+    text-align: center;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #fafafa;
+}
+
+.attendrecord-title {
+    -webkit-border-radius: 6px 6px 0px 0px;
+    -moz-border-radius: 6px 6px 0px 0px;
+    border-radius: 6px 6px 0px 0px;
+    background-color: #2abca7;
+    color: #fafafa;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+table tr {
+    border-bottom: solid 1px #eee;
+    cursor: pointer;
+}
+
+table tr:first-child {
+    border-bottom: solid 8px rgb(136, 136, 136);
+}
+
+table th, table td {
+    text-align: center;
+    padding: 15px 0;
+}
+
+#day,#status {
+    width: 25%;
+}
+
+#comment {
+    width: 50%;
+}
+
+table tr:nth-child(odd) {
+    background-color: #eaf8fa
+}
+
+button {
+    margin-top: 40px;
+    margin-bottom: 25px;
+    margin-left: 150px;
+    background-color: #2abca7;
+    padding: 12px 45px;
+    border-radius: 5px;
+    border: 1px solid #2abca7;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    height: 70px;
+}
+
+button:hover,
+.button:hover {
+    background: #19a08c;
+}
+
+.attendance-item-scroll {
+    height: 200px;
+    overflow: auto;
+}

@@ -14,17 +14,19 @@ function setError($errorTitle, $errorMessage, $errorCode)
 
 if (!(isLoggedIn()))
     setError("ログイン情報エラー", "ログインしてください。", "12A_");
+
+$records = getUserAttendRecords();
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
-    <title>ACSystem - Profile</title>
+    <title>ACSystem - Attend Record</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Common.css">
-    <link rel="stylesheet" href="CSS/Profile.css">
+    <link rel="stylesheet" href="CSS/Record.css">
 </head>
 
 <body>
@@ -69,38 +71,52 @@ if (!(isLoggedIn()))
         <!-- メイン -->
         <div class="main">
             <div class="form">
-                <h1 class="profile-title"><?php echo getUserName()?>のプロフィール</h1>
-
-                <div class="profile-items">
-
-                    <div class="profile-item">
-                        カード情報 : <strong>
-                            <?php echo getUserCard(); ?>
-                        </strong>
-                    </div>
-
-                    <div class="profile-item">
-                        名前 : <strong>
-                            <?php echo getUserName(); ?>
-                        </strong>
-                    </div>
-
-                    <div class="profile-item">
-                        メールアドレス : <strong>
-                            <?php echo getUserEmail(); ?>
-                        </strong>
-                    </div>
-
-                </div>
+                <h1 class="attendrecord-title"><?php echo getUserName() ?>のプロフィール</h1>
 
                 <div class="attendance-items">
-                    <div class="attendance-item">
-                        <a href="Events/LoadInformation.php"><button type="button">出席状況を見る</button></a>
-                    </div>
-
-                    <div class="attendance-item">
-                        <a href="../Login/Login.php"><button type="button">プロフィール編集</button></a>
-                    </div>
+                    <table>
+                        <div class="attendance-item">
+                            <tr>
+                                <th id="day">
+                                    <p>日付</p>
+                                </th>
+                                <th id="status">
+                                    <p>状態</p>
+                                </th>
+                                <th id="comment">
+                                    <p>コメント</p>
+                                </th>
+                            </tr>
+                        </div>
+                        <div class="attendance-item-scroll">
+                            <?php
+                            if (empty($records)) echo "<p class='attend-notfound'>情報が見つかりませんでした。</p>";
+                            else {
+                                foreach ($records as $record) {
+                                    echo "<tr>";
+                                    foreach ($record as $key => $value) {
+                                        if ($key == 'id' || $key == 'user_id') continue;
+                                        if ($key == 'timestamp') {
+                                            $value = date("Y年 n月 j日", strtotime($value));
+                                        } else if ($value == 'attend') {
+                                            $value = '出席';
+                                        } else if ($value == 'absent') {
+                                            $value = '欠席';
+                                        } else if ($value == 'lateness') {
+                                            $value = '遅刻';
+                                        } else if ($value == 'leave_early') {
+                                            $value = '早退';
+                                        } else if ($value == 'official_absence') {
+                                            $value = '公欠';
+                                        }
+                                        echo "<td class='record-item'>{$value}</td>";
+                                    }
+                                    echo "</tr>";
+                                }
+                            }
+                            ?>
+                        </div>
+                    </table>
                 </div>
 
             </div>

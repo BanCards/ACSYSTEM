@@ -96,3 +96,17 @@ function getUserRole()
 
     return '';
 }
+
+function uploadUserAttendRecords($record)
+{
+    unset($_SESSION['UserAttendRecord']);
+    $_SESSION['UserAttendRecord'] = $record;
+}
+
+function getUserAttendRecords()
+{
+    if (!empty($_SESSION['UserAttendRecord']))
+        return $_SESSION['UserAttendRecord'];
+
+    return '';
+}
