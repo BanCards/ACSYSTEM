@@ -1,4 +1,7 @@
-<?php session_status() == PHP_SESSION_NONE ? session_start() : sleep(0); ?>
+<?php
+include('../Utils/Utils.php');
+session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -8,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Common.css">
-    <link rel="stylesheet" href="../../CSS/LoadInformationError.css">
+    <link rel="stylesheet" href="../../CSS/LoadInformationSuccess.css">
 </head>
 
 <body>
@@ -54,22 +57,11 @@
         <div class="main">
 
             <div class="form">
-                <h1 class="loadError-title">
-                    <?php echo $_SESSION['errorTitle']; ?>
-                </h1>
-
-                <div class="loadError-items">
-
-                    <div class="loadError-item">
-                        <?php echo $_SESSION['errorMessage']; ?>
-                    </div>
-
-                    <div class="loadError-item">
-                        <?php echo $_SESSION['errorCode']; ?>
-                    </div>
+                <h1 class="loadInformationSuccess-title">出席しました</h1>
+                <div class="loadInformationSuccess-Items">
 
                     <div class="submit-button">
-                        <a href="ReadCard.html"><button type="button">戻る</button></a>
+                        <a href="../../Index.html"><button type="button">確認</button></a>
                     </div>
 
                 </div>

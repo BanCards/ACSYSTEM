@@ -43,11 +43,12 @@ try {
         $stmt->bindParam(':uuid', $uuid, PDO::PARAM_INT);
         $stmt->bindParam(':timestamp', $timestamp, PDO::PARAM_STR);
         $stmt->bindParam(':status', $status, PDO::PARAM_STR);
-        $stmt->bindParam(':comment', $comment, PDO::PARAM_NULL);
+        $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
+
 
         if ($stmt->execute()) {
             $pdo = null;
-            header("Location: ../../../../Index.html");
+            header("Location: ../../LoadInformationSuccess.php");
             return;
         } else {
             $pdo = null;
