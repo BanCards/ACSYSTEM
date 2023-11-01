@@ -72,7 +72,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
                     </div>
 
                     <div class="submit-button">
-                        <a href="ReadCard.html"><button type="button">戻る</button></a>
+                        <a href="../../Index.html"><button type="button">戻る</button></a>
                     </div>
 
                 </div>
