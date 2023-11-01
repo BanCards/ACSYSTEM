@@ -39,18 +39,18 @@ try {
 
         if ($stmt->execute()) {
             $pdo = null;
-            header("Location: ../../LoadInformationSuccess.php");
+            header("Location:../../LoadInformationSuccess.php");
             return;
         } else {
             $pdo = null;
-            setError("ユーザーの登録中に問題が発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
-            header('../../Location:LoadInformationError.php');
+            setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
+            header("Location:../../LoadInformationError.php");
             return;
         }
     } else {
         $pdo = null;
         setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
-        header('../../Location:LoadInformationError.php');
+        header("Location:../../LoadInformationError.php");
         return;
     }
 
@@ -58,6 +58,6 @@ try {
 } catch (PDOException $e) {
     $pdo = null;
     setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
-    header('../../Location:LoadInformationError.php');
+    header("Location:../../LoadInformationError.php");
     return;
 }
