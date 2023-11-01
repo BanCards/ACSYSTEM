@@ -69,7 +69,7 @@ if (!(isLoggedIn()))
         <!-- メイン -->
         <div class="main">
             <div class="form">
-                <h1 class="profile-title"><?php echo getUserName()?>のプロフィール</h1>
+                <h1 class="profile-title"><?php echo getUserName() ?>のプロフィール</h1>
 
                 <div class="profile-items">
 

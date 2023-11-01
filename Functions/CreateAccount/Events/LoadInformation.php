@@ -21,8 +21,7 @@ function setError($errorTitle, $errorMessage, $errorCode)
 {
     $_SESSION['errorTitle'] = $errorTitle;
     $_SESSION['errorMessage'] = $errorMessage;
-    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
-    ;
+    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");;
     header('Location:../LoadInformationError.php');
     return;
 }
@@ -145,4 +144,3 @@ try {
     setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
     return;
 }
-?>
