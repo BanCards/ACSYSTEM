@@ -14,6 +14,11 @@ if (!(isLoggedIn())) {
     header("Location: ../../LoadInformationError.php");
 }
 
+//値
+$timestamp = getCurrentTime();
+$status = $_POST['status'];
+$comment = $_POST['comment'];
+
 //DB接続 try catch(e) -> エラー出力
 try {
     $pdo = new PDO($dsn, $mysql_user, $mysql_password);
@@ -28,10 +33,6 @@ try {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($result) {
-        $timestamp = getCurrentTime();
-        $status = $_POST['status'];
-        $comment = $_POST['comment'];
-
         $insertQuery = "INSERT INTO attendance (user_id, timestamp, status, comment) VALUES (:uuid, :timestamp, :status, :comment)";
         $stmt = $pdo->prepare($insertQuery);
         $stmt->bindParam(':uuid', $uuid, PDO::PARAM_INT);
