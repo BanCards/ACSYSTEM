@@ -72,7 +72,11 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
                     </div>
 
                     <div class="submit-button">
-                        <a href="Login.php"><button type="button">戻る</button></a>
+                        <a <?php if (isLoggedIn()) {
+                                echo "href='../Logout/Logout.php'";
+                            } else {
+                                echo "href='Login.php'";
+                            } ?>><button type="button">戻る</button></a>
                     </div>
 
                 </div>
