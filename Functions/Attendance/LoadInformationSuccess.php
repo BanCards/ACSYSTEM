@@ -60,6 +60,10 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
                 <h1 class="loadInformationSuccess-title">出席しました</h1>
                 <div class="loadInformationSuccess-Items">
 
+                    <div class="loadInformationSuccess-item">
+                        時間 : <strong><?php echo getCurrentTime(); ?></strong>
+                    </div>
+
                     <div class="submit-button">
                         <a href="../../Index.html"><button type="button">確認</button></a>
                     </div>
