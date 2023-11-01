@@ -57,11 +57,11 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
         <div class="main">
 
             <div class="form">
-                <h1 class="loadInformationSuccess-title">出席しました</h1>
+                <h1 class="loadInformationSuccess-title">処理が完了しました。</h1>
                 <div class="loadInformationSuccess-Items">
 
                     <div class="loadInformationSuccess-item">
-                        時間 : <strong><?php echo getCurrentTime(); ?></strong>
+                        更新されるまで時間がかかることがあります。
                     </div>
 
                     <div class="submit-button">
