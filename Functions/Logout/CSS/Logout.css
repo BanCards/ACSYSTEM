@@ -40,10 +40,11 @@
 }
 
 button {
+  font-size: 1.1rem;
   margin-top: 80px;
   height: 70px;
   background-color: #2abca7;
-  padding: 12px 45px;
+  padding: 20px 60px;
   border-radius: 5px;
   border: 1px solid #2abca7;
   -webkit-transition: 0.5s;

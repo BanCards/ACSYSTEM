@@ -4,7 +4,7 @@
 
 .form {
     max-width: 800px;
-    height: 300px;
+    height: 350px;
     margin: auto;
     text-align: center;
     -webkit-border-radius: 6px;
@@ -13,20 +13,26 @@
     background-color: #fafafa;
 }
 
-.loadInformationSuccess-title {
+.attendance-title {
     -webkit-border-radius: 6px 6px 0px 0px;
     -moz-border-radius: 6px 6px 0px 0px;
     border-radius: 6px 6px 0px 0px;
     background-color: #2abca7;
     color: #fafafa;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
-.loadInformationSuccess-item {
+.form-item_required {
     width: 100%;
     padding-top: 20px;
-    margin-top: 20px;
-    margin-left: 90px;
+}
+
+.form-item_required::placeholder {
+    padding: 0;
+}
+
+input {
+    margin-top: 40px;
     font-size: 1em;
     padding: 18px 10px 18px;
     font-family: "Source Sans Pro", arial, sans-serif;
@@ -34,28 +40,4 @@
     background: #d7d7d7;
     width: 80%;
     max-width: 600px;
-}
-
-.loadInformationSuccess-item::placeholder {
-    padding: 0;
-}
-
-button {
-    font-size: 1.1rem;
-    margin-top: 80px;
-    height: 70px;
-    background-color: #2abca7;
-    padding: 20px 60px;
-    border-radius: 5px;
-    border: 1px solid #2abca7;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    display: inline-block;
-    cursor: pointer;
-    color: #fff;
-}
-
-button:hover,
-.button:hover {
-    background: #19a08c;
 }
