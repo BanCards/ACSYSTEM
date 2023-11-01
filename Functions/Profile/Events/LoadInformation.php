@@ -28,7 +28,7 @@ try {
     $table = "attendance";
     $idColumn = "card_id";
 
-    $sql = "SELECT * FROM attendance WHERE user_id = :user_id";
+    $sql = "SELECT timestamp, status, comment FROM attendance WHERE user_id = :user_id ORDER BY timestamp DESC";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
 
