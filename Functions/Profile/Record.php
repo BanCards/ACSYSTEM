@@ -2,18 +2,11 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-//セッション間でエラー系の情報引き渡す
-function setError($errorTitle, $errorMessage, $errorCode)
-{
-    $_SESSION['errorTitle'] = $errorTitle;
-    $_SESSION['errorMessage'] = $errorMessage;
-    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
-    header('Location:LoadInformationError.php');
-    return;
-}
 
-if (!(isLoggedIn()))
+if (!(isLoggedIn())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A_");
+    header('Location:LoadInformationError.php');
+}
 
 $records = getUserAttendRecords();
 ?>

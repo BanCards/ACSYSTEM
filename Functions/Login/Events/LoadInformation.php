@@ -13,25 +13,17 @@ $dsn = "mysql:dbname=$database;host=$hostname;";
 $name = $_POST['name'];
 $password = $_POST['password'];
 
-//セッション間でエラー系の情報引き渡す
-function setError($errorTitle, $errorMessage, $errorCode)
-{
-    $_SESSION['errorTitle'] = $errorTitle;
-    $_SESSION['errorMessage'] = $errorMessage;
-    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
-    header('Location:../LoadInformationError.php');
-    return;
-}
-
 //リクエストメソッドを確認
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     setError("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M_");
+    header('Location:../LoadInformationError.php');
     return;
 }
 
 //空白文字チェック
 if (empty($name) || empty($password)) {
     setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
+    header('Location:../LoadInformationError.php');
     return;
 }
 
@@ -57,6 +49,7 @@ try {
     if (!($result)) {
         $pdo = null;
         setError("ユーザー名またはパスワードが間違っています。", "もう一度ご確認ください。", "13L_");
+        header('Location:../LoadInformationError.php');
         return;
     }
 
@@ -69,6 +62,6 @@ try {
 } catch (PDOException $e) {
     $pdo = null;
     setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
-    echo $e;
+    header('Location:../LoadInformationError.php');
     return;
 }

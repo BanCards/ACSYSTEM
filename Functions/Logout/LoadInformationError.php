@@ -1,4 +1,7 @@
-<?php session_status() == PHP_SESSION_NONE ? session_start() : sleep(0); ?>
+<?php
+include('../Utils/Utils.php');
+session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -55,17 +58,17 @@
 
             <div class="form">
                 <h1 class="loadError-title">
-                    <?php echo $_SESSION['errorTitle']; ?>
+                    <?php echo getErrorTitle() ?>
                 </h1>
 
                 <div class="loadError-items">
 
                     <div class="loadError-item">
-                        <?php echo $_SESSION['errorMessage']; ?>
+                        <?php echo getErrorMessage() ?>
                     </div>
 
                     <div class="loadError-item">
-                        <?php echo $_SESSION['errorCode']; ?>
+                        <?php echo getErrorCode() ?>
                     </div>
 
                     <div class="submit-button">

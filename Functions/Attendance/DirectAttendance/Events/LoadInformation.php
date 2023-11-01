@@ -9,15 +9,6 @@ $mysql_user = "root";
 $mysql_password = '';
 $dsn = "mysql:dbname=$database;host=$hostname;";
 
-function setError($errorTitle, $errorMessage, $errorCode)
-{
-    $_SESSION['errorTitle'] = $errorTitle;
-    $_SESSION['errorMessage'] = $errorMessage;
-    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
-    header('../../Location:LoadInformationError.php');
-    return;
-}
-
 $cardID = $_POST['cardID'];
 
 //DB接続 try catch(e) -> エラー出力
@@ -53,11 +44,13 @@ try {
         } else {
             $pdo = null;
             setError("ユーザーの登録中に問題が発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
+            header('../../Location:LoadInformationError.php');
             return;
         }
     } else {
         $pdo = null;
         setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
+        header('../../Location:LoadInformationError.php');
         return;
     }
 
@@ -65,5 +58,6 @@ try {
 } catch (PDOException $e) {
     $pdo = null;
     setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
+    header('../../Location:LoadInformationError.php');
     return;
 }

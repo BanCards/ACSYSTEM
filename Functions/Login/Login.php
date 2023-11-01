@@ -2,17 +2,10 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-function setError($errorTitle, $errorMessage, $errorCode)
-{
-    $_SESSION['errorTitle'] = $errorTitle;
-    $_SESSION['errorMessage'] = $errorMessage;
-    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
-    header('Location:LoadInformationError.php');
-    return;
-}
-
-if (isLoggedIn())
+if (isLoggedIn()) {
     setError("ログイン情報エラー", "ログアウトしてください。", "12A_");
+    header('Location:LoadInformationError.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +84,7 @@ if (isLoggedIn())
 
                     <!-- キー入力をロード時に有効に -->
                     <script>
-                        window.onload = function () {
+                        window.onload = function() {
                             var element = document.getElementById('name');
                             element.focus();
                         }

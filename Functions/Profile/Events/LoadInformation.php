@@ -9,11 +9,8 @@ $mysql_user = "root";
 $mysql_password = '';
 $dsn = "mysql:dbname=$database;host=$hostname;";
 
-function setError($errorTitle, $errorMessage, $errorCode)
-{
-    $_SESSION['errorTitle'] = $errorTitle;
-    $_SESSION['errorMessage'] = $errorMessage;
-    $_SESSION['errorCode'] = "エラーコード : " . $errorCode . date("ymdis");
+if (!(isLoggedIn())) {
+    setError("ログイン情報エラー", "ログインしてください。", "12A_");
     header('../Location:LoadInformationError.php');
     return;
 }
@@ -21,8 +18,6 @@ function setError($errorTitle, $errorMessage, $errorCode)
 //DB接続 try catch(e) -> エラー出力
 try {
     $pdo = new PDO($dsn, $mysql_user, $mysql_password);
-
-    if (!(isLoggedIn())) setError("ログイン情報エラー", "ログインしてください。", "12A_");
 
     $user_id = getUUID();
     $table = "attendance";
@@ -47,5 +42,6 @@ try {
 } catch (PDOException $e) {
     $pdo = null;
     setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
+    header('../Location:LoadInformationError.php');
     return;
 }

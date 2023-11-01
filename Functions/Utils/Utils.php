@@ -118,3 +118,49 @@ function getCurrentTime()
 
     return $now->format("Y-m-d H:i:s");
 }
+
+function setError($title, $message, $code)
+{
+    setErrorTitle($title);
+    setErrorMessage($message);
+    setErrorCode($code);
+}
+
+function setErrorTitle($title)
+{
+    $_SESSION['ErrorTitle'] = $title;
+}
+
+function getErrortitle()
+{
+    if (!(empty($_SESSION['ErrorTitle'])))
+        return $_SESSION['ErrorTitle'];
+
+    return '';
+}
+
+function setErrorMessage($message)
+{
+    $_SESSION['ErrorMessage'] = $message;
+}
+
+function getErrorMessage()
+{
+    if (!empty($_SESSION['ErrorMessage']))
+        return $_SESSION['ErrorMessage'];
+
+    return '';
+}
+
+function setErrorCode($code)
+{
+    $_SESSION['ErrorCode'] = "エラーコード : " . $code . date("YmdHis");
+}
+
+function getErrorCode()
+{
+    if (!empty($_SESSION['ErrorCode']))
+        return $_SESSION['ErrorCode'];
+
+    return '';
+}
