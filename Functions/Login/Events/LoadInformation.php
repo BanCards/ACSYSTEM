@@ -54,7 +54,7 @@ try {
     }
 
     //ログイン情報をセッション間で引き渡す。
-    login($result['id'], $result['card_id'], $result['name'], $result['email'], $result['role']);
+    login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
 
     header('Location:../LoadInformationSuccess.html');
 

@@ -72,6 +72,12 @@ if (!(isLoggedIn())) {
                     </div>
 
                     <div class="profile-item">
+                        クラス : <strong>
+                            <?php echo getUserClass(); ?>
+                        </strong>
+                    </div>
+
+                    <div class="profile-item">
                         名前 : <strong>
                             <?php echo getUserName(); ?>
                         </strong>

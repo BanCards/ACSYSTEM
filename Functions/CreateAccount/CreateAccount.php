@@ -1,7 +1,12 @@
 <?php
+include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-//tempのカードIDはセッション間で一旦渡す
+if (empty($_POST['cardID'])) {
+    setError("情報エラー", "カードを読み直してください。", "13IC_");
+    header('Location: LoadInformationError.php');
+    return;
+}
 $_SESSION['cardID'] = $_POST['cardID'];
 ?>
 
@@ -65,9 +70,16 @@ $_SESSION['cardID'] = $_POST['cardID'];
                     <div class="form-item_required">
                         <div class="accountIndex">
                             アカウント番号 : <strong class="AccountIndexHolder">
-                                <?php echo $_SESSION['cardID']; ?>
+                                <?php echo $_POST['cardID']; ?>
                             </strong>
                         </div>
+                    </div>
+
+                    <div class="form-item_required">
+                        <select name="class" required>
+                            <option value="1B">1年B組</option>
+                            <option value="2B">2年B組</option>
+                        </select>
                     </div>
 
                     <div class="form-item_required">

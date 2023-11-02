@@ -4,7 +4,7 @@
 
 .form {
     max-width: 800px;
-    height: 650px;
+    height: 670px;
     margin: auto;
     text-align: center;
     -webkit-border-radius: 6px;
@@ -59,7 +59,7 @@ input {
 }
 
 button {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     background-color: #2abca7;
     padding: 12px 45px;
     border-radius: 5px;
@@ -83,10 +83,9 @@ button:hover,
 
 .loginButton {
     width: 200px;
-    margin-top: 15px;
+    margin-top: 1px;
     margin-left: 135px;
     background-color: #2abca7;
-    padding: 12px 45px;
     border-radius: 5px;
     border: 1px solid #2abca7;
     -webkit-transition: 0.5s;
@@ -94,9 +93,31 @@ button:hover,
     display: inline-block;
     cursor: pointer;
     color: #fff;
-    height: 60px;
 }
 
 .input {
     caret-color: #333;
+}
+
+select {
+    margin-top: 10px;
+    width: 78%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+}
+
+select option {
+    background-color: #fff;
+    color: #333;
+    padding: 5px;
 }
