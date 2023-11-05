@@ -59,6 +59,7 @@
 button {
   margin-top: 20px;
   margin-bottom: 25px;
+  margin-left: 170px;
   background-color: #2abca7;
   padding: 12px 45px;
   border-radius: 5px;
@@ -87,7 +88,7 @@ button:hover,
 }
 
 #new-item-value {
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 input {

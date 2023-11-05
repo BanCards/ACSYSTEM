@@ -90,7 +90,7 @@ if (!(isLoggedIn())) {
                         メールアドレス : <strong>
                             <?php echo getUserEmail(); ?>
                         </strong>
-                        <a href="EditItem.php?edit-item=main_info" id="edit-button" name="edit-item" value="mail_info">編集</a>
+                        <a href="EditItem.php?edit-item=mail_info" id="edit-button" name="edit-item" value="mail_info">編集</a>
                     </div>
 
                     <div class="profile-item">
