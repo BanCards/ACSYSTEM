@@ -103,7 +103,7 @@ if (!$isDuplicateMail && !$isDuplicateCardID) {
 
         login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
 
-        Success("", "");
+        Success("ユーザーが登録されました");
 
         return;
     } else {

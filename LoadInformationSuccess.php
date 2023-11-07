@@ -7,7 +7,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 <html lang="ja">
 
 <head>
-    <title>ACSystem</title>
+    <title>ACSystem - Error</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="CSS/Common.css">
@@ -24,7 +24,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
         <div class="main">
 
             <div class="form">
-                <h1 class="loadSuccess-title"><?php getSuccesstitle(); ?></h1>
+                <h1 class="loadSuccess-title"><?php getSuccessTitle() ?></h1>
                 <div class="loadSuccess-Items">
 
                     <div class="submit-button">

@@ -204,10 +204,9 @@ function getCurrentTime()
     return $now->format("Y-m-d H:i:s");
 }
 
-function Success($title, $message)
+function Success($title)
 {
     setSuccessTitle($title);
-    setSuccessMessage($message);
     header('Location:/ACSystem/LoadInformationSuccess.php');
     return;
 }
@@ -217,23 +216,10 @@ function setSuccessTitle($title)
     $_SESSION['SuccessTitle'] = $title;
 }
 
-function getSuccesstitle()
+function getSuccessTitle()
 {
     if (!(empty($_SESSION['SuccessTitle'])))
         return $_SESSION['SuccessTitle'];
-
-    return '';
-}
-
-function setSuccessMessage($message)
-{
-    $_SESSION['SuccessMessage'] = $message;
-}
-
-function getSuccessMessage()
-{
-    if (!empty($_SESSION['SuccessMessage']))
-        return $_SESSION['SuccessMessage'];
 
     return '';
 }

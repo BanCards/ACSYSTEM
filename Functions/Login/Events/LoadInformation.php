@@ -44,4 +44,4 @@ if (!($result)) {
 //ログイン情報をセッション間で引き渡す。
 login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
 
-Success("","");
+Success("ログインしました");

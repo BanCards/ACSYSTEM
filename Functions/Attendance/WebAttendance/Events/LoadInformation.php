@@ -35,7 +35,7 @@ if ($result) {
 
 
     if ($stmt->execute()) {
-        Success("","");
+        Success("処理が完了しました");
         return;
     } else {
         Error("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");

@@ -45,7 +45,7 @@ if (isLoggedIn()) {
                     </div>
 
                     <div class="submit-button">
-                        <a href="../createAccount/ReadCard.html"><button type="button" class="createAccountButton">
+                        <a href="../createAccount/ReadCard.php"><button type="button" class="createAccountButton">
                                 アカウントを新規作成</button></a>
                     </div>
 
