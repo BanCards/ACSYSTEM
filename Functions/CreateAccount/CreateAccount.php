@@ -72,7 +72,7 @@ $_SESSION['cardID'] = $_POST['cardID'];
                     <div class="createAccount-items">
 
                         <div class="createAccount-item">
-                            <a href="ReadCard.html"><button type="button" class="loginButton">カード再読み込み</button></a>
+                            <a href="ReadCard.php"><button type="button" class="loginButton">カード再読み込み</button></a>
                         </div>
 
                         <div class="createAccount-item">

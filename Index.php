@@ -26,7 +26,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
       <!-- アイテム -->
       <div class="item">
         <!--TODO-->
-          <a href="Functions/Attendance/DirectAttendance/DirectAttendance.html"><button>カードで出席</button></a>
+          <a href="Functions/Attendance/DirectAttendance/DirectAttendance.php"><button>カードで出席</button></a>
           <a href="Functions/Attendance/WebAttendance/WebAttendance.php"><button>WEBから出席</button></a>
           <a href="Functions/Login/Login.php"><button>ログインする</button></a>
           <a href="Functions/Logout/Logout.php"><button>ログアウトする</button></a>

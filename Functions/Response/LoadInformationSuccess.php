@@ -1,5 +1,5 @@
 <?php
-include('Functions/Utils/Utils.php');
+include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 ?>
 
@@ -10,8 +10,8 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
     <title>ACSystem - Error</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/Common.css">
-    <link rel="stylesheet" href="CSS/LoadInformationSuccess.css">
+    <link rel="stylesheet" href="../../CSS/Common.css">
+    <link rel="stylesheet" href="../../CSS/LoadInformationSuccess.css">
 </head>
 
 <body>
@@ -24,11 +24,11 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
         <div class="main">
 
             <div class="form">
-                <h1 class="loadSuccess-title"><?php getSuccessTitle() ?></h1>
+                <h1 class="loadSuccess-title"><?php echo getSuccessTitle() ?></h1>
                 <div class="loadSuccess-Items">
 
                     <div class="submit-button">
-                        <a href="Index.php"><button type="button">ホームに戻る</button></a>
+                        <a href="../../Index.php"><button type="button">ホームに戻る</button></a>
                     </div>
 
                 </div>

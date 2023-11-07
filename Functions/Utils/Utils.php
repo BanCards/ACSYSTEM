@@ -207,7 +207,7 @@ function getCurrentTime()
 function Success($title)
 {
     setSuccessTitle($title);
-    header('Location:/ACSystem/LoadInformationSuccess.php');
+    header('Location:/ACSystem/Functions/Response/LoadInformationSuccess.php');
     return;
 }
 
@@ -229,7 +229,7 @@ function Error($title, $message, $code)
     setErrorTitle($title);
     setErrorMessage($message);
     setErrorCode($code);
-    header('Location:/ACSystem/LoadInformationError.php');
+    header('Location:/ACSystem/Functions/Response/LoadInformationError.php');
     return;
 }
 
