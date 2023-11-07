@@ -8,8 +8,7 @@ $value = $_POST['new-item-value'];
 unset($_SESSION['editItem']);
 
 if (empty($value)) {
-    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
-    header("Location: ../LoadInformationError.php");
+    Error("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
     return;
 }
 
@@ -19,10 +18,7 @@ if ($key == 'card') $key .= "_id";
 $pdo = getDatabaseConnection();
 $uuid = getUUID();
 
-if ($pdo == null) {
-    header('Location: ../../LoadInformation.php');
-    return;
-}
+if ($pdo == null) return;
 
 $query = "SELECT card_id, class, name, email, password FROM users WHERE id = ?";
 $stmt = $pdo->prepare($query);
@@ -31,7 +27,7 @@ $stmt->execute();
 $result = $stmt->fetch();
 
 if (!$result) {
-    setError("情報エラー", "ACSystemチームまでご連絡ください。", "21D_");
+    Error("情報エラー", "ACSystemチームまでご連絡ください。", "21D_");
     return;
 }
 

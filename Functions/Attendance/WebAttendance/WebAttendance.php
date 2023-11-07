@@ -3,8 +3,8 @@ include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 if (!(isLoggedIn())) {
-    setError("ログイン情報エラー", "ログインしてください。", "12A_");
-    header('Location: ../LoadInformationError.php');
+    Error("ログイン情報エラー", "ログインしてください。", "12A_");
+    return;
 }
 
 ?>
@@ -69,24 +69,26 @@ if (!(isLoggedIn())) {
                     <div class="attendance-items">
 
                         <div class="attendance-item">
-                            <button type="submit" id="attend" name="status" value="attend">
-                                出席
-                            </button>
+                            <select name="status" required>
+                                <option value="absent">欠席</option>
+                                <option value="lateness">遅刻</option>
+                                <option value="leave_early">早退</option>
+                                <option value="official_absence">公欠</option>
+                                <option value="other">その他</option>
+                            </select>
                         </div>
 
                         <div class="attendance-item">
-                            <button type="submit" id="absent" name="status" value="absent">
-                                欠席
-                            </button>
+                            <textarea name="comment" cols="30" rows="10" placeholder="理由(記入は自由です)"></textarea>
                         </div>
 
 
                         <div class="attendance-item">
-                            <a href="OtherAttendance.php">
-                                <button type="button" id="report">
-                                    報告
-                                </button>
-                            </a>
+                            <button type="submit">提出</button>
+                        </div>
+
+                        <div class="attendance-item">
+                            <a href="../../../Index.html"><button type="button">戻る</button></a>
                         </div>
 
                     </div>

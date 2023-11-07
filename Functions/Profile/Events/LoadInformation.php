@@ -3,17 +3,13 @@ include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 if (!(isLoggedIn())) {
-    setError("ログイン情報エラー", "ログインしてください。", "12A_");
-    header('../Location:LoadInformationError.php');
+    Error("ログイン情報エラー", "ログインしてください。", "12A_");
     return;
 }
 
 $pdo = getDatabaseConnection();
 
-if ($pdo == null) {
-    header('../Location:LoadInformationError.php');
-    return;
-}
+if ($pdo == null) return;
 
 $user_id = getUUID();
 $table = "attendance";

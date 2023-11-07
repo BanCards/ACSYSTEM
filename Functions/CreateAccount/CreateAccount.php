@@ -3,10 +3,10 @@ include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 if (empty($_POST['cardID'])) {
-    setError("情報エラー", "カードを読み直してください。", "13IC_");
-    header('Location: LoadInformationError.php');
+    Error("情報エラー", "カードを読み直してください。", "13IC_");
     return;
 }
+
 $_SESSION['cardID'] = $_POST['cardID'];
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-include('../Utils/Utils.php');
+include('Functions/Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 ?>
 
@@ -10,8 +10,8 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
     <title>ACSystem</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="../../CSS/Common.css">
-    <link rel="stylesheet" href="../../CSS/LoadInformationError.css">
+    <link rel="stylesheet" href="CSS/Common.css">
+    <link rel="stylesheet" href="CSS/LoadInformationError.css">
 </head>
 
 <body>
@@ -35,7 +35,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
                         </a>
                     </li>
                     <li class="contact">
-                        <a href="../../Contact/Contact.html">
+                        <a href="../Contact/Contact.html">
                             <i class="fas fa-info-circle"></i> コンタクト
                         </a>
                     </li>
@@ -58,21 +58,21 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
             <div class="form">
                 <h1 class="loadError-title">
-                    <?php echo getErrorTitle(); ?>
+                    <?php echo getErrorTitle() ?>
                 </h1>
 
                 <div class="loadError-items">
 
                     <div class="loadError-item">
-                        <?php echo getErrorMessage(); ?>
+                        <?php echo getErrorMessage() ?>
                     </div>
 
                     <div class="loadError-item">
-                        <?php echo getErrorCode(); ?>
+                        <?php echo getErrorCode() ?>
                     </div>
 
                     <div class="submit-button">
-                        <a href="../../Index.html"><button type="button">戻る</button></a>
+                        <a href="Index.html"><button type="button">ホームに戻る</button></a>
                     </div>
 
                 </div>

@@ -14,7 +14,7 @@ function getDatabaseConnection()
 
         return $pdo;
     } catch (PDOException $e) {
-        setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
+        Error("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
         error_log("Acsystem Error : " . $e->getMessage());
 
         return null;
@@ -155,11 +155,47 @@ function getCurrentTime()
     return $now->format("Y-m-d H:i:s");
 }
 
-function setError($title, $message, $code)
+function Success($title, $message)
+{
+    setSuccessTitle($title);
+    setSuccessMessage($message);
+    header('Location:/ACSystem/LoadInformationSuccess.php');
+    return;
+}
+
+function setSuccessTitle($title)
+{
+    $_SESSION['SuccessTitle'] = $title;
+}
+
+function getSuccesstitle()
+{
+    if (!(empty($_SESSION['SuccessTitle'])))
+        return $_SESSION['SuccessTitle'];
+
+    return '';
+}
+
+function setSuccessMessage($message)
+{
+    $_SESSION['SuccessMessage'] = $message;
+}
+
+function getSuccessMessage()
+{
+    if (!empty($_SESSION['SuccessMessage']))
+        return $_SESSION['SuccessMessage'];
+
+    return '';
+}
+
+function Error($title, $message, $code)
 {
     setErrorTitle($title);
     setErrorMessage($message);
     setErrorCode($code);
+    header('Location:/ACSystem/LoadInformationError.php');
+    return;
 }
 
 function setErrorTitle($title)

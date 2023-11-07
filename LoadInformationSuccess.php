@@ -1,5 +1,5 @@
 <?php
-include('../Utils/Utils.php');
+include('Functions/Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 ?>
 
@@ -10,8 +10,8 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
     <title>ACSystem</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="../../CSS/Common.css">
-    <link rel="stylesheet" href="../../CSS/LoadInformationError.css">
+    <link rel="stylesheet" href="CSS/Common.css">
+    <link rel="stylesheet" href="CSS/LoadInformationSuccess.css">
 </head>
 
 <body>
@@ -25,17 +25,17 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
             <nav class="navigation">
                 <ul>
                     <li class="top">
-                        <a href="../../Index.html">
+                        <a href="Index.html">
                             <i class="fas fa-home"></i> ホーム
                         </a>
                     </li>
                     <li class="profile">
-                        <a href="../Profile/Profile.php">
+                        <a href="Functions/Profile/Profile.php">
                             <i class="fas fa-user"></i> プロフィール
                         </a>
                     </li>
                     <li class="contact">
-                        <a href="../../Contact/Contact.html">
+                        <a href="Functions/Contact/Contact.html">
                             <i class="fas fa-info-circle"></i> コンタクト
                         </a>
                     </li>
@@ -45,7 +45,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
                         </a>
                     </li>
                     <li class="logout">
-                        <a href="#">
+                        <a href="Functions/Logout/Logout.php">
                             <i class="fas fa-sign-in-alt"></i> ログアウト
                         </a>
                     </li>
@@ -57,22 +57,11 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
         <div class="main">
 
             <div class="form">
-                <h1 class="loadError-title">
-                    <?php echo getErrorTitle(); ?>
-                </h1>
-
-                <div class="loadError-items">
-
-                    <div class="loadError-item">
-                        <?php echo getErrorMessage(); ?>
-                    </div>
-
-                    <div class="loadError-item">
-                        <?php echo getErrorCode() ?>
-                    </div>
+                <h1 class="loadSuccess-title"><?php getSuccesstitle(); ?></h1>
+                <div class="loadSuccess-Items">
 
                     <div class="submit-button">
-                        <a href="ReadCard.html"><button type="button">戻る</button></a>
+                        <a href="Index.html"><button type="button">ホームに戻る</button></a>
                     </div>
 
                 </div>

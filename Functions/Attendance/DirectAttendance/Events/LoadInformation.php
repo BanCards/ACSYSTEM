@@ -33,15 +33,13 @@ if ($result) {
 
 
     if ($stmt->execute()) {
-        header("Location:../../LoadInformationSuccess.php");
+        Success("", "");
         return;
     } else {
-        setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
-        header("Location:../../LoadInformationError.php");
+        Error("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
         return;
     }
 } else {
-    setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
-    header("Location:../../LoadInformationError.php");
+    Error("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
     return;
 }

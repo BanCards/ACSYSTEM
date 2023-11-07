@@ -3,8 +3,8 @@ include('../../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 if (!(isLoggedIn())) {
-    setError("情報エラー", "ログインしてください。", "13L_");
-    header("Location: ../../LoadInformationError.php");
+    Error("情報エラー", "ログインしてください。", "13L_");
+    return;
 }
 
 //値
@@ -14,10 +14,7 @@ $comment = $_POST['comment'];
 
 $pdo = getDatabaseConnection();
 
-if ($pdo == null) {
-    header("Location: ../../LoadInformationError.php");
-    return;
-}
+if ($pdo == null) return;
 
 $uuid = getUUID();
 
@@ -38,15 +35,13 @@ if ($result) {
 
 
     if ($stmt->execute()) {
-        header("Location: ../../LoadInformationSuccess.php");
+        Success("","");
         return;
     } else {
-        setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
-        header("Location: ../../LoadInformationError.php");
+        Error("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
         return;
     }
 } else {
-    setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
-    header("Location: ../../LoadInformationError.php");
+    Error("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
     return;
 }
