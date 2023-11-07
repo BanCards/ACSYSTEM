@@ -2,9 +2,6 @@
 include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-$maxValueLength = 16; // 修正: $maxValueLengthの値が不正です。16に変更しました。
-$minValueLength = 3;  // 修正: $minValueLengthの値が不正です。3に変更しました。
-
 $item = $_GET['edit-item'];
 $_SESSION['editItem'] = $item;
 $itemTrans = "";
@@ -77,6 +74,22 @@ if ($item == 'card_info') {
 
         <form action="Events/LoadInformation.php" method="POST">
           <h1 class="profile-title"><?php echo getUserName() ?>のプロフィールを編集</h1>
+
+          <div class="form-item_required">
+            <?php
+            if ($item == "card_info") {
+              echo getUserCard();
+            } else if ($item == "class_info") {
+              echo getUserClass();
+            } else if ($item == "name_info") {
+              echo getUserName();
+            } else if ($item == "mail_info") {
+              echo getUserEmail();
+            } else if ($item == "password_info") {
+              echo "<input type='password' name='current-item-value' value='' minlength='3' maxlength='16' placeholder='現在の値' />";
+            }
+            ?>
+          </div>
 
           <div class="profile-item" id="new-item-value">
             新しい<?php echo $itemTrans ?>を設定してください
