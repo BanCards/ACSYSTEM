@@ -18,40 +18,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
     <div class="content">
 
         <!-- ヘッダー -->
-        <div class="header">
-            <h2>ACSYSTEM</h2>
-
-            <!-- ナビゲーション -->
-            <nav class="navigation">
-                <ul>
-                    <li class="top">
-                        <a href="Index.php">
-                            <i class="fas fa-home"></i> ホーム
-                        </a>
-                    </li>
-                    <li class="profile">
-                        <a href="Functions/Profile/Profile.php">
-                            <i class="fas fa-user"></i> プロフィール
-                        </a>
-                    </li>
-                    <li class="contact">
-                        <a href="Functions/Contact/Contact.html">
-                            <i class="fas fa-info-circle"></i> コンタクト
-                        </a>
-                    </li>
-                    <li class="help">
-                        <a href="#">
-                            <i class="fas fa-question-circle"></i> ヘルプ
-                        </a>
-                    </li>
-                    <li class="logout">
-                        <a href="Functions/Logout/Logout.php">
-                            <i class="fas fa-sign-in-alt"></i> ログアウト
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <?php sendHeaders() ?>
 
         <!-- メイン -->
         <div class="main">

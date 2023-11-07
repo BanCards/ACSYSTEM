@@ -14,7 +14,7 @@ function sendHeaders()
             <nav class="navigation">
                 <ul>
                     <li class="top">
-                        <a href="/ACSystem/Index.html">
+                        <a href="/ACSystem/Index.php">
                             <i class="fas fa-home"></i> ホーム
                         </a>
                     </li>
