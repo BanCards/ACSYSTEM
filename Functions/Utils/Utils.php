@@ -1,6 +1,26 @@
 <?php
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
+function getDatabaseConnection()
+{
+    $hostname = "localhost";
+    $database = "acsystem";
+    $mysql_user = "root";
+    $mysql_password = '';
+    $dsn = "mysql:dbname=$database;host=$hostname;";
+
+    try {
+        $pdo = new PDO($dsn, $mysql_user, $mysql_password);
+
+        return $pdo;
+    } catch (PDOException $e) {
+        setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
+        error_log("Acsystem Error : " . $e->getMessage());
+
+        return null;
+    }
+}
+
 function isLoggedIn()
 {
     if (!(empty(getUUID())))
@@ -9,7 +29,7 @@ function isLoggedIn()
     return false;
 }
 
-function login($uuid, $card, $class ,$name, $email, $role)
+function login($uuid, $card, $class, $name, $email, $role)
 {
     setUUID($uuid);
     setUserCard($card);
