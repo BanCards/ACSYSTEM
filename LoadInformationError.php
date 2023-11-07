@@ -25,7 +25,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
             <nav class="navigation">
                 <ul>
                     <li class="top">
-                        <a href="../../Index.html">
+                        <a href="../../Index.php">
                             <i class="fas fa-home"></i> ホーム
                         </a>
                     </li>
@@ -72,7 +72,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
                     </div>
 
                     <div class="submit-button">
-                        <a href="Index.html"><button type="button">ホームに戻る</button></a>
+                        <a href="Index.php"><button type="button">ホームに戻る</button></a>
                     </div>
 
                 </div>
