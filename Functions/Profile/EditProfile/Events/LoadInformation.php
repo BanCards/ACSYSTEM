@@ -3,6 +3,7 @@ include('../../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 $key = str_replace('_info', '', $_SESSION['editItem']);
+if ($key == 'card') $key .= "_id";
 $value = $_POST['new-item-value'];
 
 unset($_SESSION['editItem']);
@@ -12,37 +13,27 @@ if (empty($value)) {
     return;
 }
 
-//card_id class name email password
-if ($key == 'card') $key .= "_id";
+$validFields = ['card_id', 'class', 'name', 'email', 'password'];
 
+// $key が有効なフィールドであるか確認
+if (!(in_array($key, $validFields))) {
+    Error("無効なフィールド", "指定されたフィールドは更新できません。", "22D_");
+    return;
+}
 $pdo = getDatabaseConnection();
 $uuid = getUUID();
 
 if ($pdo == null) return;
 
-$query = "SELECT card_id, class, name, email, password FROM users WHERE id = ?";
-$stmt = $pdo->prepare($query);
-$stmt->bindValue(1, $uuid, PDO::PARAM_STR);
-$stmt->execute();
-$result = $stmt->fetch();
+$updateQuery = "UPDATE users SET $key = :value WHERE id = :uuid";
+$updateStmt = $pdo->prepare($updateQuery);
+$updateStmt->bindValue(':value', $value, PDO::PARAM_STR);
+$updateStmt->bindValue(':uuid', $uuid, PDO::PARAM_STR);
 
-if (!$result) {
-    Error("情報エラー", "ACSystemチームまでご連絡ください。", "21D_");
+if ($updateStmt->execute()) {
+    Success("値を更新しました");
+    return;
+} else {
+    Error("情報更新エラー", "情報を更新できませんでした。", "22D_");
     return;
 }
-
-$outputs_directory = '../Outputs/';
-$filename = date("Y/m/d") . "_変更履歴.txt";
-$message = getUserName() . "が" . $key . "を" . $result[$key] . "から更新しました  :  " . $value;
-
-// 既存のファイルにメッセージを追加
-if (file_exists($filename)) {
-    $existing_data = file_get_contents($filename);
-    $existing_data .= "\n" . $message;
-} else {
-    $existing_data = $message;
-}
-
-file_put_contents($filename, $existing_data);
-
-header("Location: http://localhost/ACSystem/Functions/Profile/EditProfile/SelectEditItem.php");
