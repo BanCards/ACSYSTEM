@@ -12,6 +12,30 @@ if (empty($value)) {
     return;
 }
 
+$pdo = getDatabaseConnection();
+$uuid = getUUID();
+
+if ($key == "password") {
+    $currentPassword =  $_POST['current-item-value'];
+
+    if (empty($currentPassword)) {
+        Error("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
+        return;
+    }
+
+    $selectQuery = "SELECT * FROM users WHERE id = :uuid";
+    $selectStmt = $pdo->prepare($selectQuery);
+    $selectStmt->bindParam(':uuid', $uuid, PDO::PARAM_STR);
+    $selectStmt->execute();
+
+    $result = $selectStmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result['password'] != $currentPassword) {
+        Error("現在のパスワードが一致しません。", "パスワードをご確認の上、再度記入してください。", "13IP_");
+        return;
+    }
+}
+
 $validFields = ['card_id', 'class', 'name', 'email', 'password'];
 
 // $key が有効なフィールドであるか確認
@@ -19,8 +43,6 @@ if (!(in_array($key, $validFields))) {
     Error("無効なフィールド", "指定されたフィールドは更新できません。", "22D_");
     return;
 }
-$pdo = getDatabaseConnection();
-$uuid = getUUID();
 
 if ($pdo == null) return;
 
