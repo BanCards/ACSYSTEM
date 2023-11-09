@@ -271,3 +271,25 @@ function getErrorCode()
 
     return '';
 }
+
+function translate($item)
+{
+    $translations = [
+        'illness' => '病気',
+        'accident' => '事故',
+        'traffic_issues' => '交通の問題',
+        'health_issues' => '体調不要',
+        'family_matters' => '家庭の事情',
+        'forgetfulness' => '忘れ物',
+        'scheduled_appointment' => '必要な予定',
+        'company_visit' => '企業に関する事情',
+        'academic_research' => '学校行事',
+        'card_id_info' => 'カード情報',
+        'class_info' => 'クラス情報',
+        'name_info' => '名前情報',
+        'mail_info' => 'メールアドレス情報',
+        'password_info' => 'パスワード情報',
+    ];
+
+    return $translations[$item] ?? '';
+}
