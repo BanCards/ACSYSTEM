@@ -4,7 +4,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 function sendHeaders()
 {
     $status = isLoggedIn()
-        ? generateListItem('logout', 'fas fa-sign-out', 'ログアウト', '/ACSystem/Functions/Logout/Logout.php')
+        ? generateListItem('logout', 'fas fa-sign-out-alt', 'ログアウト', '/ACSystem/Functions/Logout/Logout.php')
         : generateListItem('login', 'fas fa-sign-in-alt', 'ログイン', '/ACSystem/Functions/Login/Login.php');
 
     echo <<<HTML
