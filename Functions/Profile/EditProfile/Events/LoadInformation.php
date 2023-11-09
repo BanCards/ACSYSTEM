@@ -3,7 +3,6 @@ include('../../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 $key = str_replace('_info', '', $_SESSION['editItem']);
-if ($key == 'card') $key .= "_id";
 $value = $_POST['new-item-value'];
 
 unset($_SESSION['editItem']);
@@ -31,6 +30,17 @@ $updateStmt->bindValue(':value', $value, PDO::PARAM_STR);
 $updateStmt->bindValue(':uuid', $uuid, PDO::PARAM_STR);
 
 if ($updateStmt->execute()) {
+
+    $selectQuery = "SELECT * FROM users WHERE id = :uuid";
+    $selectStmt = $pdo->prepare($selectQuery);
+    $selectStmt->bindParam(':uuid', $uuid, PDO::PARAM_STR);
+    $selectStmt->execute();
+
+    $result = $selectStmt->fetch(PDO::FETCH_ASSOC);
+
+    logout();
+    login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
+
     Success("値を更新しました");
     return;
 } else {
