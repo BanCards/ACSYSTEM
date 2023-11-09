@@ -36,7 +36,7 @@ if (!(isLoggedIn())) {
                         カード情報 : <strong>
                             <?php echo getUserCard(); ?>
                         </strong>
-                        <a href="EditItem.php?edit-item=card_info" id="edit-button">編集</a>
+                        <a href="EditItem.php?edit-item=card_id_info" id="edit-button">編集</a>
                     </div>
 
                     <div class="profile-item">

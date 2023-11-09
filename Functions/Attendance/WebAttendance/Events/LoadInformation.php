@@ -10,7 +10,7 @@ if (!(isLoggedIn())) {
 //値
 $timestamp = getCurrentTime();
 $status = $_POST['status'];
-$comment = $_POST['comment'];
+$comment = translate($_POST['reason']);
 
 $pdo = getDatabaseConnection();
 

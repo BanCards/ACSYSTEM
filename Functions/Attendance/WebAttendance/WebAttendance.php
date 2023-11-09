@@ -35,8 +35,8 @@ if (!(isLoggedIn())) {
 
                     <div class="attendance-items">
 
-                        <div class="attendance-item">
-                            <select name="status" required>
+                        <div class="attendance-item-parent">
+                            <select class="status" name="status" required>
                                 <option value="absent">欠席</option>
                                 <option value="lateness">遅刻</option>
                                 <option value="leave_early">早退</option>
@@ -45,13 +45,34 @@ if (!(isLoggedIn())) {
                             </select>
                         </div>
 
-                        <div class="attendance-item">
-                            <textarea name="comment" cols="30" rows="10" placeholder="理由(記入は自由です)"></textarea>
+                        <div class="attendance-item-child">
+                            <select class="absent-reason" name="" required>
+                                <option value="illness">病気</option>
+                                <option value="accident">事故</option>
+                            </select>
+
+                            <select class="lateness-reason" name="" required>
+                                <option value="traffic_issues">交通の問題</option>
+                                <option value="health_issues">体調不良</option>
+                                <option value="family_matters">家庭事情</option>
+                                <option value="forgetfulness">忘れ物</option>
+                            </select>
+
+                            <select class="leave_early-reason" name="" required>
+                                <option value="health_issues">体調不良</option>
+                                <option value="family_matters">家庭事情</option>
+                                <option value="scheduled_appointment">必要な予定</option>
+                            </select>
+
+                            <select class="official_absence-reason" name="" required>
+                                <option value="company_visit">企業に関する事情</option>
+                                <option value="academic_research">学校行事</option>
+                            </select>
+
                         </div>
 
-
                         <div class="attendance-item">
-                            <button type="submit">提出</button>
+                            <button type="submit" id="submit-button">提出</button>
                         </div>
 
                         <div class="attendance-item">
@@ -74,6 +95,8 @@ if (!(isLoggedIn())) {
     </div>
 
     </div>
+
+    <script src="JS/SwitchSelectItem.js"></script>
 </body>
 
 </html>
