@@ -23,21 +23,14 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
     <div class="main">
       <div class="form">
         <h1 class="contact-title">コンタクト</h1>
-        <form class="contact-form" action="" method="">
-          <div class="form-item_required">
-            <input type="text" name="userId" placeholder="ユーザー名" />
-          </div>
+        <form class="contact-form" action="Events/LoadContact.php" method="GET">
 
           <div class="form-item_required">
-            <input type="mail" name="mail" placeholder="メールアドレス" />
-          </div>
-
-          <div class="form-item_required">
-            <textarea name="contact" cols="30" rows="10" placeholder="お問い合わせ内容"></textarea>
+            <textarea name="contact" value="" cols="30" rows="10" placeholder="お問い合わせ内容"></textarea>
           </div>
 
           <div class="submit-button">
-            <button type="submit">送信</button>
+            <button type="submit">確認</button>
           </div>
         </form>
       </div>
