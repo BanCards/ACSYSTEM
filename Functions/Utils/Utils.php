@@ -51,7 +51,6 @@ function generateListItem($class, $icon, $text, $link)
     HTML;
 }
 
-
 function getDatabaseConnection()
 {
     $hostname = "localhost";
@@ -66,7 +65,7 @@ function getDatabaseConnection()
         return $pdo;
     } catch (PDOException $e) {
         Error("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
-        error_log("Acsystem Error : " . $e->getMessage());
+        error_log("ACSystem Error : " . $e->getMessage());
 
         return null;
     }
@@ -182,10 +181,10 @@ function getUserRole()
     return '';
 }
 
-function uploadUserAttendRecords($record)
+function uploadUserAttendRecords($records)
 {
     unset($_SESSION['UserAttendRecord']);
-    $_SESSION['UserAttendRecord'] = $record;
+    $_SESSION['UserAttendRecord'] = $records;
 }
 
 function getUserAttendRecords()
@@ -272,9 +271,21 @@ function getErrorCode()
     return '';
 }
 
+function isJapanese($str)
+{
+    return preg_match('/\p{Script=Hiragana}|\p{Script=Katakana}|\p{Script=Han}/u', $str);
+}
+
 function translate($item)
 {
+    if (isJapanese($item)) return $item;
+
     $translations = [
+        'attend' => '出席',
+        'absent' => '欠席',
+        'lateness' => '遅刻',
+        'leave_early' => '早退',
+        'official_absence' => '公欠',
         'illness' => '病気',
         'accident' => '事故',
         'traffic_issues' => '交通の問題',
