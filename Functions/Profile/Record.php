@@ -35,45 +35,41 @@ $records = getUserAttendRecords();
 
                 <div class="attendance-items">
                     <table class="attendance-item">
-                        <thead>
-                            <tr>
-                                <th class="table-header" id="day">
-                                    <p>日付</p>
-                                </th>
-                                <th class="table-header" id="status">
-                                    <p>状態</p>
-                                </th>
-                                <th class="table-header" id="comment">
-                                    <p>備考</p>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            if (empty($records)); //TODO(エラー出力)
-                            else {
-                                foreach ($records as $record) {
-                                    echo "<tr class='table-content'>";
-                                    foreach ($record as $key => $value) {
-                                        if ($key == 'timestamp') {
-                                            $value = date("n月 j日 G時 i分", strtotime($value));
-                                        } else if ($value == 'attend') {
-                                            $value = '出席';
-                                        } else if ($value == 'absent') {
-                                            $value = '欠席';
-                                        } else if ($value == 'lateness') {
-                                            $value = '遅刻';
-                                        } else if ($value == 'leave_early') {
-                                            $value = '早退';
-                                        } else if ($value == 'official_absence') {
-                                            $value = '公欠';
-                                        }
-                                        echo "<td class='record-item'>{$value}</td>";
+                        <?php
+                        if (empty($records)) {
+                            echo "<tr class='not-attend-record'><td>情報なんてないよ。 :(</td></tr>";
+                        } else {
+                            echo <<<HTML
+                                <thead>
+                                    <tr>
+                                        <th class="table-header" id="day">
+                                            <p>日付</p>
+                                        </th>
+                                        <th class="table-header" id="status">
+                                            <p>状態</p>
+                                        </th>
+                                        <th class="table-header" id="comment">
+                                            <p>備考</p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            HTML;
+
+                            foreach ($records as $record) {
+                                echo "<tr class='table-content'>";
+                                foreach ($record as $key => $value) {
+                                    if ($key === 'timestamp') {
+                                        $value = date("n月 j日 G時 i分", strtotime($value));
+                                    } else {
+                                        $value = translate($value);
                                     }
-                                    echo "</tr>";
+                                    echo "<td class='record-item'>$value</td>";
                                 }
+                                echo "</tr>";
                             }
-                            ?>
+                        }
+                        ?>
                         </tbody>
                     </table>
                 </div>

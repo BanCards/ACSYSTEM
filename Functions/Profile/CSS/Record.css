@@ -4,7 +4,7 @@
 
 .form {
     max-width: 1500px;
-    height: 719px;
+    height: 720px;
     margin: auto;
     text-align: center;
     -webkit-border-radius: 6px;
@@ -57,28 +57,12 @@ table tr:nth-child(odd) {
     background-color: #eaf8fa
 }
 
-button {
-    margin-top: 40px;
-    margin-bottom: 25px;
-    margin-left: 150px;
-    background-color: #2abca7;
-    padding: 12px 45px;
-    border-radius: 5px;
-    border: 1px solid #2abca7;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    display: inline-block;
-    cursor: pointer;
-    color: #fff;
-    height: 70px;
-}
-
-button:hover,
-.button:hover {
-    background: #19a08c;
-}
-
 .attendance-items {
     overflow-y: scroll;
-    height: 719px;
+    height: 720px;
+}
+
+.not-attend-record {
+    text-align: center;
+    font-size: 1.2rem;
 }
