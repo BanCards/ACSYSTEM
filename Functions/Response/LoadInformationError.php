@@ -25,17 +25,17 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
             <div class="form">
                 <h1 class="loadError-title">
-                    <?php echo getErrorTitle() ?>
+                    <?php echo getError('title') ?>
                 </h1>
 
                 <div class="loadError-items">
 
                     <div class="loadError-item">
-                        <?php echo getErrorMessage() ?>
+                        <?php echo getError('message') ?>
                     </div>
 
                     <div class="loadError-item">
-                        <?php echo getErrorCode() ?>
+                        <?php echo getError('code') ?>
                     </div>
 
                     <div class="submit-button">

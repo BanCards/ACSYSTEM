@@ -8,7 +8,7 @@ $value = $_POST['new-item-value'];
 unset($_SESSION['editItem']);
 
 if (empty($value)) {
-    Error("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
+    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
     return;
 }
 
@@ -19,7 +19,7 @@ if ($key == "password") {
     $currentPassword =  $_POST['current-item-value'];
 
     if (empty($currentPassword)) {
-        Error("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
+        setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
         return;
     }
 
@@ -31,7 +31,7 @@ if ($key == "password") {
     $result = $selectStmt->fetch(PDO::FETCH_ASSOC);
 
     if ($result['password'] != $currentPassword) {
-        Error("現在のパスワードが一致しません。", "パスワードをご確認の上、再度記入してください。", "13IP_");
+        setError("現在のパスワードが一致しません。", "パスワードをご確認の上、再度記入してください。", "13IP_");
         return;
     }
 }
@@ -40,7 +40,7 @@ $validFields = ['card_id', 'class', 'name', 'email', 'password'];
 
 // $key が有効なフィールドであるか確認
 if (!(in_array($key, $validFields))) {
-    Error("無効なフィールド", "指定されたフィールドは更新できません。", "22D_");
+    setError("無効なフィールド", "指定されたフィールドは更新できません。", "22D_");
     return;
 }
 
@@ -63,9 +63,9 @@ if ($updateStmt->execute()) {
     logout();
     login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
 
-    Success("値を更新しました");
+    setSuccess("値を更新しました");
     return;
 } else {
-    Error("情報更新エラー", "情報を更新できませんでした。", "22D_");
+    setError("情報更新エラー", "情報を更新できませんでした。", "22D_");
     return;
 }

@@ -64,7 +64,7 @@ function getDatabaseConnection()
 
         return $pdo;
     } catch (PDOException $e) {
-        Error("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
+        setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
         error_log("ACSystem Error : " . $e->getMessage());
 
         return null;
@@ -105,10 +105,7 @@ function setUUID($uuid)
 
 function getUUID()
 {
-    if (!(empty($_SESSION['UUID'])))
-        return $_SESSION['UUID'];
-
-    return '';
+    return !empty($_SESSION['UUID']) ? $_SESSION['UUID'] : '';
 }
 
 function setUserCard($card)
@@ -119,10 +116,7 @@ function setUserCard($card)
 
 function getUserCard()
 {
-    if (!(empty($_SESSION['UserCard'])))
-        return $_SESSION['UserCard'];
-
-    return '';
+    return !empty($_SESSION['UserCard']) ? $_SESSION['UserCard'] : '';
 }
 
 function setUserClass($class)
@@ -133,10 +127,7 @@ function setUserClass($class)
 
 function getUserClass()
 {
-    if (!empty($_SESSION['UserClass']))
-        return $_SESSION['UserClass'];
-
-    return '';
+    return !empty($_SESSION['UserClass']) ? $_SESSION['UserClass'] : '';
 }
 
 function setUserName($name)
@@ -147,10 +138,7 @@ function setUserName($name)
 
 function getUserName()
 {
-    if (!empty($_SESSION['UserName']))
-        return $_SESSION['UserName'];
-
-    return '';
+    return !empty($_SESSION['UserName']) ? $_SESSION['UserName'] : '';
 }
 
 function setUserEmail($mail)
@@ -161,10 +149,7 @@ function setUserEmail($mail)
 
 function getUserEmail()
 {
-    if (!empty($_SESSION['UserEmail']))
-        return $_SESSION['UserEmail'];
-
-    return '';
+    return !empty($_SESSION['UserEmail']) ? $_SESSION['UserEmail'] : '';
 }
 
 function setUserRole($role)
@@ -175,10 +160,7 @@ function setUserRole($role)
 
 function getUserRole()
 {
-    if (!empty($_SESSION['UserRole']))
-        return $_SESSION['UserRole'];
-
-    return '';
+    return !empty($_SESSION['UserRole']) ? $_SESSION['UserRole'] : '';
 }
 
 function uploadUserAttendRecords($records)
@@ -189,10 +171,7 @@ function uploadUserAttendRecords($records)
 
 function getUserAttendRecords()
 {
-    if (!empty($_SESSION['UserAttendRecord']))
-        return $_SESSION['UserAttendRecord'];
-
-    return '';
+    return !empty($_SESSION['UserAttendRecord']) ? $_SESSION['UserAttendRecord'] : '';
 }
 
 function getCurrentTime()
@@ -203,72 +182,37 @@ function getCurrentTime()
     return $now->format("Y-m-d H:i:s");
 }
 
-function Success($title)
+function setSuccess($title)
 {
-    setSuccessTitle($title);
+    $_SESSION['SuccessTitle'] = $title;
     header('Location:/ACSystem/Functions/Response/LoadInformationSuccess.php');
     return;
 }
 
-function setSuccessTitle($title)
+function getSuccess()
 {
-    $_SESSION['SuccessTitle'] = $title;
+    return !empty($_SESSION['SuccessTitle']) ? $_SESSION['SuccessTitle'] : '';
 }
 
-function getSuccessTitle()
+function setError($title, $message, $code)
 {
-    if (!(empty($_SESSION['SuccessTitle'])))
-        return $_SESSION['SuccessTitle'];
-
-    return '';
-}
-
-function Error($title, $message, $code)
-{
-    setErrorTitle($title);
-    setErrorMessage($message);
-    setErrorCode($code);
+    $_SESSION['ErrorTitle'] = $title;
+    $_SESSION['ErrorMessage'] = $message;
+    $_SESSION['ErrorCode'] = "エラーコード : " . $code . "_" . date("YmdHis");
     header('Location:/ACSystem/Functions/Response/LoadInformationError.php');
     return;
 }
 
-function setErrorTitle($title)
+function getError($type)
 {
-    $_SESSION['ErrorTitle'] = $title;
-}
+    $types = ['title', 'message', 'code'];
 
-function getErrortitle()
-{
-    if (!(empty($_SESSION['ErrorTitle'])))
-        return $_SESSION['ErrorTitle'];
+    if (!in_array($type, $types)) {
+        setError("セッションエラーが発生しました", "ACSystemチームまでご連絡ください。", "14S");
+        return false;
+    }
 
-    return '';
-}
-
-function setErrorMessage($message)
-{
-    $_SESSION['ErrorMessage'] = $message;
-}
-
-function getErrorMessage()
-{
-    if (!empty($_SESSION['ErrorMessage']))
-        return $_SESSION['ErrorMessage'];
-
-    return '';
-}
-
-function setErrorCode($code)
-{
-    $_SESSION['ErrorCode'] = "エラーコード : " . $code . date("YmdHis");
-}
-
-function getErrorCode()
-{
-    if (!empty($_SESSION['ErrorCode']))
-        return $_SESSION['ErrorCode'];
-
-    return '';
+    return !empty($_SESSION['Error' . ucfirst($type)]) ? $_SESSION['Error' . ucfirst($type)] : '';
 }
 
 function isJapanese($str)

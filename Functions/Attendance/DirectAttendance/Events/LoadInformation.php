@@ -33,13 +33,13 @@ if ($result) {
 
 
     if ($stmt->execute()) {
-        Success("出席処理が完了しました");
+        setSuccess("出席処理が完了しました");
         return;
     } else {
-        Error("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
+        setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
         return;
     }
 } else {
-    Error("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
+    setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
     return;
 }

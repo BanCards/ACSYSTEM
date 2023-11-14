@@ -8,13 +8,13 @@ $password = $_POST['password'];
 
 //リクエストメソッドを確認
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    Error("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M_");
+    setError("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M_");
     return;
 }
 
 //空白文字チェック
 if (empty($name) || empty($password)) {
-    Error("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
+    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
     return;
 }
 
@@ -37,11 +37,11 @@ $result = $stmt->fetch();
 
 //一致する結果が存在するかどうか確認
 if (!($result)) {
-    Error("ユーザー名またはパスワードが間違っています。", "もう一度ご確認ください。", "13L_");
+    setError("ユーザー名またはパスワードが間違っています。", "もう一度ご確認ください。", "13L_");
     return;
 }
 
 //ログイン情報をセッション間で引き渡す。
 login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
 
-Success("ログインしました");
+setSuccess("ログインしました");

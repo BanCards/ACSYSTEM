@@ -3,7 +3,7 @@ include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 if (!(isLoggedIn())) {
-    Error("ログイン情報エラー", "ログインしてください。", "12A_");
+    setError("ログイン情報エラー", "ログインしてください。", "12A_");
     return;
 }
 ?>
