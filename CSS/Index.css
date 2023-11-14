@@ -161,7 +161,12 @@ a.btn--circle:first-child {
 }
 
 a.btn--circle i {
-  font-size: 150%;
+  margin-top: 15px;
+  font-size: 200%;
+}
+
+a.btn--circle p {
+  margin-top: 25px;
 }
 
 .fa-position-bottom {
