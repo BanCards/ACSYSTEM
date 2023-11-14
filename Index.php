@@ -25,12 +25,23 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
       <!-- アイテム -->
       <div class="item">
-        <!--TODO-->
-          <a href="Functions/Attendance/DirectAttendance/DirectAttendance.php"><button>カードで出席</button></a>
-          <a href="Functions/Attendance/WebAttendance/WebAttendance.php"><button>WEBから出席</button></a>
-          <a href="Functions/Login/Login.php"><button>ログインする</button></a>
-          <a href="Functions/Logout/Logout.php"><button>ログアウトする</button></a>
-          <a href="Functions/Profile/Profile.php"><button>プロフィールを見る</button></a>
+        <a href="Functions/Attendance/WebAttendance/WebAttendance.php" class="btn btn--circle" id="report">
+          <i class="fas fa-user-alt-slash"></i>
+          <br>申請をする
+          <i class="fas fa-angle-down fa-position-bottom"></i>
+        </a>
+
+        <a href="Functions/Profile/Record.php" class="btn btn--circle" id="record">
+          <i class="fas fa-calendar-week"></i>
+          <br>履歴を見る
+          <i class="fas fa-angle-down fa-position-bottom"></i>
+        </a>
+
+        <a href="Functions/Attendance/DirectAttendance/DirectAttendance.php" class="btn btn--circle" id="test">
+          <i class="fas fa-id-card"></i>
+          <br>βテスト
+          <i class="fas fa-angle-down fa-position-bottom"></i>
+        </a>
       </div>
 
       <!-- アイテム -->
@@ -38,34 +49,19 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
         <h3 class="notification-title">お知らせ</h3>
         <ul class="news-list">
           <li>
+            <p class="date">2023/11/11</p>
+            <p class="category"><span>Update</span></p>
+            <p class="title">ver 2.0.0が公開されました。</p>
+          </li>
+          <li>
             <p class="date">2023/10/24</p>
-            <p class="category"><span>アップデート</span></p>
-            <p class="title">ver 2.1.0 が公開されました。</p>
+            <p class="category"><span>New</span></p>
+            <p class="title">出欠履歴が見れるようになりました。</p>
           </li>
           <li>
-            <p class="date">2023/10/12</p>
-            <p class="category"><span>アップデート</span></p>
-            <p class="title">ver 2.0.0 が公開されました。</p>
-          </li>
-          <li>
-            <p class="date">2023/07/21</p>
-            <p class="category"><span>アップデート</span></p>
-            <p class="title">ver 1.3.0 が公開されました。</p>
-          </li>
-          <li>
-            <p class="date">2023/07/20</p>
-            <p class="category"><span>アップデート</span></p>
-            <p class="title">ver 1.2.0 が公開されました。</p>
-          </li>
-          <li>
-            <p class="date">2023/07/20</p>
-            <p class="category"><span>アップデート</span></p>
-            <p class="title">データベースを更新しました。</p>
-          </li>
-          <li>
-            <p class="date">2023/06/29</p>
-            <p class="category"><span>アップデート</span></p>
-            <p class="title">ver 1.1.0 が公開されました。</p>
+            <p class="date">2023/10/01</p>
+            <p class="category"><span>New</span></p>
+            <p class="title">ver 1.0.0が公開されました。</p>
           </li>
         </ul>
       </div>
