@@ -96,7 +96,7 @@ if (!(isLoggedIn())) {
 
     </div>
 
-    <script src="JS/SwitchSelectItem.js"></script>
+    <script src="JavaScript/SwitchSelectItem.js"></script>
 </body>
 
 </html>
