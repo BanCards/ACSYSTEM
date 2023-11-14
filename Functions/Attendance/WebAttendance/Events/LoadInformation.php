@@ -3,7 +3,7 @@ include('../../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 if (!(isLoggedIn())) {
-    setError("情報エラー", "ログインしてください。", "13L_");
+    setError("情報エラー", "ログインしてください。", "13L");
     return;
 }
 
@@ -38,10 +38,10 @@ if ($result) {
         setSuccess("処理が完了しました");
         return;
     } else {
-        setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
+        setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA");
         return;
     }
 } else {
-    setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
+    setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U");
     return;
 }

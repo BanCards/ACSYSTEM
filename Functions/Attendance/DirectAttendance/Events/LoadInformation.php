@@ -36,10 +36,10 @@ if ($result) {
         setSuccess("出席処理が完了しました");
         return;
     } else {
-        setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
+        setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA");
         return;
     }
 } else {
-    setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U_");
+    setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U");
     return;
 }

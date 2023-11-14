@@ -8,13 +8,13 @@ $password = $_POST['password'];
 
 //リクエストメソッドを確認
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    setError("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M_");
+    setError("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M");
     return;
 }
 
 //空白文字チェック
 if (empty($name) || empty($password)) {
-    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
+    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I");
     return;
 }
 
@@ -37,7 +37,7 @@ $result = $stmt->fetch();
 
 //一致する結果が存在するかどうか確認
 if (!($result)) {
-    setError("ユーザー名またはパスワードが間違っています。", "もう一度ご確認ください。", "13L_");
+    setError("ユーザー名またはパスワードが間違っています。", "もう一度ご確認ください。", "13L");
     return;
 }
 

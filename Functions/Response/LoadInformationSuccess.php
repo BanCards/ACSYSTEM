@@ -24,7 +24,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
         <div class="main">
 
             <div class="form">
-                <h1 class="loadSuccess-title"><?php echo getSuccessTitle() ?></h1>
+                <h1 class="loadSuccess-title"><?php echo getSuccess() ?></h1>
                 <div class="loadSuccess-Items">
 
                     <div class="submit-button">

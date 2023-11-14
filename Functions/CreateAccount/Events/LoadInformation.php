@@ -28,31 +28,31 @@ function isDuplicate($pdo, $column, $value)
 
 //リクエストメソッドを確認
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    setError("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M_");
+    setError("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M");
     return;
 }
 
 //空白文字チェック
 if (empty($name) || empty($email) || empty($password)) {
-    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I_");
+    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I");
     return;
 }
 
 //パスワードの長さがオバーフローするかチェック
 if (mb_strlen($name) >= 32) {
-    setError("名前が長すぎます。", "32字以内に収めてください。", "13LN_");
+    setError("名前が長すぎます。", "32字以内に収めてください。", "13LN");
     return;
 }
 
 //パスワードの長さがオバーフローするかチェック
 if (mb_strlen($password) >= 32) {
-    setError("パスワードが長すぎます。", "32字以内に収めてください。", "13LP_");
+    setError("パスワードが長すぎます。", "32字以内に収めてください。", "13LP");
     return;
 }
 
 //パスワードが一致するかチェック
 if (!($password === $repassword)) {
-    setError("パスワードが一致しません。", "パスワードをご確認の上、再度記入してください。", "13IP_");
+    setError("パスワードが一致しません。", "パスワードをご確認の上、再度記入してください。", "13IP");
     return;
 }
 
@@ -65,7 +65,7 @@ $isDuplicateCardID = '';
 $isDuplicateCardID = isDuplicate($pdo, "card_id", $cardID);
 if ($isDuplicateCardID) {
     $pdo = null;
-    setError("カード情報が既に登録されています。", "使用されているアカウント番号 : <strong>" . $cardID . "</strong>", "11C_");
+    setError("カード情報が既に登録されています。", "使用されているアカウント番号 : <strong>" . $cardID . "</strong>", "11C");
     return;
 }
 
@@ -74,7 +74,7 @@ $isDuplicateMail = '';
 $isDuplicateMail = isDuplicate($pdo, "email", $email);
 if ($isDuplicateMail) {
     $pdo = null;
-    setError("メールアドレスが既に登録されています。", "使用されているメールアドレス : <strong>" . $email . "</strong>", "11E_");
+    setError("メールアドレスが既に登録されています。", "使用されているメールアドレス : <strong>" . $email . "</strong>", "11E");
     return;
 }
 
@@ -107,7 +107,7 @@ if (!$isDuplicateMail && !$isDuplicateCardID) {
 
         return;
     } else {
-        setError("ユーザーの登録中に問題が発生しました。", "ACSystemチームまでご連絡ください。", "13CA_");
+        setError("ユーザーの登録中に問題が発生しました。", "ACSystemチームまでご連絡ください。", "13CA");
         return;
     }
 }

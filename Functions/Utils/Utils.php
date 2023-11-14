@@ -64,7 +64,7 @@ function getDatabaseConnection()
 
         return $pdo;
     } catch (PDOException $e) {
-        setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C_");
+        setError("データベースに接続できませんでした。", "ACSystemチームまでご連絡ください。", "20C");
         error_log("ACSystem Error : " . $e->getMessage());
 
         return null;
