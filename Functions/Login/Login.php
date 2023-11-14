@@ -49,14 +49,6 @@ if (isLoggedIn()) {
                                 アカウントを新規作成</button></a>
                     </div>
 
-                    <!-- キー入力をロード時に有効に -->
-                    <script>
-                        window.onload = function() {
-                            var element = document.getElementById('name');
-                            element.focus();
-                        }
-                    </script>
-
                 </form>
             </div>
 
@@ -70,6 +62,8 @@ if (isLoggedIn()) {
         </div>
 
     </div>
+
+    <script src="JavaScript/EnableKeyInput.js"></script>
 </body>
 
 </html>

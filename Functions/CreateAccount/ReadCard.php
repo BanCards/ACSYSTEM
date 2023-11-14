@@ -31,28 +31,6 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
           <div class="submit-button">
             <button type="submit">登録</button>
           </div>
-
-          <!-- キー入力をロード時に有効に -->
-          <script>
-            window.onload = function() {
-              var element = document.getElementById('cardID');
-              element.focus();
-            }
-
-            // イベントリスナーを追加して入力値を半角に変換
-            document.getElementById('cardID').addEventListener('input', function() {
-              var inputValue = this.value;
-              var halfWidthValue = convertToHalfWidth(inputValue);
-              this.value = halfWidthValue;
-            });
-
-            // 文字列を半角に変換する関数
-            function convertToHalfWidth(str) {
-              return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
-                return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
-              });
-            }
-          </script>
         </form>
       </div>
     </div>
@@ -66,7 +44,11 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
         </p>
       </div>
     </div>
+
   </div>
+
+  <script src="JavaScript/ConvertHalfWidth.js"></script>
+  <script src="JavaScript/EnableKeyInput.js"></script>
 </body>
 
 </html>
