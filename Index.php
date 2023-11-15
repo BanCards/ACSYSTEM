@@ -58,8 +58,13 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
           </li>
           <li>
             <p class="date">2023/10/24</p>
-            <p class="category"><span>New</span></p>
+            <p class="category"><span>Notification</span></p>
             <p class="title">出欠履歴が見れるようになりました。</p>
+          </li>
+          <li>
+            <p class="date">2023/10/24</p>
+            <p class="category"><span>Update</span></p>
+            <p class="title">ver 1.1.0が公開されました。</p>
           </li>
           <li>
             <p class="date">2023/10/01</p>
