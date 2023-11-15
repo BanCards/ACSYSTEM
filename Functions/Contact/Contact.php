@@ -1,6 +1,11 @@
 <?php
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
+
+if (!(isLoggedIn())) {
+  setError("ログイン情報エラー", "ログインしてください。", "12A");
+  return;
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,10 +28,14 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
     <div class="main">
       <div class="form">
         <h1 class="contact-title">コンタクト</h1>
-        <form class="contact-form" action="Events/LoadContact.php" method="GET">
+        <form class="contact-form" action="ConfirmContact.php" method="GET">
 
           <div class="form-item_required">
-            <textarea name="contact" value="" cols="30" rows="10" placeholder="お問い合わせ内容"></textarea>
+            <input type="text" name="contactTitle" value="" placeholder="タイトル" maxlength="30">
+          </div>
+
+          <div class="form-item_required">
+            <textarea name="contactContents" value="" placeholder="お問い合わせ内容" maxlength="390"></textarea>
           </div>
 
           <div class="submit-button">
@@ -39,13 +48,12 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
     <!-- フッター -->
     <div class="footer">
       <div class="copyright">
-        <p>
-          Copyright &copy; 2023 Attendance Check System by ACSystem Team All
-          rights reserved.
-        </p>
+        <p>Copyright &copy; 2023 Attendance Check System by ACSystem Team All rights reserved.</p>
       </div>
     </div>
+
   </div>
+
 </body>
 
 </html>
