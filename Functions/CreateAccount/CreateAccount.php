@@ -2,10 +2,7 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (empty($_POST['cardID'])) {
-    setError("情報エラー", "カードを読み直してください。", "13IC");
-    return;
-}
+isEmptyItems($_POST['cardID']);
 
 $_SESSION['cardID'] = $_POST['cardID'];
 ?>

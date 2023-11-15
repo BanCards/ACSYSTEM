@@ -7,10 +7,7 @@ $value = $_POST['new-item-value'];
 
 unset($_SESSION['editItem']);
 
-if (empty($value)) {
-    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I");
-    return;
-}
+isEmptyItems($value);
 
 $pdo = getDatabaseConnection();
 $uuid = getUUID();
@@ -18,10 +15,7 @@ $uuid = getUUID();
 if ($key == "password") {
     $currentPassword =  $_POST['current-item-value'];
 
-    if (empty($currentPassword)) {
-        setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I");
-        return;
-    }
+    isEmptyItems($currentPassword);
 
     $selectQuery = "SELECT * FROM users WHERE id = :uuid";
     $selectStmt = $pdo->prepare($selectQuery);

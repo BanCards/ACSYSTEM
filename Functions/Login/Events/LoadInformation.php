@@ -13,10 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 }
 
 //空白文字チェック
-if (empty($name) || empty($password)) {
-    setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I");
-    return;
-}
+isEmptyItems($name, $password);
 
 $pdo = getDatabaseConnection();
 

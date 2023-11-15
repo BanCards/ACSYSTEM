@@ -215,6 +215,18 @@ function getError($type)
     return !empty($_SESSION['Error' . ucfirst($type)]) ? $_SESSION['Error' . ucfirst($type)] : '';
 }
 
+function isEmptyItems(...$items)
+{
+    foreach ($items as $it) {
+        if (empty($it)) {
+            setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I");
+            return;
+        }
+    }
+
+    return false;
+}
+
 function isJapanese($str)
 {
     return preg_match('/\p{Script=Hiragana}|\p{Script=Katakana}|\p{Script=Han}/u', $str);
