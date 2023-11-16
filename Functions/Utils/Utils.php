@@ -196,9 +196,11 @@ function getSuccess()
 
 function setError($title, $message, $code)
 {
+    $time = DateTime::createFromFormat("Y-m-d H:i:s", getCurrentTime())->format("YmdHis");
+
     $_SESSION['ErrorTitle'] = $title;
     $_SESSION['ErrorMessage'] = $message;
-    $_SESSION['ErrorCode'] = "エラーコード : " . $code . "_" . date("YmdHis");
+    $_SESSION['ErrorCode'] = "エラーコード : " . $code . "_" . $time;
     header('Location:/ACSystem/Functions/Response/LoadInformationError.php');
     return;
 }
