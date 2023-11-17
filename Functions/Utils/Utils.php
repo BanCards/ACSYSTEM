@@ -163,6 +163,28 @@ function getUserRole()
     return !empty($_SESSION['UserRole']) ? $_SESSION['UserRole'] : '';
 }
 
+function getAllUserList()
+{
+    $pdo = getDatabaseConnection();
+
+    if (!$pdo) return;
+
+    try {
+        $query = "SELECT * FROM users";
+        $statement = $pdo->prepare($query);
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
 function uploadUserAttendRecords($records)
 {
     unset($_SESSION['UserAttendRecord']);
@@ -222,7 +244,7 @@ function isEmptyItems(...$items)
     foreach ($items as $it) {
         if (empty($it)) {
             setError("記入されていない欄があります。", "もう一度記入されているか確認してください。", "12I");
-            return;
+            return true;
         }
     }
 

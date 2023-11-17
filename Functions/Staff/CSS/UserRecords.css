@@ -1,0 +1,80 @@
+.main {
+    padding-top: 50px;
+}
+
+.form {
+    max-width: 1500px;
+    height: 720px;
+    margin: auto;
+    text-align: center;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #fafafa;
+}
+
+.userslist-title {
+    -webkit-border-radius: 6px 6px 0px 0px;
+    -moz-border-radius: 6px 6px 0px 0px;
+    border-radius: 6px 6px 0px 0px;
+    background-color: #2abca7;
+    color: #fafafa;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+table tr {
+    border-bottom: solid 1px #eee;
+    cursor: pointer;
+}
+
+table thead {
+    border-bottom: solid 8px rgb(136, 136, 136);
+}
+
+table th, table td {
+    text-align: center;
+    padding: 15px 0;
+}
+
+#user_card_id, #user_name, #user_role {
+    width: 15%;
+}
+
+#user_class {
+    width: 10%;
+}
+
+#user_email {
+    width: 25%;
+}
+
+#__blank {
+    width: 20%;
+}
+
+table tr:nth-child(odd) {
+    background-color: #eaf8fa
+}
+
+.userslist-items {
+    overflow-y: scroll;
+    height: 720px;
+}
+
+.not-attend-record {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.detail-button {
+    color: blue;
+}
