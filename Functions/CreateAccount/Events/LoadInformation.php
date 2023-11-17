@@ -33,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 }
 
 //空白文字チェック
-isEmptyItems($name, $email, $password);
+if (isEmptyItems($name, $email, $password)) {
+    return;
+}
 
 //パスワードの長さがオバーフローするかチェック
 if (mb_strlen($name) >= 32) {
