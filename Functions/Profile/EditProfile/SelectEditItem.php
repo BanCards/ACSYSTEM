@@ -33,31 +33,10 @@ if (!(isLoggedIn())) {
                 <div class="profile-items">
 
                     <div class="profile-item">
-                        カード情報 : <strong>
-                            <?php echo getUserCard(); ?>
-                        </strong>
-                        <a href="EditItem.php?edit-item=card_id_info" id="edit-button">編集</a>
-                    </div>
-
-                    <div class="profile-item">
-                        クラス : <strong>
-                            <?php echo getUserClass(); ?>
-                        </strong>
-                        <a href="EditItem.php?edit-item=class_info" id="edit-button" name="edit-item" value="class_info">編集</a>
-                    </div>
-
-                    <div class="profile-item">
-                        名前 : <strong>
-                            <?php echo getUserName(); ?>
-                        </strong>
-                        <a href="EditItem.php?edit-item=name_info" id="edit-button" name="edit-item" value="name_info">編集</a>
-                    </div>
-
-                    <div class="profile-item">
                         メールアドレス : <strong>
                             <?php echo getUserEmail(); ?>
                         </strong>
-                        <a href="EditItem.php?edit-item=mail_info" id="edit-button" name="edit-item" value="mail_info">編集</a>
+                        <a href="EditItem.php?edit-item=email_info" id="edit-button" name="edit-item" value="email_info">編集</a>
                     </div>
 
                     <div class="profile-item">

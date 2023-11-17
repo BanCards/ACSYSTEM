@@ -41,7 +41,7 @@ $_SESSION['editItem'] = $item;
               echo "現在の値 : " . getUserClass();
             } else if ($item == "name_info") {
               echo "現在の値 : " . getUserName();
-            } else if ($item == "mail_info") {
+            } else if ($item == "email_info") {
               echo "現在の値 : " . getUserEmail();
             } else if ($item == "password_info") {
               echo "<input type='password' name='current-item-value' value='' minlength='8' maxlength='16' placeholder='現在の値' />";
@@ -62,7 +62,7 @@ $_SESSION['editItem'] = $item;
               </select>";
             } else if ($item == "name_info") {
               echo "<input type='text' name='new-item-value' value='' minlength='3' maxlength='16' placeholder='新しい値' />";
-            } else if ($item == "mail_info") {
+            } else if ($item == "email_info") {
               echo "<input type='email' name='new-item-value' value='' pattern='[\\w\\-._]+@[\\w\\-._]+\\.[A-Za-z]+'' placeholder='新しい値' />";
             } else if ($item == "password_info") {
               echo "<input type='password' name='new-item-value' value='' minlength='8' maxlength='16' placeholder='新しい値' />";

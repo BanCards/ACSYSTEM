@@ -30,7 +30,7 @@ if ($key == "password") {
     }
 }
 
-$validFields = ['card_id', 'class', 'name', 'email', 'password'];
+$validFields = ['email', 'password'];
 
 // $key が有効なフィールドであるか確認
 if (!(in_array($key, $validFields))) {
