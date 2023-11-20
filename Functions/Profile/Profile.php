@@ -60,7 +60,7 @@ if (!(isLoggedIn())) {
 
                 <div class="attendance-items">
                     <div class="attendance-item">
-                        <a href="Events/LoadInformation.php"><button type="button">出席状況を見る</button></a>
+                        <a href="Record.php"><button type="button">出席状況を見る</button></a>
                     </div>
 
                     <div class="attendance-item">
