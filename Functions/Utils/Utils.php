@@ -97,6 +97,32 @@ function logout()
     unset($_SESSION['UserRole']);
 }
 
+function getUser($uuid)
+{
+    $pdo = getDatabaseConnection();
+
+    try {
+        $query = "SELECT * FROM users WHERE id = :uuid";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':uuid', $uuid, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "20D");
+            return null;
+        }
+
+        return $user;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
 function setUUID($uuid)
 {
     unset($_SESSION['UUID']);
@@ -189,32 +215,6 @@ function uploadUser($user)
 {
     unset($_SESSION['UserInformation']);
     $_SESSION['UserInformation'] = $user;
-}
-
-function getUser($uuid)
-{
-    $pdo = getDatabaseConnection();
-
-    try {
-        $query = "SELECT * FROM users WHERE id = :uuid";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':uuid', $uuid, PDO::PARAM_STR);
-        $stmt->execute();
-
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$user) {
-            setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "20D");
-            return null;
-        }
-
-        return $user;
-    } catch (PDOException $e) {
-        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
-        error_log("ACSystem Error: " . $e->getMessage());
-
-        return null;
-    }
 }
 
 function getUserRecord($uuid)
