@@ -94,3 +94,7 @@
   height: 1080px;
   background-color: #ececec;
 }
+
+button {
+  font-size: 13px;
+}

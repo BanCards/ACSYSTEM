@@ -4,7 +4,7 @@
 
 .form {
     max-width: 800px;
-    height: 670px;
+    height: 690px;
     margin: auto;
     text-align: center;
     -webkit-border-radius: 6px;
@@ -59,9 +59,10 @@ input {
 }
 
 button {
+    font-size: 13px;
     margin-bottom: 20px;
     background-color: #2abca7;
-    padding: 12px 45px;
+    padding: 20px 45px;
     border-radius: 5px;
     border: 1px solid #2abca7;
     -webkit-transition: 0.5s;
