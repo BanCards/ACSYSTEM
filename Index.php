@@ -39,7 +39,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
           <i class="fas fa-angle-down fa-position-bottom"></i>
         </a>
 
-        <a href="Functions/Attendance/DirectAttendance/DirectAttendance.php" class="btn btn--circle" id="test">
+        <a href="Functions/Staff/SerchUser.php" class="btn btn--circle" id="test">
           <i class="fas fa-id-card"></i>
           <br>
           <p>βテスト</p>
