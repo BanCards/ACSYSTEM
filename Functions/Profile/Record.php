@@ -8,7 +8,7 @@ if (!(isLoggedIn())) {
     return;
 }
 
-$records = getUserAttendRecords();
+$records = getUserRecord(getUUID());
 ?>
 
 <!DOCTYPE html>

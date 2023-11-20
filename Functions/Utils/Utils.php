@@ -185,10 +185,60 @@ function getAllUserList()
     }
 }
 
-function uploadUserAttendRecords($records)
+function uploadUser($user)
 {
-    unset($_SESSION['UserAttendRecord']);
-    $_SESSION['UserAttendRecord'] = $records;
+    unset($_SESSION['UserInformation']);
+    $_SESSION['UserInformation'] = $user;
+}
+
+function getUser($uuid)
+{
+    $pdo = getDatabaseConnection();
+
+    try {
+        $query = "SELECT * FROM users WHERE id = :uuid";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':uuid', $uuid, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "20D");
+            return null;
+        }
+
+        return $user;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
+function getUserRecord($uuid)
+{
+    $pdo = getDatabaseConnection();
+
+    try {
+        $user_id = $uuid;
+
+        $query = "SELECT timestamp, status, comment FROM attendance WHERE user_id = :user_id ORDER BY timestamp DESC";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
 }
 
 function getUserAttendRecords()
