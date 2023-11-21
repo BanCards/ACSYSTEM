@@ -1,6 +1,16 @@
 <?php
 include('Functions/Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
+
+/**
+ *  CopyRight, © 2023 Attendance Check System by ACSystem Team All rights reserved.
+ *
+ *  System for school.
+ *
+ *  @version 2.1.0
+ *  @author BanCards
+ *  @link https://github.com/BanCards/ACSystem
+ */
 ?>
 
 <!DOCTYPE html>

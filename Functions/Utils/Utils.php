@@ -1,7 +1,11 @@
 <?php
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-function sendHeaders()
+
+/**
+ *  ヘッダー出力する関数。
+ */
+function sendHeaders(): void
 {
     $status = isLoggedIn()
         ? generateListItem('logout', 'fas fa-sign-out-alt', 'ログアウト', '/ACSystem/Functions/Logout/Logout.php')
@@ -40,7 +44,10 @@ function sendHeaders()
     HTML;
 }
 
-function generateListItem($class, $icon, $text, $link)
+/**
+ *  navタグアイテム出力する関数。
+ */
+function generateListItem($class, $icon, $text, $link): string
 {
     return <<<HTML
         <li class="$class">
@@ -51,7 +58,10 @@ function generateListItem($class, $icon, $text, $link)
     HTML;
 }
 
-function getDatabaseConnection()
+/**
+ *  phpmyadminへのデータベースに接続する関数。
+ */
+function getDatabaseConnection(): PDO
 {
     $hostname = "localhost";
     $database = "acsystem";
@@ -71,7 +81,10 @@ function getDatabaseConnection()
     }
 }
 
-function isLoggedIn()
+/**
+ *  ログイン状態かを確認する関数。
+ */
+function isLoggedIn(): bool
 {
     if (empty(getUUID())) {
         setError("ログイン情報エラー", "ログインしてください。", "12A");
@@ -81,8 +94,10 @@ function isLoggedIn()
     return true;
 }
 
-
-function login($uuid, $card, $class, $name, $email, $role)
+/**
+ *  引数の値でログイン状態にする。
+ */
+function login($uuid, $card, $class, $name, $email, $role): void
 {
     setUUID($uuid);
     setUserCard($card);
@@ -90,9 +105,14 @@ function login($uuid, $card, $class, $name, $email, $role)
     setUserName($name);
     setUserEmail($email);
     setUserRole($role);
+
+    return;
 }
 
-function logout()
+/**
+ *  セッションを空にし、ログアウト状態にする関数。
+ */
+function logout(): void
 {
     unset($_SESSION['UUID']);
     unset($_SESSION['UserCard']);
@@ -100,9 +120,14 @@ function logout()
     unset($_SESSION['UserName']);
     unset($_SESSION['UserEmail']);
     unset($_SESSION['UserRole']);
+
+    return;
 }
 
-function getUser($uuid)
+/**
+ *  uuidからユーザーを取得する関数。
+ */
+function getUser($uuid): ?array
 {
     $pdo = getDatabaseConnection();
 
@@ -128,77 +153,129 @@ function getUser($uuid)
     }
 }
 
-function setUUID($uuid)
+/**
+ *  引数のユニーク情報をセッション変数に渡す関数。
+ */
+function setUUID($uuid): void
 {
     unset($_SESSION['UUID']);
     $_SESSION['UUID'] = $uuid;
+
+    return;
 }
 
-function getUUID()
+/**
+ *  現在設定されているUUIDを取得する関数。
+ */
+function getUUID(): mixed
 {
     return !empty($_SESSION['UUID']) ? $_SESSION['UUID'] : '';
 }
 
-function setUserCard($card)
+/**
+ *  引数のカード情報をセッション変数に渡す関数。
+ */
+function setUserCard($card): void
 {
     unset($_SESSION['UserCard']);
     $_SESSION['UserCard'] = $card;
+
+    return;
 }
 
-function getUserCard()
+/**
+ *  現在設定されているカード情報を取得する関数。
+ */
+function getUserCard(): mixed
 {
     return !empty($_SESSION['UserCard']) ? $_SESSION['UserCard'] : '';
 }
 
-function setUserClass($class)
+/**
+ *  引数のクラス情報をセッション変数に渡す関数。
+ */
+function setUserClass($class): void
 {
     unset($_SESSION['UserClass']);
     $_SESSION['UserClass'] = $class;
+
+    return;
 }
 
-function getUserClass()
+/**
+ *  現在設定されているクラス情報を取得する関数。
+ */
+function getUserClass(): mixed
 {
     return !empty($_SESSION['UserClass']) ? $_SESSION['UserClass'] : '';
 }
 
-function setUserName($name)
+/**
+ *  引数の名前情報をセッション変数に渡す関数。
+ */
+function setUserName($name): void
 {
     unset($_SESSION['UserName']);
     $_SESSION['UserName'] = $name;
+
+    return;
 }
 
-function getUserName()
+/**
+ *  現在設定されている名前情報を取得する関数。
+ */
+function getUserName(): mixed
 {
     return !empty($_SESSION['UserName']) ? $_SESSION['UserName'] : '';
 }
 
-function setUserEmail($mail)
+/**
+ *  引数のメールアドレス情報をセッション変数に渡す関数。
+ */
+function setUserEmail($mail): void
 {
     unset($_SESSION['UserEmail']);
     $_SESSION['UserEmail'] = $mail;
+
+    return;
 }
 
-function getUserEmail()
+/**
+ *  現在設定されているメールアドレス情報を取得する関数。
+ */
+function getUserEmail(): mixed
 {
     return !empty($_SESSION['UserEmail']) ? $_SESSION['UserEmail'] : '';
 }
 
-function setUserRole($role)
+/**
+ *  引数の権限情報をセッション変数に渡す関数。
+ */
+function setUserRole($role): void
 {
     unset($_SESSION['UserRole']);
     $_SESSION['UserRole'] = $role;
+
+    return;
 }
 
-function getUserRole()
+/**
+ *  現在設定されている権限情報を取得する関数。
+ */
+function getUserRole(): mixed
 {
     return !empty($_SESSION['UserRole']) ? $_SESSION['UserRole'] : '';
 }
 
-function hasPermission()
+/**
+ *  引数で渡されたユーザーが権限を持っているか判断する関数。
+ */
+function hasPermission($uuid): bool
 {
     $perms = ['teacher', 'admin'];
 
-    if (!in_array(getUserRole(), $perms)) {
+    $user = getUser($uuid);
+    if (!in_array($user['role'], $perms)) {
         setError("権限がありません。", "もう一度ご確認ください。", "12P");
         return false;
     }
@@ -206,11 +283,14 @@ function hasPermission()
     return true;
 }
 
-function getAllUserList()
+/**
+ *  登録されているユーザーを全員取得する関数。
+ */
+function getAllUserList(): ?array
 {
     $pdo = getDatabaseConnection();
 
-    if (!$pdo) return;
+    if (!$pdo) return null;
 
     try {
         $query = "SELECT * FROM users";
@@ -228,15 +308,25 @@ function getAllUserList()
     }
 }
 
-function uploadUser($user)
+/**
+ *  引数のユーザーをセッション変数に渡す関数。
+ */
+function uploadUser($user): void
 {
     unset($_SESSION['UserInformation']);
     $_SESSION['UserInformation'] = $user;
+
+    return;
 }
 
-function getUserRecord($uuid)
+/**
+ *  登録されているユーザーの出欠状況を取得する関数。
+ */
+function getUserRecord($uuid): ?array
 {
     $pdo = getDatabaseConnection();
+
+    if ($pdo) return null;
 
     try {
         $user_id = $uuid;
@@ -258,12 +348,19 @@ function getUserRecord($uuid)
     }
 }
 
-function getUserAttendRecords()
+/**
+ *  セッション変数に設定されているユーザーの出欠状況を取得する関数。
+ *  (もしかしたら引数にuuidを追加し、セッションを利用しないほうがいいかも)
+ */
+function getUserAttendRecords(): mixed
 {
     return !empty($_SESSION['UserAttendRecord']) ? $_SESSION['UserAttendRecord'] : '';
 }
 
-function getCurrentTime()
+/**
+ *  現在時刻を取得し、フォーマット変換する関数。
+ */
+function getCurrentTime(): string
 {
     $timezone = new DateTimeZone('Asia/Tokyo');
     $now = new DateTime('now', $timezone);
@@ -271,19 +368,29 @@ function getCurrentTime()
     return $now->format("Y-m-d H:i:s");
 }
 
-function setSuccess($title)
+/**
+ *  処理成功の時に詳細を設定、画面遷移する関数。
+ */
+function setSuccess($title): void
 {
     $_SESSION['SuccessTitle'] = $title;
     header('Location:/ACSystem/Functions/Response/LoadInformationSuccess.php');
+
     return;
 }
 
-function getSuccess()
+/**
+ *  成功時にタイトルを取得する変数。
+ */
+function getSuccess(): mixed
 {
     return !empty($_SESSION['SuccessTitle']) ? $_SESSION['SuccessTitle'] : '';
 }
 
-function setError($title, $message, $code)
+/**
+ *  処理失敗の時に詳細を設定、画面遷移する関数。
+ */
+function setError($title, $message, $code): void
 {
     $time = DateTime::createFromFormat("Y-m-d H:i:s", getCurrentTime())->format("YmdHis");
 
@@ -291,10 +398,16 @@ function setError($title, $message, $code)
     $_SESSION['ErrorMessage'] = $message;
     $_SESSION['ErrorCode'] = "エラーコード : " . $code . "_" . $time;
     header('Location:/ACSystem/Functions/Response/LoadInformationError.php');
+
     return;
 }
 
-function getError($type)
+/**
+ *  失敗時に引数のタイプを取得する関数。
+ *
+ *  @param string $type {title, message, code}
+ */
+function getError($type): mixed
 {
     $types = ['title', 'message', 'code'];
 
@@ -306,7 +419,10 @@ function getError($type)
     return !empty($_SESSION['Error' . ucfirst($type)]) ? $_SESSION['Error' . ucfirst($type)] : '';
 }
 
-function isEmptyItems(...$items)
+/**
+ *  引数に受け取った変数に値が設定されているか判断する可変長引数型関数。
+ */
+function isEmptyItems(...$items): bool
 {
     foreach ($items as $it) {
         if (empty($it)) {
@@ -318,12 +434,18 @@ function isEmptyItems(...$items)
     return false;
 }
 
-function isJapanese($str)
+/**
+ *  受け取った変数の値が日本語かどうか判断する。
+ */
+function isJapanese($str): bool
 {
     return preg_match('/\p{Script=Hiragana}|\p{Script=Katakana}|\p{Script=Han}/u', $str);
 }
 
-function translate($item)
+/**
+ *  受け取った変数を翻訳する関数。
+ */
+function translate($item): string
 {
     if (isJapanese($item)) return $item;
 
