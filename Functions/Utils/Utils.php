@@ -86,12 +86,7 @@ function getDatabaseConnection(): PDO
  */
 function isLoggedIn(): bool
 {
-    if (empty(getUUID())) {
-        setError("ログイン情報エラー", "ログインしてください。", "12A");
-        return false;
-    }
-
-    return true;
+    return !empty(getUUID());
 }
 
 /**

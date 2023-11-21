@@ -2,7 +2,10 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (!isLoggedIn()) return;
+if (empty(getUUID())) {
+    setError("ログイン情報エラー", "ログインしてください。", "12A");
+    return false;
+}
 if (isEmptyItems($_GET['contactTitle'], $_GET['contactContents'])) return;
 
 $_SESSION['contactTitle'] = htmlspecialchars($_GET['contactTitle'], ENT_QUOTES, 'UTF-8');
