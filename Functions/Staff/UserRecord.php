@@ -2,7 +2,8 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if(!isLoggedIn()) return;
+if (!isLoggedIn()) return;
+//if (!hasPermission(getUserRole())) return;
 
 $user = $_SESSION['USERINFORMATION'];
 $records = getUserRecord($user['id']);
@@ -57,7 +58,7 @@ $records = getUserRecord($user['id']);
                             foreach ($records as $record) {
                                 echo "<tr class='table-content'>";
                                 foreach ($record as $key => $value) {
-                                    if($key === 'id') continue;
+                                    if ($key === 'id') continue;
                                     if ($key === 'timestamp') {
                                         $value = date("n月 j日 G時 i分", strtotime($value));
                                     } else {

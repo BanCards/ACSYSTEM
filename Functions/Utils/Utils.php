@@ -1,7 +1,6 @@
 <?php
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-
 /**
  *  ヘッダー出力する関数。
  */
@@ -71,6 +70,7 @@ function getDatabaseConnection(): PDO
 
     try {
         $pdo = new PDO($dsn, $mysql_user, $mysql_password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         return $pdo;
     } catch (PDOException $e) {
@@ -130,6 +130,8 @@ function logout(): void
 function getUser($uuid): ?array
 {
     $pdo = getDatabaseConnection();
+
+    if (!$pdo) return null;
 
     try {
         $query = "SELECT * FROM users WHERE id = :uuid";
