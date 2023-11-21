@@ -189,6 +189,14 @@ function getLoginUserCard(): mixed
 }
 
 /**
+ *  引数で渡されたuuidの情報をもとにその人のカード情報を返す関数。
+ */
+function getUserCard($uuid): mixed
+{
+    return getUser($uuid)['card_id'];
+}
+
+/**
  *  引数のクラス情報をセッション変数に渡す関数。
  */
 function setLoginUserClass($class): void
@@ -205,6 +213,14 @@ function setLoginUserClass($class): void
 function getLoginUserClass(): mixed
 {
     return !empty($_SESSION['UserClass']) ? $_SESSION['UserClass'] : '';
+}
+
+/**
+ *  引数で渡されたuuidの情報をもとにその人のクラス情報を返す関数。
+ */
+function getUserClass($uuid): mixed
+{
+    return getUser($uuid)['class'];
 }
 
 /**
@@ -227,6 +243,14 @@ function getLoginUserName(): mixed
 }
 
 /**
+ *  引数で渡されたuuidの情報をもとにその人のクラス情報を返す関数。
+ */
+function getUserName($uuid): mixed
+{
+    return getUser($uuid)['name'];
+}
+
+/**
  *  引数のメールアドレス情報をセッション変数に渡す関数。
  */
 function setLoginUserEmail($mail): void
@@ -246,6 +270,14 @@ function getLoginUserEmail(): mixed
 }
 
 /**
+ *  引数で渡されたuuidの情報をもとにその人のクラス情報を返す関数。
+ */
+function getUserEmail($uuid): mixed
+{
+    return getUser($uuid)['email'];
+}
+
+/**
  *  引数の権限情報をセッション変数に渡す関数。
  */
 function setLoginUserRole($role): void
@@ -262,6 +294,14 @@ function setLoginUserRole($role): void
 function getLoginUserRole(): mixed
 {
     return !empty($_SESSION['UserRole']) ? $_SESSION['UserRole'] : '';
+}
+
+/**
+ *  引数で渡されたuuidの情報をもとにその人のクラス情報を返す関数。
+ */
+function getUserRole($uuid): mixed
+{
+    return getUser($uuid)['role'];
 }
 
 /**
@@ -308,11 +348,11 @@ function getAllUserList(): ?array
 /**
  *  登録されているユーザーの出欠状況を取得する関数。
  */
-function getUserRecord($uuid): ?array
+function getUserRecord($uuid)
 {
     $pdo = getDatabaseConnection();
 
-    if ($pdo) return null;
+    if (!$pdo) return null;
 
     try {
         $user_id = $uuid;
