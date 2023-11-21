@@ -52,6 +52,7 @@ $records = getUserRecord($user['id']);
                                         <th class="table-header" id="comment">
                                             <p>備考</p>
                                         </th>
+                                        <th class="table-header" id="__blank"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +61,7 @@ $records = getUserRecord($user['id']);
                             foreach ($records as $record) {
                                 echo "<tr class='table-content'>";
                                 foreach ($record as $key => $value) {
+                                    if($key === 'id') continue;
                                     if ($key === 'timestamp') {
                                         $value = date("n月 j日 G時 i分", strtotime($value));
                                     } else {
@@ -67,6 +69,15 @@ $records = getUserRecord($user['id']);
                                     }
                                     echo "<td class='record-item'>$value</td>";
                                 }
+                                echo "
+                                <form action='EditUserProfile/EditRecord.php' method='POST' name='SendUserRecord{$record['id']}'>
+                                    <td class='record-item'>
+                                        <input type='hidden' name='record[timestamp]' value='{$record['timestamp']}'>
+                                        <input type='hidden' name='record[status]' value='{$record['status']}'>
+                                        <input type='hidden' name='record[comment]' value='{$record['comment']}'>
+                                        <a href='javascript:document.SendUserRecord{$record['id']}.submit()' class='detail-button'>変更</a>
+                                    </td>
+                                </form>";
                                 echo "</tr>";
                             }
                         }
@@ -76,6 +87,7 @@ $records = getUserRecord($user['id']);
                 </div>
 
             </div>
+            <div class="form"></div>
         </div>
 
         <!-- フッター -->
