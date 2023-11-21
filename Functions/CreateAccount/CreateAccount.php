@@ -2,7 +2,7 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-isEmptyItems($_POST['cardID']);
+if (isEmptyItems($_POST['cardID'])) return;
 
 $_SESSION['cardID'] = $_POST['cardID'];
 ?>

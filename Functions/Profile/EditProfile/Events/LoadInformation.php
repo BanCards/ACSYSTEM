@@ -7,7 +7,7 @@ $value = $_POST['new-item-value'];
 
 unset($_SESSION['editItem']);
 
-isEmptyItems($value);
+if (isEmptyItems($value)) return;
 
 $pdo = getDatabaseConnection();
 $uuid = getUUID();

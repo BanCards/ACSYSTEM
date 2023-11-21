@@ -2,12 +2,8 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (!(isLoggedIn())) {
-    setError("ログイン情報エラー", "ログインしてください。", "12A");
-    return;
-}
-
-isEmptyItems($_GET['contactTitle'], $_GET['contactContents']);
+if (!isLoggedIn()) return;
+if (isEmptyItems($_GET['contactTitle'], $_GET['contactContents'])) return;
 
 $_SESSION['contactTitle'] = htmlspecialchars($_GET['contactTitle'], ENT_QUOTES, 'UTF-8');
 $_SESSION['contactContents'] = htmlspecialchars($_GET['contactContents'], ENT_QUOTES, 'UTF-8');

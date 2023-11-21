@@ -2,10 +2,7 @@
 include('../../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (!(isLoggedIn())) {
-    setError("情報エラー", "ログインしてください。", "13L");
-    return;
-}
+if(!isLoggedIn()) return;
 
 //値
 $timestamp = getCurrentTime();
