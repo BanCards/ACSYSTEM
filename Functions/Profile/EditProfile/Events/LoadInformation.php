@@ -10,7 +10,7 @@ unset($_SESSION['editItem']);
 if (isEmptyItems($value)) return;
 
 $pdo = getDatabaseConnection();
-$uuid = getUUID();
+$uuid = getLoginUUID();
 
 if ($key == "password") {
     $currentPassword =  $_POST['current-item-value'];

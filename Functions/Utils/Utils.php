@@ -86,7 +86,7 @@ function getDatabaseConnection(): PDO
  */
 function isLoggedIn(): bool
 {
-    return !empty(getUUID());
+    return !empty(getLoginUUID());
 }
 
 /**
@@ -94,12 +94,12 @@ function isLoggedIn(): bool
  */
 function login($uuid, $card, $class, $name, $email, $role): void
 {
-    setUUID($uuid);
-    setUserCard($card);
-    setUserClass($class);
-    setUserName($name);
-    setUserEmail($email);
-    setUserRole($role);
+    setLoginUUID($uuid);
+    setLoginUserCard($card);
+    setLoginUserClass($class);
+    setLoginUserName($name);
+    setLoginUserEmail($email);
+    setLoginUserRole($role);
 
     return;
 }
@@ -153,7 +153,7 @@ function getUser($uuid): ?array
 /**
  *  引数のユニーク情報をセッション変数に渡す関数。
  */
-function setUUID($uuid): void
+function setLoginUUID($uuid): void
 {
     unset($_SESSION['UUID']);
     $_SESSION['UUID'] = $uuid;
@@ -164,7 +164,7 @@ function setUUID($uuid): void
 /**
  *  現在設定されているUUIDを取得する関数。
  */
-function getUUID(): mixed
+function getLoginUUID(): mixed
 {
     return !empty($_SESSION['UUID']) ? $_SESSION['UUID'] : '';
 }
@@ -172,7 +172,7 @@ function getUUID(): mixed
 /**
  *  引数のカード情報をセッション変数に渡す関数。
  */
-function setUserCard($card): void
+function setLoginUserCard($card): void
 {
     unset($_SESSION['UserCard']);
     $_SESSION['UserCard'] = $card;
@@ -183,7 +183,7 @@ function setUserCard($card): void
 /**
  *  現在設定されているカード情報を取得する関数。
  */
-function getUserCard(): mixed
+function getLoginUserCard(): mixed
 {
     return !empty($_SESSION['UserCard']) ? $_SESSION['UserCard'] : '';
 }
@@ -191,7 +191,7 @@ function getUserCard(): mixed
 /**
  *  引数のクラス情報をセッション変数に渡す関数。
  */
-function setUserClass($class): void
+function setLoginUserClass($class): void
 {
     unset($_SESSION['UserClass']);
     $_SESSION['UserClass'] = $class;
@@ -202,7 +202,7 @@ function setUserClass($class): void
 /**
  *  現在設定されているクラス情報を取得する関数。
  */
-function getUserClass(): mixed
+function getLoginUserClass(): mixed
 {
     return !empty($_SESSION['UserClass']) ? $_SESSION['UserClass'] : '';
 }
@@ -210,7 +210,7 @@ function getUserClass(): mixed
 /**
  *  引数の名前情報をセッション変数に渡す関数。
  */
-function setUserName($name): void
+function setLoginUserName($name): void
 {
     unset($_SESSION['UserName']);
     $_SESSION['UserName'] = $name;
@@ -221,7 +221,7 @@ function setUserName($name): void
 /**
  *  現在設定されている名前情報を取得する関数。
  */
-function getUserName(): mixed
+function getLoginUserName(): mixed
 {
     return !empty($_SESSION['UserName']) ? $_SESSION['UserName'] : '';
 }
@@ -229,7 +229,7 @@ function getUserName(): mixed
 /**
  *  引数のメールアドレス情報をセッション変数に渡す関数。
  */
-function setUserEmail($mail): void
+function setLoginUserEmail($mail): void
 {
     unset($_SESSION['UserEmail']);
     $_SESSION['UserEmail'] = $mail;
@@ -240,7 +240,7 @@ function setUserEmail($mail): void
 /**
  *  現在設定されているメールアドレス情報を取得する関数。
  */
-function getUserEmail(): mixed
+function getLoginUserEmail(): mixed
 {
     return !empty($_SESSION['UserEmail']) ? $_SESSION['UserEmail'] : '';
 }
@@ -248,7 +248,7 @@ function getUserEmail(): mixed
 /**
  *  引数の権限情報をセッション変数に渡す関数。
  */
-function setUserRole($role): void
+function setLoginUserRole($role): void
 {
     unset($_SESSION['UserRole']);
     $_SESSION['UserRole'] = $role;
@@ -259,7 +259,7 @@ function setUserRole($role): void
 /**
  *  現在設定されている権限情報を取得する関数。
  */
-function getUserRole(): mixed
+function getLoginUserRole(): mixed
 {
     return !empty($_SESSION['UserRole']) ? $_SESSION['UserRole'] : '';
 }
@@ -306,17 +306,6 @@ function getAllUserList(): ?array
 }
 
 /**
- *  引数のユーザーをセッション変数に渡す関数。
- */
-function uploadUser($user): void
-{
-    unset($_SESSION['UserInformation']);
-    $_SESSION['UserInformation'] = $user;
-
-    return;
-}
-
-/**
  *  登録されているユーザーの出欠状況を取得する関数。
  */
 function getUserRecord($uuid): ?array
@@ -343,15 +332,6 @@ function getUserRecord($uuid): ?array
 
         return null;
     }
-}
-
-/**
- *  セッション変数に設定されているユーザーの出欠状況を取得する関数。
- *  (もしかしたら引数にuuidを追加し、セッションを利用しないほうがいいかも)
- */
-function getUserAttendRecords(): mixed
-{
-    return !empty($_SESSION['UserAttendRecord']) ? $_SESSION['UserAttendRecord'] : '';
 }
 
 /**

@@ -2,7 +2,7 @@
 include('../../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (empty(getUUID())) {
+if (empty(getLoginUUID())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
     return false;
 }
@@ -16,7 +16,7 @@ $pdo = getDatabaseConnection();
 
 if ($pdo == null) return;
 
-$uuid = getUUID();
+$uuid = getLoginUUID();
 
 $query = "SELECT id FROM users WHERE id = :uuid";
 $stmt = $pdo->prepare($query);

@@ -2,7 +2,7 @@
 include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (empty(getUUID())) {
+if (empty(getLoginUUID())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
     return false;
 }
@@ -28,13 +28,13 @@ if (empty(getUUID())) {
         <!-- メイン -->
         <div class="main">
             <div class="form">
-                <h1 class="profile-title"><?php echo getUserName() ?>のプロフィールを編集</h1>
+                <h1 class="profile-title"><?php echo getLoginUserName() ?>のプロフィールを編集</h1>
 
                 <div class="profile-items">
 
                     <div class="profile-item">
                         メールアドレス : <strong>
-                            <?php echo getUserEmail(); ?>
+                            <?php echo getLoginUserEmail(); ?>
                         </strong>
                         <a href="EditItem.php?edit-item=email_info" id="edit-button" name="edit-item" value="email_info">編集</a>
                     </div>

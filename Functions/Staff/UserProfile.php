@@ -2,11 +2,11 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (empty(getUUID())) {
+if (empty(getLoginUUID())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
     return false;
 }
-//if (!hasPermission(getUserRole())) return;
+if (!hasPermission(getLoginUserRole())) return;
 
 $user = getUser($_POST['uuid']);
 $_SESSION['USERINFORMATION'] = $user;

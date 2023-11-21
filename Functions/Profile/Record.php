@@ -2,12 +2,12 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (empty(getUUID())) {
+if (empty(getLoginUUID())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
     return false;
 }
 
-$records = getUserRecord(getUUID());
+$records = getUserRecord(getLoginUUID());
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ $records = getUserRecord(getUUID());
         <!-- メイン -->
         <div class="main">
             <div class="form">
-                <h1 class="attendrecord-title"><?php echo getUserName() ?>のプロフィール</h1>
+                <h1 class="attendrecord-title"><?php echo getLoginUserName() ?>のプロフィール</h1>
 
                 <div class="attendance-items">
                     <table class="attendance-item">

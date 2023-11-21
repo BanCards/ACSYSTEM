@@ -2,7 +2,7 @@
 include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (empty(getUUID())) {
+if (empty(getLoginUUID())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
     return false;
 }

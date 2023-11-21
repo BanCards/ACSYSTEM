@@ -2,7 +2,7 @@
 include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (empty(getUUID())) {
+if (empty(getLoginUUID())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
     return false;
 }
@@ -15,7 +15,7 @@ $file = '../Contacts/' . $time . ".txt";
 $title =  $_SESSION['contactTitle'];
 $messages =  $_SESSION['contactContents'];
 
-$contents = "\n[From] " . getUserName() . " - " . getUserEmail() . "\n[Time] " . getCurrentTime() . "\n[Title] " . $title . "\n[Messages] " . $messages . "\n";
+$contents = "\n[From] " . getLoginUserName() . " - " . getLoginUserEmail() . "\n[Time] " . getCurrentTime() . "\n[Title] " . $title . "\n[Messages] " . $messages . "\n";
 
 if (!file_exists('data.txt')) {
     file_put_contents($file, $contents, FILE_APPEND | LOCK_EX);
