@@ -73,7 +73,12 @@ function getDatabaseConnection()
 
 function isLoggedIn()
 {
-    return !empty(getUUID());
+    if (empty(getUUID())) {
+        setError("ログイン情報エラー", "ログインしてください。", "12A");
+        return false;
+    }
+
+    return true;
 }
 
 
@@ -189,6 +194,18 @@ function getUserRole()
     return !empty($_SESSION['UserRole']) ? $_SESSION['UserRole'] : '';
 }
 
+function hasPermission()
+{
+    $perms = ['teacher', 'admin'];
+
+    if (!in_array(getUserRole(), $perms)) {
+        setError("権限がありません。", "もう一度ご確認ください。", "12P");
+        return false;
+    }
+
+    return true;
+}
+
 function getAllUserList()
 {
     $pdo = getDatabaseConnection();
@@ -224,7 +241,7 @@ function getUserRecord($uuid)
     try {
         $user_id = $uuid;
 
-        $query = "SELECT timestamp, status, comment FROM attendance WHERE user_id = :user_id ORDER BY timestamp DESC";
+        $query = "SELECT id, timestamp, status, comment FROM attendance WHERE user_id = :user_id ORDER BY timestamp DESC";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
 
@@ -311,6 +328,9 @@ function translate($item)
     if (isJapanese($item)) return $item;
 
     $translations = [
+        'student' => '学生',
+        'teacher' => '教員',
+        'admin' => '管理者',
         'attend' => '出席',
         'absent' => '欠席',
         'lateness' => '遅刻',
