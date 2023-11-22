@@ -104,6 +104,17 @@ function isLoggedIn(): bool
 }
 
 /**
+ *  引数で渡されたユーザーが権限を持っているか判断する関数。
+ */
+function hasPermission($uuid): bool
+{
+    $perms = ['teacher', 'admin'];
+    if (!in_array(getUserRole($uuid), $perms)) return false;
+
+    return true;
+}
+
+/**
  *  引数の値でログイン状態にする。
  */
 function login($uuid, $card, $class, $name, $email, $role): void
@@ -316,22 +327,6 @@ function getLoginUserRole(): mixed
 function getUserRole($uuid): mixed
 {
     return getUser($uuid)['role'];
-}
-
-/**
- *  引数で渡されたユーザーが権限を持っているか判断する関数。
- */
-function hasPermission($uuid): bool
-{
-    $perms = ['teacher', 'admin'];
-
-    $user = getUser($uuid);
-    if (!in_array($user['role'], $perms)) {
-        setError("権限がありません。", "もう一度ご確認ください。", "12P");
-        return false;
-    }
-
-    return true;
 }
 
 /**

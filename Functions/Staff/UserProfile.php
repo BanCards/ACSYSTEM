@@ -7,6 +7,11 @@ if (!(isLoggedIn())) {
     return;
 }
 
+if (!(hasPermission(getLoginUUID()))) {
+    setError("権限がありません。", "もう一度ご確認ください。", "12P");
+    return;
+}
+
 $user = getUser($_POST['uuid']);
 $_SESSION['USERINFORMATION'] = $user;
 ?>

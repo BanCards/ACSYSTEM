@@ -2,8 +2,15 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (!isLoggedIn()) return;
-//if (!hasPermission(getLoginUserRole())) return;
+if (!(isLoggedIn())) {
+    setError("ログイン情報エラー", "ログインしてください。", "12A");
+    return;
+}
+
+if (!(hasPermission(getLoginUUID()))) {
+    setError("権限がありません。", "もう一度ご確認ください。", "12P");
+    return;
+}
 
 $user = $_SESSION['USERINFORMATION'];
 $records = getUserRecord($user['id']);
