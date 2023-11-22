@@ -12,8 +12,7 @@ if (!(hasPermission(getLoginUUID()))) {
     return;
 }
 
-$user = getUser($_POST['uuid']);
-$_SESSION['USERINFORMATION'] = $user;
+$uuid = $_POST['uuid'];
 ?>
 
 <!DOCTYPE html>
@@ -37,33 +36,35 @@ $_SESSION['USERINFORMATION'] = $user;
         <div class="main">
             <form action="UserRecord.php" method="POST">
                 <div class="form">
-                    <h1 class="profile-title"><?php echo $user['name'] ?>のプロフィール</h1>
+                    <h1 class="profile-title"><?php echo getUserName($uuid) ?>のプロフィール</h1>
 
                     <div class="profile-items">
 
                         <div class="profile-item">
                             カード情報 : <strong>
-                                <?php echo $user['card_id'] ?>
+                                <?php echo getUserCard($uuid) ?>
                             </strong>
                         </div>
 
                         <div class="profile-item">
                             クラス : <strong>
-                                <?php echo $user['class'] ?>
+                                <?php echo getUserClass($uuid) ?>
                             </strong>
                         </div>
 
                         <div class="profile-item">
                             名前 : <strong>
-                                <?php echo $user['name'] ?>
+                                <?php echo getUserName($uuid) ?>
                             </strong>
                         </div>
 
                         <div class="profile-item">
                             メールアドレス : <strong>
-                                <?php echo $user['email'] ?>
+                                <?php echo getUserEmail($uuid) ?>
                             </strong>
                         </div>
+
+                        <?php echo "<input type='hidden' name='uuid' value='{$uuid}'>"; ?>
 
                     </div>
 

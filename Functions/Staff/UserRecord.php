@@ -12,8 +12,8 @@ if (!(hasPermission(getLoginUUID()))) {
     return;
 }
 
-$user = $_SESSION['USERINFORMATION'];
-$records = getUserRecord($user['id']);
+$uuid = $_POST['uuid'];
+$records = getUserRecord($uuid);
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ $records = getUserRecord($user['id']);
         <!-- メイン -->
         <div class="main">
             <div class="form">
-                <h1 class="attendrecord-title"><?php echo $user['name'] ?>のプロフィール</h1>
+                <h1 class="attendrecord-title"><?php echo getUserName($uuid) ?>のプロフィール</h1>
 
                 <div class="attendance-items">
                     <table class="attendance-item">
@@ -91,7 +91,6 @@ $records = getUserRecord($user['id']);
                 </div>
 
             </div>
-            <div class="form"></div>
         </div>
 
         <!-- フッター -->
