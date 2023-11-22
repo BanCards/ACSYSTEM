@@ -58,6 +58,20 @@ function generateListItem($class, $icon, $text, $link): string
 }
 
 /**
+ *  フッターを出力する関数。
+ */
+function sendFooters(): void
+{
+    echo <<<HTML
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; 2023 Attendance Check System by ACSystem Team All rights reserved.</p>
+            </div>
+        </div>
+    HTML;
+}
+
+/**
  *  phpmyadminへのデータベースに接続する関数。
  */
 function getDatabaseConnection(): PDO
@@ -346,9 +360,42 @@ function getAllUserList(): ?array
 }
 
 /**
+ *  ユーザーの出欠状況を設定する関数。
+ */
+function setUserRecord($user_id, $timestamp, $status, $comment)
+{
+    $pdo = getDatabaseConnection();
+
+    if (!$pdo) return null;
+
+    try {
+        $query = "INSERT INTO attendance (user_id, timestamp, status, comment) VALUES (:user_id, :timestamp, :status, :comment)";
+        $stmt = $pdo->prepare($query);
+
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':timestamp', $timestamp, PDO::PARAM_STR);
+        $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+        $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
+
+        if ($stmt->execute()) {
+            setSuccess("出席処理が完了しました");
+            return;
+        } else {
+            setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA");
+            return;
+        }
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
+/**
  *  登録されているユーザーの出欠状況を取得する関数。
  */
-function getUserRecord($uuid)
+function getUserRecord($uuid): ?array
 {
     $pdo = getDatabaseConnection();
 
