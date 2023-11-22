@@ -2,9 +2,9 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (empty(getLoginUUID())) {
+if (!(isLoggedIn())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
-    return false;
+    return;
 }
 
 $records = getUserRecord(getLoginUUID());
@@ -58,7 +58,7 @@ $records = getUserRecord(getLoginUUID());
                             foreach ($records as $record) {
                                 echo "<tr class='table-content'>";
                                 foreach ($record as $key => $value) {
-                                    if($key === 'id') continue;
+                                    if ($key === 'id') continue;
                                     if ($key === 'timestamp') {
                                         $value = date("n月 j日 G時 i分", strtotime($value));
                                     } else {
@@ -78,11 +78,7 @@ $records = getUserRecord(getLoginUUID());
         </div>
 
         <!-- フッター -->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; 2023 Attendance Check System by ACSystem Team All rights reserved.</p>
-            </div>
-        </div>
+        <?php sendFooters() ?>
 
     </div>
 </body>

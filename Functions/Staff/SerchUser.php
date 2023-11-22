@@ -2,7 +2,10 @@
 include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (!isLoggedIn()) return;
+if (!(isLoggedIn())) {
+    setError("ログイン情報エラー", "ログインしてください。", "12A");
+    return;
+}
 //if (!hasPermission(getLoginUserRole())) return;
 
 $users = getAllUserList();
@@ -86,11 +89,8 @@ $users = getAllUserList();
         </div>
 
         <!-- フッター -->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; 2023 Attendance Check System by ACSystem Team All rights reserved.</p>
-            </div>
-        </div>
+        <?php sendFooters() ?>
+
     </div>
 </body>
 

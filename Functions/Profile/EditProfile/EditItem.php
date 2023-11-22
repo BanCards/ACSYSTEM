@@ -27,7 +27,7 @@ $_SESSION['editItem'] = $item;
       <div class="form" id="new-item-form">
 
         <form action="Events/LoadInformation.php" method="POST">
-          <h1 class="profile-title"><?php echo getUserName() ?>のプロフィールを編集</h1>
+          <h1 class="profile-title"><?php echo getLoginUserName() ?>のプロフィールを編集</h1>
 
           <div class="profile-item" id="new-item-value">
             新しい<?php echo translate($item) ?>を設定してください
@@ -36,13 +36,13 @@ $_SESSION['editItem'] = $item;
           <div class="form-item_required">
             <?php
             if ($item == "card_id_info") {
-              echo "現在の値 : " . getUserCard();
+              echo "現在の値 : " . getLoginUserCard();
             } else if ($item == "class_info") {
-              echo "現在の値 : " . getUserClass();
+              echo "現在の値 : " . getLoginUserClass();
             } else if ($item == "name_info") {
-              echo "現在の値 : " . getUserName();
+              echo "現在の値 : " . getLoginUserName();
             } else if ($item == "email_info") {
-              echo "現在の値 : " . getUserEmail();
+              echo "現在の値 : " . getLoginUserEmail();
             } else if ($item == "password_info") {
               echo "<input type='password' name='current-item-value' value='' minlength='8' maxlength='16' placeholder='現在の値' />";
             }
@@ -89,13 +89,7 @@ $_SESSION['editItem'] = $item;
     </div>
 
     <!-- フッター -->
-    <div class="footer">
-      <div class="copyright">
-        <p>
-          Copyright &copy; 2023 Attendance Check System by ACSystem Team All rights reserved.
-        </p>
-      </div>
-    </div>
+    <?php sendFooters() ?>
 
   </div>
 </body>

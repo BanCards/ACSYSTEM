@@ -83,11 +83,7 @@ $_SESSION['USERINFORMATION'] = $user;
         </div>
 
         <!-- フッター -->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; 2023 Attendance Check System by ACSystem Team All rights reserved.</p>
-            </div>
-        </div>
+        <?php sendFooters() ?>
 
     </div>
 </body>

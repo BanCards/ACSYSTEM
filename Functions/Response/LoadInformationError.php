@@ -48,11 +48,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
         </div>
 
         <!-- フッター -->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; 2023 Attendance Check System by ACSystem Team All rights reserved.</p>
-            </div>
-        </div>
+        <?php sendFooters() ?>
 
     </div>
 </body>
