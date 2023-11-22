@@ -57,7 +57,7 @@ if (!($password === $repassword)) {
 
 $pdo = getDatabaseConnection();
 
-if ($pdo == null) return;
+if (!$pdo) return;
 
 //カード番号重複チェック
 $isDuplicateCardID = '';

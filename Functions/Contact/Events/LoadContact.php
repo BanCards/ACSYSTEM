@@ -2,12 +2,12 @@
 include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-if (empty(getLoginUUID())) {
+if (!(isLoggedIn())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
-    return false;
+    return;
 }
 
-if(isEmptyItems($_SESSION['contactTitle'], $_SESSION['contactContents'])) return;
+if (isEmptyItems($_SESSION['contactTitle'], $_SESSION['contactContents'])) return;
 
 $time = DateTime::createFromFormat("Y-m-d H:i:s", getCurrentTime())->format("Ymd");
 $file = '../Contacts/' . $time . ".txt";

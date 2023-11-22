@@ -12,10 +12,12 @@ if (isEmptyItems($value)) return;
 $pdo = getDatabaseConnection();
 $uuid = getLoginUUID();
 
+if (!$pdo) return;
+
 if ($key == "password") {
     $currentPassword =  $_POST['current-item-value'];
 
-    isEmptyItems($currentPassword);
+    if(isEmptyItems($currentPassword)) return;
 
     $selectQuery = "SELECT * FROM users WHERE id = :uuid";
     $selectStmt = $pdo->prepare($selectQuery);
@@ -37,8 +39,6 @@ if (!(in_array($key, $validFields))) {
     setError("無効なフィールド", "指定されたフィールドは更新できません。", "22D");
     return;
 }
-
-if ($pdo == null) return;
 
 $updateQuery = "UPDATE users SET $key = :value WHERE id = :uuid";
 $updateStmt = $pdo->prepare($updateQuery);

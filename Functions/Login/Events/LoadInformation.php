@@ -13,11 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 }
 
 //空白文字チェック
-isEmptyItems($name, $password);
+if (isEmptyItems($name, $password)) return;
 
 $pdo = getDatabaseConnection();
 
-if ($pdo == null) return;
+if (!$pdo) return;
 
 $table = "users";
 $nameColumn = "name";
