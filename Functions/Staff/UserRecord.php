@@ -74,8 +74,9 @@ $records = getUserRecord($uuid);
                                     echo "<td class='record-item'>$value</td>";
                                 }
                                 echo "
-                                <form action='EditUserProfile/EditRecord.php' method='POST' name='SendUserRecord{$record['id']}'>
+                                <form action='EditUserProfile/SelectEditRecord.php' method='POST' name='SendUserRecord{$record['id']}'>
                                     <td class='record-item'>
+                                        <input type='hidden' name='uuid' value='{$uuid}'>
                                         <input type='hidden' name='record[timestamp]' value='{$record['timestamp']}'>
                                         <input type='hidden' name='record[status]' value='{$record['status']}'>
                                         <input type='hidden' name='record[comment]' value='{$record['comment']}'>
@@ -90,6 +91,11 @@ $records = getUserRecord($uuid);
                     </table>
                 </div>
 
+            </div>
+
+            <div class="form-footer-items">
+                <a href="SerchUser.php"><button class="back-button">ユーザーリストへ</button></a>
+                <a href="EditUserProfile/SelectEditRecord.php"><button class="output-button">出力</button></a>
             </div>
         </div>
 
