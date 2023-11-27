@@ -94,7 +94,7 @@ $records = getUserRecord($uuid);
             </div>
 
             <div class="form-footer-items">
-                <a href="SerchUser.php"><button class="back-button">ユーザーリストへ</button></a>
+                <a href="UserList.php"><button class="back-button">ユーザーリストへ</button></a>
                 <a href="EditUserProfile/SelectEditRecord.php"><button class="output-button">出力</button></a>
             </div>
         </div>

@@ -81,7 +81,7 @@ $uuid = $_POST['uuid'];
                     </div>
 
                     <div class="back-button">
-                        <a href="SerchUser.php"><button type="button" class="b">戻る</button></a>
+                        <a href="UserList.php"><button type="button" class="b">戻る</button></a>
                     </div>
 
                 </div>
