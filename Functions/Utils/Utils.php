@@ -1,7 +1,7 @@
 <?php
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
-define('INDEX', '/Index.php');
+define('INDEX', '/ACSystem/Index.php');
 
 /**
  *  ヘッダー出力する関数。
@@ -510,7 +510,7 @@ function isEmptyItems(...$items): bool
  */
 function isJapanese($str): bool
 {
-    return preg_match('/\p{Script=Hiragana}|\p{Script=Katakana}|\p{Script=Han}/u', $str);
+    return preg_match("/[一-龠]+|[ぁ-ん]+|[ァ-ヴー]+|[一-龠]+|[ａ-ｚＡ-Ｚ０-９]/u", $str);
 }
 
 /**
