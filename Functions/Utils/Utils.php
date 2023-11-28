@@ -1,6 +1,8 @@
 <?php
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
+define('INDEX', '/Index.php');
+
 /**
  *  ヘッダー出力する関数。
  */
@@ -76,11 +78,21 @@ function sendFooters(): void
  */
 function getDatabaseConnection(): PDO
 {
+    //starfree
+    $hostname = "mysql1.php.starfree.ne.jp";
+    $database = "mtdacsystem_acsystem";
+    $mysql_user = "mtdacsystem_narf";
+    $mysql_password = 'NNNncusp3';
+    $dsn = "mysql:dbname=$database;host=$hostname;";
+
+    //localhost
+    /*
     $hostname = "localhost";
     $database = "acsystem";
     $mysql_user = "root";
     $mysql_password = '';
     $dsn = "mysql:dbname=$database;host=$hostname;";
+    */
 
     try {
         $pdo = new PDO($dsn, $mysql_user, $mysql_password);
