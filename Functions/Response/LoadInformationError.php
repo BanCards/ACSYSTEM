@@ -39,7 +39,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
                     </div>
 
                     <div class="submit-button">
-                        <a href="../../Index.php"><button type="button">ホームに戻る</button></a>
+                        <a href=<?php echo INDEX ?>><button type="button">ホームに戻る</button></a>
                     </div>
 
                 </div>

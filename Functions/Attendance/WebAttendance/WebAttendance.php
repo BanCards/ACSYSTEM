@@ -76,7 +76,7 @@ if (!(isLoggedIn())) {
                         </div>
 
                         <div class="attendance-item">
-                            <a href="../../../Index.php"><button type="button">戻る</button></a>
+                            <a href=<?php echo INDEX ?>><button type="button">戻る</button></a>
                         </div>
 
                     </div>
