@@ -40,7 +40,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
                     </div>
 
                     <div class="submit-button">
-                        <a href="../createAccount/ReadCard.php"><button type="button" class="createAccountButton">
+                        <a href="../CreateAccount/ReadCard.php"><button type="button" class="createAccountButton">
                                 アカウントを新規作成</button></a>
                     </div>
 
