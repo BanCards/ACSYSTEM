@@ -60,7 +60,7 @@ $records = getUserRecord(getLoginUUID());
                                 foreach ($record as $key => $value) {
                                     if ($key === 'id') continue;
                                     if ($key === 'timestamp') {
-                                        $value = date("n月 j日 G時 i分", strtotime($value));
+                                        $value = applyTimeFormat($value);
                                     } else {
                                         $value = translate($value);
                                     }

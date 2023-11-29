@@ -66,7 +66,7 @@ $records = getUserRecord($uuid);
                                 echo "<tr class='table-content'>";
                                 foreach ($record as $key => $value) {
                                     if ($key === 'id') continue;
-                                    if ($key === 'timestamp') $value = date("n月 j日 G時 i分", strtotime($value));
+                                    if ($key === 'timestamp') $value = applyTimeFormat($value);
                                     else $value = translate($value);
                                     echo "<td class='record-item'>$value</td>";
                                 }
