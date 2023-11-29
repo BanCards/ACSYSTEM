@@ -72,7 +72,7 @@ table tr:nth-child(odd) {
     font-size: 1.2rem;
 }
 
-.detail-button {
+.change-button {
     color: blue;
 }
 

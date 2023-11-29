@@ -66,11 +66,8 @@ $records = getUserRecord($uuid);
                                 echo "<tr class='table-content'>";
                                 foreach ($record as $key => $value) {
                                     if ($key === 'id') continue;
-                                    if ($key === 'timestamp') {
-                                        $value = date("n月 j日 G時 i分", strtotime($value));
-                                    } else {
-                                        $value = translate($value);
-                                    }
+                                    if ($key === 'timestamp') $value = date("n月 j日 G時 i分", strtotime($value));
+                                    else $value = translate($value);
                                     echo "<td class='record-item'>$value</td>";
                                 }
                                 echo "
@@ -80,7 +77,7 @@ $records = getUserRecord($uuid);
                                         <input type='hidden' name='record[timestamp]' value='{$record['timestamp']}'>
                                         <input type='hidden' name='record[status]' value='{$record['status']}'>
                                         <input type='hidden' name='record[comment]' value='{$record['comment']}'>
-                                        <a href='javascript:document.SendUserRecord{$record['id']}.submit()' class='detail-button'>変更</a>
+                                        <a href='javascript:document.SendUserRecord{$record['id']}.submit()' class='change-button'>変更</a>
                                     </td>
                                 </form>";
                                 echo "</tr>";
