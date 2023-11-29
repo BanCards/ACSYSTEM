@@ -34,27 +34,44 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
     <div class="main">
 
       <!-- アイテム -->
-      <div class="item">
-        <a href="Functions/Attendance/WebAttendance/WebAttendance.php" class="btn btn--circle" id="report">
-          <i class="fas fa-user-alt-slash"></i>
-          <br>
-          <p>申請をする</p>
-          <i class="fas fa-angle-down fa-position-bottom"></i>
-        </a>
+      <div class="access">
+        <h3 class="access-title">テスト</h3>
+        <div class="item">
+          <a href="Functions/Attendance/WebAttendance/WebAttendance.php" class="btn btn--circle" id="report">
+            <i class="fas fa-user-alt-slash"></i>
+            <br>
+            <p>申請をする</p>
+            <i class="fas fa-angle-down fa-position-bottom"></i>
+          </a>
 
-        <a href="Functions/Profile/Record.php" class="btn btn--circle" id="record">
-          <i class="fas fa-calendar-week"></i>
-          <br>
-          <p>履歴を見る</p>
-          <i class="fas fa-angle-down fa-position-bottom"></i>
-        </a>
+          <a href="Functions/Profile/Record.php" class="btn btn--circle" id="record">
+            <i class="fas fa-calendar-week"></i>
+            <br>
+            <p>履歴を見る</p>
+            <i class="fas fa-angle-down fa-position-bottom"></i>
+          </a>
 
-        <a href="Functions/Staff/UserList.php" class="btn btn--circle" id="test">
-          <i class="fas fa-id-card"></i>
-          <br>
-          <p>βテスト</p>
-          <i class="fas fa-angle-down fa-position-bottom"></i>
-        </a>
+          <a href="#" class="btn btn--circle" id="record">
+            <i class="fas fa-id-card"></i>
+            <br>
+            <p>α</p>
+            <i class="fas fa-angle-down fa-position-bottom"></i>
+          </a>
+
+          <a href="#" class="btn btn--circle" id="record">
+            <i class="fas fa-id-card"></i>
+            <br>
+            <p>β</p>
+            <i class="fas fa-angle-down fa-position-bottom"></i>
+          </a>
+
+          <a href="Functions/Staff/UserList.php" class="btn btn--circle" id="test">
+            <i class="fas fa-id-card"></i>
+            <br>
+            <p>Θ</p>
+            <i class="fas fa-angle-down fa-position-bottom"></i>
+          </a>
+        </div>
       </div>
 
       <!-- アイテム -->

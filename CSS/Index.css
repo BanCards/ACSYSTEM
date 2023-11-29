@@ -20,16 +20,14 @@
   height: 700px;
 }
 
-.item {
-  flex-grow: 1;
-  height: 400px;
+.access {
   border-bottom: 8px solid #333;
-  justify-content: space-around;
 }
 
-.item h3 {
-  text-align: center;
-  font-size: 40px;
+.item {
+  flex-grow: 1;
+  height: 350px;
+  justify-content: space-around;
 }
 
 .notification {
@@ -37,7 +35,7 @@
   border-bottom: 8px solid #333;
 }
 
-.notification-title {
+h3 {
   text-align: center;
   font-size: 40px;
 }
@@ -132,8 +130,8 @@ btn font {
 }
 
 a.btn--circle {
-  margin-top: 100px;
-  margin-right: 140px;
+  margin-top: 50px;
+  margin-right: 100px;
   width: 240px;
   height: 210px;
   padding: 20px 0 0;
@@ -157,7 +155,7 @@ a.btn--circle {
 }
 
 a.btn--circle:first-child {
-  margin-left: 480px;
+  margin-left: 150px;
 }
 
 a.btn--circle i {

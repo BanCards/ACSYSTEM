@@ -29,7 +29,7 @@ function sendHeaders(): void
                         </a>
                     </li>
                     <li class="contact">
-                        <a href="/ACSystem/Functions/Contact/Contact.php">
+                        <a href="#">
                             <i class="fas fa-info-circle"></i> コンタクト
                         </a>
                     </li>
