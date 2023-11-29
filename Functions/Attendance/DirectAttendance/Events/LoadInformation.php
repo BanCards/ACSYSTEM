@@ -25,7 +25,7 @@ if ($result) {
     $status = "attend";
     $comment = "カードによる出席";
 
-    setUserRecord($user_id, $timestamp, $status, $comment);
+    addUserRecord($user_id, $timestamp, $status, $comment);
 } else {
     setError("ユーザーが見つかりませんでした。", "ACSystemチームまでご連絡ください。", "13U");
     return;

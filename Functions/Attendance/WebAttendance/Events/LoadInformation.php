@@ -12,4 +12,4 @@ $timestamp = getCurrentTime();
 $status = $_POST['status'];
 $comment = translate($_POST['reason']);
 
-setUserRecord($user_id, $timestamp, $status, $comment);
+addUserRecord($user_id, $timestamp, $status, $comment);

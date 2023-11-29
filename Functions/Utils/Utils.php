@@ -33,9 +33,9 @@ function sendHeaders(): void
                             <i class="fas fa-info-circle"></i> コンタクト
                         </a>
                     </li>
-                    <li class="help">
-                        <a href="#">
-                            <i class="fas fa-question-circle"></i> ヘルプ
+                    <li class="mail">
+                        <a href="/ACSystem/Functions/Mail/Mail.php">
+                            <i class="fas fa-envelope"></i> メール
                         </a>
                     </li>
                     {$status}
@@ -79,20 +79,19 @@ function sendFooters(): void
 function getDatabaseConnection(): PDO
 {
     //starfree
+    /*
     $hostname = "mysql1.php.starfree.ne.jp";
     $database = "mtdacsystem_acsystem";
     $mysql_user = "mtdacsystem_narf";
     $mysql_password = 'NNNncusp3';
     $dsn = "mysql:dbname=$database;host=$hostname;";
+    */
 
-    //localhost
-    /*
     $hostname = "localhost";
     $database = "acsystem";
     $mysql_user = "root";
     $mysql_password = '';
     $dsn = "mysql:dbname=$database;host=$hostname;";
-    */
 
     try {
         $pdo = new PDO($dsn, $mysql_user, $mysql_password);
@@ -369,7 +368,7 @@ function getAllUserList(): ?array
 /**
  *  ユーザーの出欠状況を設定する関数。
  */
-function setUserRecord($user_id, $timestamp, $status, $comment)
+function addUserRecord($user_id, $timestamp, $status, $comment)
 {
     $pdo = getDatabaseConnection();
 
