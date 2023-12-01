@@ -149,6 +149,11 @@ a.btn--circle {
   box-shadow: 0 7px 0 #e53b4e;
 }
 
+#mailbox {
+  background: rgb(245, 245, 28);
+  box-shadow: 0 7px 0 #e5da3b;
+}
+
 #test {
   background: #8f68eb;
   box-shadow: 0 7px 0 #883be5;

@@ -51,10 +51,10 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
             <i class="fas fa-angle-down fa-position-bottom"></i>
           </a>
 
-          <a href="#" class="btn btn--circle" id="record">
-            <i class="fas fa-id-card"></i>
+          <a href="#" class="btn btn--circle" id="mailbox">
+            <i class="fas fa-envelope"></i>
             <br>
-            <p>α</p>
+            <p>メールボックス</p>
             <i class="fas fa-angle-down fa-position-bottom"></i>
           </a>
 
