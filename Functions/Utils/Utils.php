@@ -4,7 +4,9 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 define('INDEX', '/ACSystem/Index.php');
 
 /**
- *  ヘッダー出力する関数。
+ * ヘッダーを出力する関数
+ *
+ * @return void
  */
 function sendHeaders(): void
 {
@@ -28,14 +30,14 @@ function sendHeaders(): void
                             <i class="fas fa-user"></i> プロフィール
                         </a>
                     </li>
+                    <li class="mail">
+                        <a href="/ACSystem/Functions/Mail/Mail.php">
+                            <i class="fas fa-envelope"></i> メールボックス
+                        </a>
+                    </li>
                     <li class="contact">
                         <a href="#">
                             <i class="fas fa-info-circle"></i> コンタクト
-                        </a>
-                    </li>
-                    <li class="mail">
-                        <a href="/ACSystem/Functions/Mail/Mail.php">
-                            <i class="fas fa-envelope"></i> メール
                         </a>
                     </li>
                     {$status}
@@ -46,7 +48,13 @@ function sendHeaders(): void
 }
 
 /**
- *  navタグアイテム出力する関数。
+ * ヘッダーのタグを生成する関数
+ *
+ * @param string $class
+ * @param string $icon
+ * @param string $text
+ * @param string $link
+ * @return string
  */
 function generateListItem($class, $icon, $text, $link): string
 {
@@ -60,7 +68,9 @@ function generateListItem($class, $icon, $text, $link): string
 }
 
 /**
- *  フッターを出力する関数。
+ * フッターを出力する関数
+ *
+ * @return void
  */
 function sendFooters(): void
 {
@@ -74,7 +84,9 @@ function sendFooters(): void
 }
 
 /**
- *  phpmyadminへのデータベースに接続する関数。
+ * データベースに接続する関数
+ *
+ * @return PDO
  */
 function getDatabaseConnection(): PDO
 {
@@ -107,7 +119,9 @@ function getDatabaseConnection(): PDO
 }
 
 /**
- *  ログイン状態かを確認する関数。
+ * ログイン状態か判断する関数
+ *
+ * @return boolean
  */
 function isLoggedIn(): bool
 {
@@ -115,7 +129,10 @@ function isLoggedIn(): bool
 }
 
 /**
- *  引数で渡されたユーザーが権限を持っているか判断する関数。
+ * 権限を持っているかどうか判断する関数
+ *
+ * @param UUID $uuid
+ * @return boolean
  */
 function hasPermission($uuid): bool
 {
@@ -126,7 +143,15 @@ function hasPermission($uuid): bool
 }
 
 /**
- *  引数の値でログイン状態にする。
+ * 引数をセッションに渡し、ログイン状態にする関数
+ *
+ * @param UUID $uuid
+ * @param int $card
+ * @param string $class
+ * @param string $name
+ * @param string $email
+ * @param string $role
+ * @return void
  */
 function login($uuid, $card, $class, $name, $email, $role): void
 {
@@ -141,7 +166,9 @@ function login($uuid, $card, $class, $name, $email, $role): void
 }
 
 /**
- *  セッションを空にし、ログアウト状態にする関数。
+ * セッション変数の中身をからにし、ログアウト状態にする関数
+ *
+ * @return void
  */
 function logout(): void
 {
@@ -156,7 +183,10 @@ function logout(): void
 }
 
 /**
- *  uuidからユーザーを取得する関数。
+ * uuidをユーザーを返す関数
+ *
+ * @param UUID $uuid
+ * @return array|null
  */
 function getUser($uuid): ?array
 {
@@ -187,7 +217,10 @@ function getUser($uuid): ?array
 }
 
 /**
- *  引数のユニーク情報をセッション変数に渡す関数。
+ * UUIDのセッション変数のセッター関数
+ *
+ * @param UUID $uuid
+ * @return void
  */
 function setLoginUUID($uuid): void
 {
@@ -198,15 +231,20 @@ function setLoginUUID($uuid): void
 }
 
 /**
- *  現在設定されているUUIDを取得する関数。
+ * UUIDのセッション変数のゲッター関数
+ *
+ * @return UUID
  */
-function getLoginUUID(): mixed
+function getLoginUUID(): string
 {
     return !empty($_SESSION['UUID']) ? $_SESSION['UUID'] : '';
 }
 
 /**
- *  引数のカード情報をセッション変数に渡す関数。
+ * UserCardのセッション変数のセッター関数
+ *
+ * @param string $card
+ * @return void
  */
 function setLoginUserCard($card): void
 {
@@ -217,23 +255,31 @@ function setLoginUserCard($card): void
 }
 
 /**
- *  現在設定されているカード情報を取得する関数。
+ * UserCardのセッション変数のゲッター関数
+ *
+ * @return string
  */
-function getLoginUserCard(): mixed
+function getLoginUserCard(): string
 {
     return !empty($_SESSION['UserCard']) ? $_SESSION['UserCard'] : '';
 }
 
 /**
- *  引数で渡されたuuidの情報をもとにその人のカード情報を返す関数。
+ * uuidと一致するユーザーのUserCardのゲッター関数
+ *
+ * @param UUID $uuid
+ * @return string
  */
-function getUserCard($uuid): mixed
+function getUserCard($uuid): string
 {
     return getUser($uuid)['card_id'];
 }
 
 /**
- *  引数のクラス情報をセッション変数に渡す関数。
+ * UserClassのセッション変数のセッター関数
+ *
+ * @param string $class
+ * @return void
  */
 function setLoginUserClass($class): void
 {
@@ -244,23 +290,31 @@ function setLoginUserClass($class): void
 }
 
 /**
- *  現在設定されているクラス情報を取得する関数。
+ * UserClassのセッション変数のゲッター関数
+ *
+ * @return string
  */
-function getLoginUserClass(): mixed
+function getLoginUserClass(): string
 {
     return !empty($_SESSION['UserClass']) ? $_SESSION['UserClass'] : '';
 }
 
 /**
- *  引数で渡されたuuidの情報をもとにその人のクラス情報を返す関数。
+ * uuidと一致するユーザーのUserClassのゲッター関数
+ *
+ * @param UUID $uuid
+ * @return string
  */
-function getUserClass($uuid): mixed
+function getUserClass($uuid): string
 {
     return getUser($uuid)['class'];
 }
 
 /**
- *  引数の名前情報をセッション変数に渡す関数。
+ * UserNameのセッション変数のセッター関数
+ *
+ * @param string $name
+ * @return void
  */
 function setLoginUserName($name): void
 {
@@ -271,23 +325,31 @@ function setLoginUserName($name): void
 }
 
 /**
- *  現在設定されている名前情報を取得する関数。
+ * UserNameのセッション変数のゲッター関数
+ *
+ * @return string
  */
-function getLoginUserName(): mixed
+function getLoginUserName(): string
 {
     return !empty($_SESSION['UserName']) ? $_SESSION['UserName'] : '';
 }
 
 /**
- *  引数で渡されたuuidの情報をもとにその人のクラス情報を返す関数。
+ * uuidと一致するユーザーのUserNameのゲッター関数
+ *
+ * @param UUID $uuid
+ * @return string
  */
-function getUserName($uuid): mixed
+function getUserName($uuid): string
 {
     return getUser($uuid)['name'];
 }
 
 /**
- *  引数のメールアドレス情報をセッション変数に渡す関数。
+ * UserEmailのセッション変数のセッター関数
+ *
+ * @param string $mail
+ * @return void
  */
 function setLoginUserEmail($mail): void
 {
@@ -298,23 +360,31 @@ function setLoginUserEmail($mail): void
 }
 
 /**
- *  現在設定されているメールアドレス情報を取得する関数。
+ * UserEmailのセッション変数のゲッター関数
+ *
+ * @return string
  */
-function getLoginUserEmail(): mixed
+function getLoginUserEmail(): string
 {
     return !empty($_SESSION['UserEmail']) ? $_SESSION['UserEmail'] : '';
 }
 
 /**
- *  引数で渡されたuuidの情報をもとにその人のクラス情報を返す関数。
+ * uuidと一致するユーザーのUserEmailのゲッター関数
+ *
+ * @param UUID $uuid
+ * @return string
  */
-function getUserEmail($uuid): mixed
+function getUserEmail($uuid): string
 {
     return getUser($uuid)['email'];
 }
 
 /**
- *  引数の権限情報をセッション変数に渡す関数。
+ * UserRoleのセッション変数のセッター関数
+ *
+ * @param string $role
+ * @return void
  */
 function setLoginUserRole($role): void
 {
@@ -325,23 +395,30 @@ function setLoginUserRole($role): void
 }
 
 /**
- *  現在設定されている権限情報を取得する関数。
+ * UserRoleのセッション変数のゲッター関数
+ *
+ * @return string
  */
-function getLoginUserRole(): mixed
+function getLoginUserRole(): string
 {
     return !empty($_SESSION['UserRole']) ? $_SESSION['UserRole'] : '';
 }
 
 /**
- *  引数で渡されたuuidの情報をもとにその人のクラス情報を返す関数。
+ * uuidと一致するユーザーのUserRoleのゲッター関数
+ *
+ * @param UUID $uuid
+ * @return string
  */
-function getUserRole($uuid): mixed
+function getUserRole($uuid): string
 {
     return getUser($uuid)['role'];
 }
 
 /**
- *  登録されているユーザーを全員取得する関数。
+ * 登録されているユーザーを全取得する関数
+ *
+ * @return array|null
  */
 function getAllUserList(): ?array
 {
@@ -366,18 +443,23 @@ function getAllUserList(): ?array
 }
 
 /**
- *  ユーザーの出欠状況を設定する関数。
+ * ユーザーのレコードを追加する関数
+ *
+ * @param UUID $user_id
+ * @param TIMESTAMP $timestamp
+ * @param string $status
+ * @param string $comment
+ * @return void
  */
-function addUserRecord($user_id, $timestamp, $status, $comment)
+function addUserRecord($user_id, $timestamp, $status, $comment): void
 {
     $pdo = getDatabaseConnection();
 
-    if (!$pdo) return null;
+    if (!$pdo) return;
 
     try {
         $query = "INSERT INTO attendance (user_id, timestamp, status, comment) VALUES (:user_id, :timestamp, :status, :comment)";
         $stmt = $pdo->prepare($query);
-
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindParam(':timestamp', $timestamp, PDO::PARAM_STR);
         $stmt->bindParam(':status', $status, PDO::PARAM_STR);
@@ -394,12 +476,15 @@ function addUserRecord($user_id, $timestamp, $status, $comment)
         setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
         error_log("ACSystem Error: " . $e->getMessage());
 
-        return null;
+        return;
     }
 }
 
 /**
- *  登録されているユーザーの出欠状況を取得する関数。
+ * uuidと一致するユーザーのレコードを取得する関数
+ *
+ * @param UUID $uuid
+ * @return array|null
  */
 function getUserRecord($uuid): ?array
 {
@@ -408,11 +493,9 @@ function getUserRecord($uuid): ?array
     if (!$pdo) return null;
 
     try {
-        $user_id = $uuid;
-
         $query = "SELECT id, timestamp, status, comment FROM attendance WHERE user_id = :user_id ORDER BY timestamp DESC";
         $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+        $stmt->bindParam(':user_id', $uuid, PDO::PARAM_STR);
 
         $stmt->execute();
 
@@ -428,7 +511,69 @@ function getUserRecord($uuid): ?array
 }
 
 /**
- *  現在時刻を取得し、フォーマット変換する関数。
+ * uuidと一致するユーザーに届いたメールを取得する関数
+ *
+ * @param UUID $uuid
+ * @return array|null
+ */
+function getMailRecord($uuid): ?array
+{
+    $pdo = getDatabaseConnection();
+
+    if (!$pdo) return null;
+
+    try {
+        $query = "SELECT id, is_read, timestamp, from_user_id, title FROM mailbox WHERE to_user_id = :user_id ORDER BY id DESC";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('user_id', $uuid, PDO::FETCH_ASSOC);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20MD");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
+/**
+ * メールidと一致するメッセージをを取得する関数
+ *
+ * @param UID $mail_id
+ * @return array|null
+ */
+function getMailMessage($mail_id): ?array
+{
+    $pdo = getDatabaseConnection();
+
+    if (!$pdo) return null;
+
+    try {
+        $query = "SELECT message FROM mailbox WHERE id = :mail_id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('mail_id', $mail_id, PDO::FETCH_ASSOC);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20MD");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
+/**
+ * 現在時刻を取得する関数
+ *
+ * @return string
  */
 function getCurrentTime(): string
 {
@@ -439,7 +584,21 @@ function getCurrentTime(): string
 }
 
 /**
- *  処理成功の時に詳細を設定、画面遷移する関数。
+ * 引数の時刻をフォーマット変換する関数
+ *
+ * @param string $time
+ * @return void
+ */
+function applyTimeFormat($time)
+{
+    return date("n月 j日 G時 i分", strtotime($time));
+}
+
+/**
+ * 成功関数
+ *
+ * @param string $title
+ * @return void
  */
 function setSuccess($title): void
 {
@@ -450,15 +609,22 @@ function setSuccess($title): void
 }
 
 /**
- *  成功時にタイトルを取得する変数。
+ * 成功時のタイトルを取得する関数
+ *
+ * @return string
  */
-function getSuccess(): mixed
+function getSuccess(): string
 {
     return !empty($_SESSION['SuccessTitle']) ? $_SESSION['SuccessTitle'] : '';
 }
 
 /**
- *  処理失敗の時に詳細を設定、画面遷移する関数。
+ * 失敗関数
+ *
+ * @param string $title
+ * @param string $message
+ * @param string $code
+ * @return void
  */
 function setError($title, $message, $code): void
 {
@@ -473,11 +639,12 @@ function setError($title, $message, $code): void
 }
 
 /**
- *  失敗時に引数のタイプを取得する関数。
+ * 失敗時のアイテムを取得する関数
  *
- *  @param string $type {title, message, code}
+ * @param string $type
+ * @return string
  */
-function getError($type): mixed
+function getError($type): string
 {
     $types = ['title', 'message', 'code'];
 
@@ -490,7 +657,10 @@ function getError($type): mixed
 }
 
 /**
- *  引数に受け取った変数に値が設定されているか判断する可変長引数型関数。
+ * 引数のアイテムの中身があるかどうか判断する関数
+ *
+ * @param string ...$items
+ * @return boolean
  */
 function isEmptyItems(...$items): bool
 {
@@ -505,7 +675,10 @@ function isEmptyItems(...$items): bool
 }
 
 /**
- *  受け取った変数の値が日本語かどうか判断する。
+ * 日本語かどうか判断する関数
+ *
+ * @param string $str
+ * @return boolean
  */
 function isJapanese($str): bool
 {
@@ -513,7 +686,10 @@ function isJapanese($str): bool
 }
 
 /**
- *  受け取った変数を翻訳する関数。
+ * 登録されている単語なら翻訳する関数
+ *
+ * @param string $item
+ * @return string
  */
 function translate($item): string
 {
