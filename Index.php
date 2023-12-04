@@ -37,17 +37,18 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
       <div class="access">
         <h3 class="access-title">テスト</h3>
         <div class="item">
-          <a href="Functions/Attendance/WebAttendance/WebAttendance.php" class="btn btn--circle" id="report">
-            <i class="fas fa-user-alt-slash"></i>
+
+          <a href="Functions/Attendance/DirectAttendance/DirectAttendance.php" class="btn btn--circle" id="record">
+            <i class="fas fa-user-alt"></i>
             <br>
-            <p>申請をする</p>
+            <p>出席する</p>
             <i class="fas fa-angle-down fa-position-bottom"></i>
           </a>
 
-          <a href="Functions/Profile/Record.php" class="btn btn--circle" id="record">
-            <i class="fas fa-calendar-week"></i>
+          <a href="Functions/Attendance/WebAttendance/WebAttendance.php" class="btn btn--circle" id="report">
+            <i class="fas fa-user-alt-slash"></i>
             <br>
-            <p>履歴を見る</p>
+            <p>欠席申請をする</p>
             <i class="fas fa-angle-down fa-position-bottom"></i>
           </a>
 
@@ -58,17 +59,17 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
             <i class="fas fa-angle-down fa-position-bottom"></i>
           </a>
 
-          <a href="#" class="btn btn--circle" id="record">
-            <i class="fas fa-id-card"></i>
+          <a href="Functions/Profile/Record.php" class="btn btn--circle" id="record">
+            <i class="fas fa-calendar-week"></i>
             <br>
-            <p>β</p>
+            <p>履歴を見る</p>
             <i class="fas fa-angle-down fa-position-bottom"></i>
           </a>
 
           <a href="Functions/Staff/UserList.php" class="btn btn--circle" id="test">
             <i class="fas fa-id-card"></i>
             <br>
-            <p>Θ</p>
+            <p>ユーザー欄</p>
             <i class="fas fa-angle-down fa-position-bottom"></i>
           </a>
         </div>
@@ -78,6 +79,16 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
       <div class="notification">
         <h3 class="notification-title">お知らせ</h3>
         <ul class="news-list">
+          <li>
+            <p class="date">2023/12/04</p>
+            <p class="category"><span>NEWS</span></p>
+            <p class="title">http://mtdacsystem.starfree.jp/ACSystem/Index.php でサイトが公開されました。</p>
+          </li>
+          <li>
+            <p class="date">2023/12/04</p>
+            <p class="category"><span>Notification</span></p>
+            <p class="title">メールボックスが見れるようになりました。</p>
+          </li>
           <li>
             <p class="date">2023/11/11</p>
             <p class="category"><span>Update</span></p>
