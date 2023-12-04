@@ -102,8 +102,30 @@ if (!$isDuplicateMail && !$isDuplicateCardID) {
 
         login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
 
-        setSuccess("ユーザーが登録されました");
+        $mail_title = "アカウント作成のご完了お知らせ";
+        $mail_message =
+            "こんにちは {$result['name']} 様,
 
+            ACSystem をご利用いただきありがとうございます！アカウントの作成が正常に完了しました。
+            以下は、ご登録いただいたアカウント情報です。
+
+            ユーザー名: {$result['name']}
+            メールアドレス: {$result['email']}
+            安心してご利用いただくために、以下の点にご留意いただきますようお願い申し上げます。
+
+            パスワードの安全性を確保するため、定期的に変更を行ってください。
+            ログイン情報は第三者に漏れないようにご注意ください。
+            ご不明点やお困りごとがありましたら、いつでも運営までお気軽にお問い合わせください。
+
+            それでは、ACSystem の利用をお楽しみください！何かご質問やご要望がございましたら、お気軽にお知らせください。
+
+
+
+            ACSystem Teamより";
+
+        sendMail(1, $result['id'], $mail_title, $mail_message);
+
+        setSuccess("ユーザーが登録されました");
         return;
     } else {
         setError("ユーザーの登録中に問題が発生しました。", "ACSystemチームまでご連絡ください。", "13CA");

@@ -90,6 +90,7 @@ function translate($item): string
         'class_info' => 'クラス情報',
         'name_info' => '名前情報',
         'mail_info' => 'メールアドレス情報',
+        'email_info' => 'メールアドレス情報',
         'password_info' => 'パスワード情報',
     ];
 

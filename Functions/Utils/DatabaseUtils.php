@@ -34,3 +34,16 @@ function getDatabaseConnection(): PDO
         return null;
     }
 }
+
+function updateQuery($table, $column, $value, $id)
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return false;
+
+    $query = "UPDATE $table SET $column = $value WHERE $table.id = $id";
+    $stmt = $pdo->prepare($query);
+
+    if ($stmt->execute()) return true;
+
+    return false;
+}

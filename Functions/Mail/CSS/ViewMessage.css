@@ -4,7 +4,7 @@
 
 .form {
     max-width: 1500px;
-    height: 720px;
+    height: 670px;
     margin: auto;
     text-align: center;
     -webkit-border-radius: 6px;
@@ -25,32 +25,104 @@ p {
     font-size: 1.2rem;
 }
 
+.mailbox-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .mailbox-item {
-    padding: 1px;
-    border: 1px solid black;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.mailbox-body {
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    white-space: pre-line;
+}
+
+.mailbox-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mail-header-title {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.mail-header-title h3 {
+    margin: 0;
+    font-size: 1.5rem;
 }
 
 .mailbox-header {
     display: flex;
-    height: 100px;
-    background-color: #eee;
+    justify-content: space-between;
 }
 
-.mail-header-title {
-    background-color: #eee;
-}
-
-.mail-header-title h3 {
-    margin-top: 15px;
+.mailbox-header-day,
+.mailbox-header-from {
+    margin: 0;
+    font-size: 1rem;
+    border-bottom: 1px solid;
+    border-radius: 8px;
+    border-width: 1px;
 }
 
 .mailbox-header-day {
-    margin-top: 25px;
-    margin-left: 200px;
-    margin-bottom: 0px;
+    flex-basis: 45%;
 }
 
 .mailbox-header-from {
-    margin-top: 25px;
-    margin-left: 200px;
+    flex-basis: 50%;
+}
+
+.form-footer-items {
+    text-align: center;
+    margin-top: 10px;
+}
+
+button {
+    display: inline-block;
+}
+
+.back-button {
+    font-size: 18px;
+    background-color: #2abca7;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #2abca7;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    cursor: pointer;
+    width: 10%;
+    color: #fff;
+}
+
+.output-button {
+    font-size: 20px;
+    margin-left: 315px;
+    background-color: #2abca7;
+    padding: 10px 45px;
+    border-radius: 5px;
+    border: 1px solid #2abca7;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    cursor: pointer;
+    width: 30%;
+    color: #fff;
 }

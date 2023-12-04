@@ -184,6 +184,30 @@ function getUserRecord($uuid): ?array
     }
 }
 
+function sendMail($from_user_id, $to_user_id, $title, $message)
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return;
+
+    try {
+        $query = "INSERT INTO mailbox (from_user_id, to_user_id, timestamp, title, message) VALUES (:from_user_id, :to_user_id, :timestamp, :title, :message)";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':from_user_id', $from_user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':to_user_id', $to_user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':timestamp', getCurrentTime(), PDO::PARAM_STR);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':message', $message, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20MD");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
 /**
  * uuidと一致するユーザーに届いたメールを取得する関数
  *
@@ -193,7 +217,6 @@ function getUserRecord($uuid): ?array
 function getMailRecord($uuid): ?array
 {
     $pdo = getDatabaseConnection();
-
     if (!$pdo) return null;
 
     try {

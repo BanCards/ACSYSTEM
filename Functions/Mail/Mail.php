@@ -62,7 +62,8 @@ $mails = getMailRecord(getLoginUUID());
                                     if ($key === 'id' || $key === 'is_read') continue;
                                     if ($key === 'from_user_id') $value = getUserName($value);
                                     else if ($key === 'timestamp') $value = applyTimeFormat($value);
-                                    echo "<td class='record-item'>$value</td>";
+                                    if($key === 'title' && $it['is_read'] == false) echo "<td class='new-record-item'>$value</td>";
+                                    else echo "<td class='record-item'>$value</td>";
                                 }
                                 echo "
                                 <form action='ViewMessage.php' method='POST' name='RequestOpenMail{$it['id']}'>
@@ -71,6 +72,7 @@ $mails = getMailRecord(getLoginUUID());
                                         <input type='hidden' name='mail[time]' value='{$it['timestamp']}'>
                                         <input type='hidden' name='mail[from_user_id]' value='{$it['from_user_id']}'>
                                         <input type='hidden' name='mail[title]' value='{$it['title']}'>
+                                        <input type='hidden' name='mail[is_read] value='{$it['is_read']}'>
                                         <a href='javascript:document.RequestOpenMail{$it['id']}.submit()' id='open-button'>開く</a>
                                     </td>
                                 </form>";
@@ -81,7 +83,6 @@ $mails = getMailRecord(getLoginUUID());
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
 

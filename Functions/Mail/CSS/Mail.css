@@ -79,3 +79,21 @@ table tr:nth-child(odd) {
 #open-button {
     color: blue;
 }
+
+.new-record-item {
+    position: relative;
+}
+
+.new-record-item::before {
+    content: "NEW";
+    background: #e83929;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 1;
+    width: 40px;
+    position: absolute;
+    left: 20px;
+}

@@ -17,7 +17,7 @@ if (!$pdo) return;
 if ($key == "password") {
     $currentPassword =  $_POST['current-item-value'];
 
-    if(isEmptyItems($currentPassword)) return;
+    if (isEmptyItems($currentPassword)) return;
 
     $selectQuery = "SELECT * FROM users WHERE id = :uuid";
     $selectStmt = $pdo->prepare($selectQuery);
@@ -56,6 +56,27 @@ if ($updateStmt->execute()) {
 
     logout();
     login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
+
+    $mail_title = "アカウント情報の更新が完了しました";
+    $mail_message = "
+    こんにちは {$result['name']} 様,
+
+    お世話になっております。ACSystem をご利用いただき、誠にありがとうございます。お知らせがあります。
+
+    アカウント情報の変更が正常に完了しました。
+    ご自身で変更を行わなかった場合や、変更についてご質問がある場合は、直ちに運営までお知らせください。
+
+    なお、アカウント情報の変更に関して疑問や懸念がございましたら、セキュリティを確認するためにも速やかにご対応いただくことをお勧めいたします。
+
+    何かご質問やご不明点がございましたら、遠慮なくお知らせください。ACSystem をより快適にご利用いただけるよう、サポートチームがお手伝いさせていただきます。
+
+    どうぞよろしくお願いいたします。
+
+
+
+    ACSystem Teamより";
+
+    sendMail(1, $result['id'], $mail_title, $mail_message);
 
     setSuccess("値を更新しました");
     return;

@@ -3,6 +3,8 @@ include('../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 $mail = $_POST['mail'];
+
+if ($mail['is_read'] == false) updateQuery("mailbox", "is_read", "true", $_POST['mail_id']);
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +32,7 @@ $mail = $_POST['mail'];
                 <div class="mailbox-items">
                     <div class="mailbox-item">
                         <div class="mail-header-title">
-                            <h3>タイトル : <?php echo $mail['title'] ?></h3>
+                            <h3><?php echo $mail['title'] ?></h3>
                         </div>
                         <div class="mailbox-header">
                             <div class="mailbox-header-day">
@@ -42,10 +44,14 @@ $mail = $_POST['mail'];
                         </div>
                     </div>
                     <div class="mailbox-body">
-                        メッセージ : <?php echo getMailMessage($_POST['mail_id'])['message'] ?>
+                        <?php echo getMailMessage($_POST['mail_id'])['message'] ?>
                     </div>
                 </div>
 
+            </div>
+
+            <div class="form-footer-items">
+                <a href="Mail.php"><button class="back-button">メールボックスへ</button></a>
             </div>
         </div>
 
