@@ -1,20 +1,51 @@
-### ACSystem
+ # ACSystem
 
-当システムは本学の卒業研究のために制作されたものです。<br>
-<br>
-ACSystem - Attendance Check System for our school.<br>
-Copyright © 2023 Attendance Check System by ACSystem Team All rights reserved.<br>
-<br>
-ACSYSTEM<br>
- |<br>
- | - CSS /<br>
- |<br>
- | - Database /<br>
- |<br>
- | - Functions /<br>
- |<br>
- | - Tasks /<br>
- |<br>
- | - Index.html<br>
- |<br>
- | - README.md<br>
+このプロジェクトは、学生証にIC機能を埋め込み、学生証の付加価値を向上させるとともに、出欠管理の手間を省くことを目的としています。
+
+## 主な機能
+
+- カードを利用したタッチでの出欠管理
+- プロフィール管理
+- メール機能
+
+## 技術スタック
+
+- HTML
+- PHP
+- CSS
+- JavaScript
+- MySQL
+
+## セキュリティ対策
+
+- XSS対策を実装
+- パスワードはハッシュ化して保存
+
+## 使用方法
+
+基本的には表示されている画面通りに操作が可能です。詳細な使い方は以下の通りです。
+
+1. 学生証をカードリーダーにタッチして出欠を記録します。
+2. メール機能を使用して通知や連絡を行います。
+3. プロフィール機能を使って個人情報を管理します。
+
+## データベース構造
+
+プロジェクトでは以下のテーブルが使用されています。
+
+- users
+- attendance
+- notifications
+- mailbox
+
+（各テーブルのスキーマはプロジェクトのデータベース設計に基づきます）
+
+## ライセンス
+
+Copyright © 2023 Attendance Check System by ACSystem Team. All rights reserved.
+
+## 連絡先
+
+ご質問や連絡がある場合は、以下のメールアドレスまでお気軽にご連絡ください。
+
+- メール: bancardsme@gmail.com
