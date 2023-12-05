@@ -34,6 +34,34 @@ function getUser($uuid): ?array
 }
 
 /**
+ * カードIDと一致するユーザーを取得する関数
+ *
+ * @param int $card_id
+ * @return void
+ */
+function getUserByCardID($card_id): ?array
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return null;
+
+    try {
+        $query = "SELECT * FROM users WHERE card_id = :cardID";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':cardID', $card_id, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
+/**
  * 登録されているユーザーを全取得する関数
  *
  * @return array|null
@@ -179,6 +207,33 @@ function getUserRecord($uuid): ?array
     }
 }
 
+/**
+ * 出席したかどうか判断する関数
+ *
+ * @param UUID $uuid
+ * @return boolean
+ */
+function isAttended($uuid)
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return false;
+
+    try {
+        $query = "SELECT * FROM attendance WHERE user_id = :uuid AND DATE(timestamp) = CURDATE()";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('uuid', $uuid, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return ($result !== false);
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
 
 /**
  * メールを送信するする関数
