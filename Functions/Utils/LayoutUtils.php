@@ -65,7 +65,13 @@ function generateListItem($class, $icon, $text, $link): string
     HTML;
 }
 
-function sendNotifications($notifications)
+/**
+ * お知らせを出力する関数
+ *
+ * @param array $notifications
+ * @return void
+ */
+function sendNotifications($notifications): void
 {
     echo '<div class="notification">';
     echo '  <h3 class="notification-title">お知らせ</h3>';

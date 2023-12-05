@@ -35,23 +35,37 @@ function getDatabaseConnection(): PDO
     }
 }
 
-function updateQuery($table, $column, $value, $id)
+/**
+ * アップデートクエリ
+ *
+ * @param string $table
+ * @param string $column
+ * @param string $value
+ * @param string $id
+ * @return void
+ */
+function updateQuery($table, $column, $value, $id): void
 {
     $pdo = getDatabaseConnection();
-    if (!$pdo) return false;
+    if (!$pdo) return;
 
     $query = "UPDATE $table SET $column = $value WHERE $table.id = $id";
     $stmt = $pdo->prepare($query);
 
-    if ($stmt->execute()) return true;
+    if ($stmt->execute()) return;
 
-    return false;
+    return;
 }
 
-function getNotifications()
+/**
+ * お知らせをDBから取得
+ *
+ * @return void
+ */
+function getNotifications(): ?array
 {
     $pdo = getDatabaseConnection();
-    if (!$pdo) return;
+    if (!$pdo) return null;
 
     try {
         $query =  "SELECT timestamp, category, title FROM notifications ORDER BY id DESC LIMIT 10";
