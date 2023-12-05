@@ -65,6 +65,32 @@ function generateListItem($class, $icon, $text, $link): string
     HTML;
 }
 
+function sendQuickAccesses()
+{
+    echo '<div class="access">
+            <h3 class="access-title">クイックアクセス</h3>
+            <div class="item">';
+
+    generateAccessItem("record", "Functions/Attendance/DirectAttendance/DirectAttendance.php", "fas fa-user-alt", "出席する");
+    generateAccessItem("report", "Functions/Attendance/WebAttendance/WebAttendance.php", "fas fa-user-alt-slash", "欠席申請をする");
+    generateAccessItem("mailbox", "Functions/Mail/Mail.php", "fas fa-envelope", "メールボックス");
+    generateAccessItem("record", "Functions/Profile/Record.php", "fas fa-calendar-week", "履歴を見る");
+    generateAccessItem("test", "Functions/Staff/UserList.php", "fas fa-id-card", "ユーザー欄");
+
+    echo '</div>
+        </div>';
+}
+
+function generateAccessItem($id, $href, $iconClass, $text)
+{
+    echo '<a href="' . $href . '" class="btn btn--circle" id="' . $id . '">
+            <i class="' . $iconClass . '"></i>
+            <br>
+            <p>' . $text . '</p>
+            <i class="fas fa-angle-down fa-position-bottom"></i>
+          </a>';
+}
+
 /**
  * お知らせを出力する関数
  *
