@@ -9,7 +9,6 @@
 function getUser($uuid): ?array
 {
     $pdo = getDatabaseConnection();
-
     if (!$pdo) return null;
 
     try {
@@ -42,15 +41,14 @@ function getUser($uuid): ?array
 function getAllUserList(): ?array
 {
     $pdo = getDatabaseConnection();
-
     if (!$pdo) return null;
 
     try {
         $query = "SELECT * FROM users";
-        $statement = $pdo->prepare($query);
-        $statement->execute();
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
 
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
     } catch (PDOException $e) {
@@ -128,7 +126,6 @@ function getUserRole($uuid): string
 function addUserRecord($user_id, $timestamp, $status, $comment): void
 {
     $pdo = getDatabaseConnection();
-
     if (!$pdo) return;
 
     try {
@@ -163,14 +160,12 @@ function addUserRecord($user_id, $timestamp, $status, $comment): void
 function getUserRecord($uuid): ?array
 {
     $pdo = getDatabaseConnection();
-
     if (!$pdo) return null;
 
     try {
         $query = "SELECT id, timestamp, status, comment FROM attendance WHERE user_id = :user_id ORDER BY timestamp DESC";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':user_id', $uuid, PDO::PARAM_STR);
-
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -184,7 +179,17 @@ function getUserRecord($uuid): ?array
     }
 }
 
-function sendMail($from_user_id, $to_user_id, $title, $message)
+
+/**
+ * メールを送信するする関数
+ *
+ * @param UUID $from_user_id
+ * @param UUID $to_user_id
+ * @param string $title
+ * @param string $message
+ * @return void
+ */
+function sendMail($from_user_id, $to_user_id, $title, $message): void
 {
     $pdo = getDatabaseConnection();
     if (!$pdo) return;
@@ -199,12 +204,11 @@ function sendMail($from_user_id, $to_user_id, $title, $message)
         $stmt->bindParam(':message', $message, PDO::PARAM_STR);
 
         $stmt->execute();
-
     } catch (PDOException $e) {
         setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20MD");
         error_log("ACSystem Error: " . $e->getMessage());
 
-        return null;
+        return;
     }
 }
 
@@ -223,7 +227,6 @@ function getMailRecord($uuid): ?array
         $query = "SELECT id, is_read, timestamp, from_user_id, title FROM mailbox WHERE to_user_id = :user_id ORDER BY id DESC";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam('user_id', $uuid, PDO::FETCH_ASSOC);
-
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -246,14 +249,12 @@ function getMailRecord($uuid): ?array
 function getMailMessage($mail_id): ?array
 {
     $pdo = getDatabaseConnection();
-
     if (!$pdo) return null;
 
     try {
         $query = "SELECT message FROM mailbox WHERE id = :mail_id";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam('mail_id', $mail_id, PDO::FETCH_ASSOC);
-
         $stmt->execute();
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
