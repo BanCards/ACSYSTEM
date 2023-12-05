@@ -65,6 +65,29 @@ function generateListItem($class, $icon, $text, $link): string
     HTML;
 }
 
+function sendNotifications($notifications)
+{
+    echo '<div class="notification">';
+    echo '  <h3 class="notification-title">お知らせ</h3>';
+    echo '  <ul class="news-list">';
+
+    if (!$notifications) {
+        echo '    <li><p class="title">お知らせはないよ :(</p></li>';
+        return;
+    }
+
+    foreach ($notifications as $notification) {
+        echo '    <li>';
+        echo '      <p class="date">' . date('Y年 m月 d日', strtotime($notification['timestamp'])) . '</p>';
+        echo '      <p class="category"><span>' . $notification['category'] . '</span></p>';
+        echo '      <p class="title">' . $notification['title'] . '</p>';
+        echo '    </li>';
+    }
+
+    echo '  </ul>';
+    echo '</div>';
+}
+
 /**
  * フッターを出力する関数
  *

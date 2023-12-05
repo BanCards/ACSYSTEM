@@ -33,9 +33,9 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
     <!-- メイン -->
     <div class="main">
 
-      <!-- アイテム -->
+      <!-- クイックアクセス -->
       <div class="access">
-        <h3 class="access-title">テスト</h3>
+        <h3 class="access-title">クイックアクセス</h3>
         <div class="item">
 
           <a href="Functions/Attendance/DirectAttendance/DirectAttendance.php" class="btn btn--circle" id="record">
@@ -75,42 +75,8 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
         </div>
       </div>
 
-      <!-- アイテム -->
-      <div class="notification">
-        <h3 class="notification-title">お知らせ</h3>
-        <ul class="news-list">
-          <li>
-            <p class="date">2023/12/04</p>
-            <p class="category"><span>NEWS</span></p>
-            <p class="title">http://mtdacsystem.starfree.jp/ACSystem/Index.php でサイトが公開されました。</p>
-          </li>
-          <li>
-            <p class="date">2023/12/04</p>
-            <p class="category"><span>Notification</span></p>
-            <p class="title">メールボックスが見れるようになりました。</p>
-          </li>
-          <li>
-            <p class="date">2023/11/11</p>
-            <p class="category"><span>Update</span></p>
-            <p class="title">ver 2.0.0が公開されました。</p>
-          </li>
-          <li>
-            <p class="date">2023/10/24</p>
-            <p class="category"><span>Notification</span></p>
-            <p class="title">出欠履歴が見れるようになりました。</p>
-          </li>
-          <li>
-            <p class="date">2023/10/24</p>
-            <p class="category"><span>Update</span></p>
-            <p class="title">ver 1.1.0が公開されました。</p>
-          </li>
-          <li>
-            <p class="date">2023/10/01</p>
-            <p class="category"><span>New</span></p>
-            <p class="title">ver 1.0.0が公開されました。</p>
-          </li>
-        </ul>
-      </div>
+      <!-- お知らせ -->
+      <?php sendNotifications(getNotifications()) ?>
 
     </div>
 

@@ -47,3 +47,24 @@ function updateQuery($table, $column, $value, $id)
 
     return false;
 }
+
+function getNotifications()
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return;
+
+    try {
+        $query =  "SELECT timestamp, category, title FROM notifications ORDER BY id DESC LIMIT 10";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
