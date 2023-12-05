@@ -56,7 +56,6 @@ if (!($password === $repassword)) {
 }
 
 $pdo = getDatabaseConnection();
-
 if (!$pdo) return;
 
 //カード番号重複チェック
@@ -86,7 +85,7 @@ if (!$isDuplicateMail && !$isDuplicateCardID) {
     $insertStmt->bindValue(':class', $class, PDO::PARAM_STR);
     $insertStmt->bindValue(':name', $name, PDO::PARAM_STR);
     $insertStmt->bindValue(':email', $email, PDO::PARAM_STR);
-    $insertStmt->bindValue(':password', $password, PDO::PARAM_STR);
+    $insertStmt->bindValue(':password', md5($password), PDO::PARAM_STR);
 
     if ($insertStmt->execute()) {
 

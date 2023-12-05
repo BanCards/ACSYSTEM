@@ -26,7 +26,7 @@ $passwordColumn = "password";
 $query = "SELECT * FROM $table WHERE $nameColumn = :nameValue AND $passwordColumn = :passwordValue";
 $stmt = $pdo->prepare($query);
 $stmt->bindValue(':nameValue', $name, PDO::PARAM_STR);
-$stmt->bindValue(':passwordValue', $password, PDO::PARAM_STR);
+$stmt->bindValue(':passwordValue', md5($password), PDO::PARAM_STR);
 $stmt->execute();
 
 // 結果を取得

@@ -16,6 +16,7 @@ if (!$pdo) return;
 
 if ($key == "password") {
     $currentPassword =  $_POST['current-item-value'];
+    $currentPassword = md5($currentPassword);
 
     if (isEmptyItems($currentPassword)) return;
 
@@ -42,6 +43,7 @@ if (!(in_array($key, $validFields))) {
 
 $updateQuery = "UPDATE users SET $key = :value WHERE id = :uuid";
 $updateStmt = $pdo->prepare($updateQuery);
+if($key == "password") $value = md5($value);
 $updateStmt->bindValue(':value', $value, PDO::PARAM_STR);
 $updateStmt->bindValue(':uuid', $uuid, PDO::PARAM_STR);
 
