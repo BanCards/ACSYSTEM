@@ -12,104 +12,50 @@ $repassword = $_POST['rePassword'];
 
 unset($_SESSION['cardID']);
 
-/*
-    重複チェック
-    もしusersに$valueと重複するレコードがあるならtrueを返す
-*/
-function isDuplicate($pdo, $column, $value)
-{
-    $table = "users";
-    $query = "SELECT * FROM $table WHERE $column = :value";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindValue(':value', $value, PDO::PARAM_STR);
-    $stmt->execute();
-    return $stmt->fetch();
-}
+if (isEmptyItems($name, $email, $password)) return;
 
-//リクエストメソッドを確認
-if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    setError("サーバーエラーが発生しました。", "ACSystemチームまでご連絡ください。", "14M");
-    return;
-}
-
-//空白文字チェック
-if (isEmptyItems($name, $email, $password)) {
-    return;
-}
-
-//パスワードの長さがオバーフローするかチェック
-if (mb_strlen($name) >= 32) {
+if (mb_strlen($name) > 32) {
     setError("名前が長すぎます。", "32字以内に収めてください。", "13LN");
     return;
 }
 
-//パスワードの長さがオバーフローするかチェック
-if (mb_strlen($password) >= 32) {
+if (mb_strlen($password) > 32) {
     setError("パスワードが長すぎます。", "32字以内に収めてください。", "13LP");
     return;
 }
 
-//パスワードが一致するかチェック
 if (!($password === $repassword)) {
     setError("パスワードが一致しません。", "パスワードをご確認の上、再度記入してください。", "13IP");
     return;
 }
 
-$pdo = getDatabaseConnection();
-if (!$pdo) return;
-
-//カード番号重複チェック
-$isDuplicateCardID = '';
-$isDuplicateCardID = isDuplicate($pdo, "card_id", $cardID);
-if ($isDuplicateCardID) {
-    $pdo = null;
+if (isDuplicatedRecord("users", "card_id", $cardID)) {
     setError("カード情報が既に登録されています。", "使用されているアカウント番号 : <strong>" . $cardID . "</strong>", "11C");
     return;
 }
 
-//メールアドレス重複チェック
-$isDuplicateMail = '';
-$isDuplicateMail = isDuplicate($pdo, "email", $email);
-if ($isDuplicateMail) {
-    $pdo = null;
+if (isDuplicatedRecord("users", "email", $email)) {
     setError("メールアドレスが既に登録されています。", "使用されているメールアドレス : <strong>" . $email . "</strong>", "11E");
     return;
 }
 
-//正常動作
-if (!$isDuplicateMail && !$isDuplicateCardID) {
-    $insertQuery = "INSERT INTO `users` (`card_id`, `class`, `name`, `email`, `password`) VALUES (:cardID, :class, :name, :email, :password)";
+$res = createAccount($cardID, $class, $name, $email, $password);
 
-    $insertStmt = $pdo->prepare($insertQuery);
-    $insertStmt->bindValue(':cardID', $cardID, PDO::PARAM_STR);
-    $insertStmt->bindValue(':class', $class, PDO::PARAM_STR);
-    $insertStmt->bindValue(':name', $name, PDO::PARAM_STR);
-    $insertStmt->bindValue(':email', $email, PDO::PARAM_STR);
-    $insertStmt->bindValue(':password', md5($password), PDO::PARAM_STR);
+if ($res) {
 
-    if ($insertStmt->execute()) {
+    $user = getUserByCardID($cardID);
 
-        // queryクエリの準備と実行
-        $query = "SELECT * FROM `users` WHERE `name` = :nameValue AND `password` = :passwordValue";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':nameValue', $name, PDO::PARAM_STR);
-        $stmt->bindValue(':passwordValue', $password, PDO::PARAM_STR);
-        $stmt->execute();
+    login($user['id'], $user['card_id'], $user['class'], $user['name'], $user['email'], $user['role']);
 
-        // 結果を取得
-        $result = $stmt->fetch();
-
-        login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
-
-        $mail_title = "アカウント作成のご完了お知らせ";
-        $mail_message =
-            "こんにちは {$result['name']} 様,
+    $mail_title = "アカウント作成のご完了お知らせ";
+    $mail_message =
+        "こんにちは {$user['name']} 様,
 
             ACSystem をご利用いただきありがとうございます！アカウントの作成が正常に完了しました。
             以下は、ご登録いただいたアカウント情報です。
 
-            ユーザー名: {$result['name']}
-            メールアドレス: {$result['email']}
+            ユーザー名: {$user['name']}
+            メールアドレス: {$user['email']}
             安心してご利用いただくために、以下の点にご留意いただきますようお願い申し上げます。
 
             パスワードの安全性を確保するため、定期的に変更を行ってください。
@@ -122,12 +68,11 @@ if (!$isDuplicateMail && !$isDuplicateCardID) {
 
             ACSystem Teamより";
 
-        sendMail(1, $result['id'], $mail_title, $mail_message);
+    sendMail(1, $user['id'], $mail_title, $mail_message);
 
-        setSuccess("ユーザーが登録されました");
-        return;
-    } else {
-        setError("ユーザーの登録中に問題が発生しました。", "ACSystemチームまでご連絡ください。", "13CA");
-        return;
-    }
+    setSuccess("ユーザーが登録されました");
+    return;
+} else {
+    setError("ユーザーの登録中に問題が発生しました。", "ACSystemチームまでご連絡ください。", "13CA");
+    return;
 }
