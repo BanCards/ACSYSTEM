@@ -1,6 +1,34 @@
 <?php
 
 /**
+ * アカウント作成関数
+ *
+ * @param string $card_id
+ * @param string $class
+ * @param string $name
+ * @param string $email
+ * @param string $password
+ * @return bool
+ */
+function createAccount($card_id, $class, $name, $email, $password): bool
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return false;
+
+    $password = hashingItem($password);
+
+    $query = "INSERT INTO users (card_id, class, name, email, password) VALUES (:card_id, :class, :name, :email, :password)";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':card_id', $card_id, PDO::PARAM_STR);
+    $stmt->bindParam(':class', $class, PDO::PARAM_STR);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+
+    return $stmt->execute();
+}
+
+/**
  * uuidと一致するユーザーを返す関数
  *
  * @param UUID $uuid
@@ -254,7 +282,7 @@ function sendMail($from_user_id, $to_user_id, $title, $message): void
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':from_user_id', $from_user_id, PDO::PARAM_INT);
         $stmt->bindParam(':to_user_id', $to_user_id, PDO::PARAM_INT);
-        $stmt->bindParam(':timestamp', getCurrentTime(), PDO::PARAM_STR);
+        $stmt->bindValue(':timestamp', getCurrentTime(), PDO::PARAM_STR);
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
         $stmt->bindParam(':message', $message, PDO::PARAM_STR);
 

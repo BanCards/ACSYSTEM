@@ -29,6 +29,13 @@ function applyTimeFormat($time)
     return date("n月 j日 G時 i分", strtotime($time));
 }
 
+function hashingItem($item)
+{
+    $hashed_item = md5($item);
+
+    return $hashed_item;
+}
+
 /**
  * 引数のアイテムの中身があるかどうか判断する関数
  *

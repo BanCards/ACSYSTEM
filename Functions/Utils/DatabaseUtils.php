@@ -82,3 +82,26 @@ function getNotifications(): ?array
         return null;
     }
 }
+
+/**
+ * レコードが重複しているか判定
+ *
+ * @param string $table
+ * @param string $column
+ * @param string $value
+ * @return boolean|null
+ */
+function isDuplicatedRecord($table, $column, $value): ?bool
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return null;
+
+    $query = "SELECT * FROM $table WHERE $column = :value";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':value', $value, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+
+    return $result !== false;
+}
