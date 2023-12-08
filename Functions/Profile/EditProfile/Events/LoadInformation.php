@@ -9,16 +9,38 @@ unset($_SESSION['editItem']);
 
 if (isEmptyItems($value)) return;
 
+$validFields = ['email', 'password'];
+
+// $key が有効なフィールドであるか確認
+if (!(in_array($key, $validFields))) {
+    setError("無効なフィールド", "指定されたフィールドは更新できません。", "22D");
+    return;
+}
+
 $pdo = getDatabaseConnection();
 $uuid = getLoginUUID();
 
-if (!$pdo) return;
+if ($key == 'email') {
+    if (getUserEmail($uuid) == $value) {
+        setError("同一の値です。", "同じ値を登録することはできません。", "13SP");
+        return;
+    }
+
+    if (isDuplicatedRecord("users", "email", $value)) {
+        setError("メールアドレスが既に登録されています。", "使用されているメールアドレス : <strong>" . $email . "</strong>", "11E");
+        return;
+    }
+}
 
 if ($key == "password") {
     $currentPassword =  $_POST['current-item-value'];
     $currentPassword = md5($currentPassword);
 
     if (isEmptyItems($currentPassword)) return;
+    if ($currentPassword == md5($value)) {
+        setError("同一の値です。", "同じ値を登録することはできません。", "13SP");
+        return;
+    }
 
     $selectQuery = "SELECT * FROM users WHERE id = :uuid";
     $selectStmt = $pdo->prepare($selectQuery);
@@ -33,17 +55,9 @@ if ($key == "password") {
     }
 }
 
-$validFields = ['email', 'password'];
-
-// $key が有効なフィールドであるか確認
-if (!(in_array($key, $validFields))) {
-    setError("無効なフィールド", "指定されたフィールドは更新できません。", "22D");
-    return;
-}
-
 $updateQuery = "UPDATE users SET $key = :value WHERE id = :uuid";
 $updateStmt = $pdo->prepare($updateQuery);
-if($key == "password") $value = md5($value);
+if ($key == "password") $value = md5($value);
 $updateStmt->bindValue(':value', $value, PDO::PARAM_STR);
 $updateStmt->bindValue(':uuid', $uuid, PDO::PARAM_STR);
 
