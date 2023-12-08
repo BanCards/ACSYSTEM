@@ -179,15 +179,16 @@ function getUserRole($uuid): string
  * @param string $comment
  * @return void
  */
-function addUserRecord($user_id, $timestamp, $status, $comment): void
+function registerAttend($user_id, $is_request, $timestamp, $status, $comment): void
 {
     $pdo = getDatabaseConnection();
     if (!$pdo) return;
 
     try {
-        $query = "INSERT INTO attendance (user_id, timestamp, status, comment) VALUES (:user_id, :timestamp, :status, :comment)";
+        $query = "INSERT INTO attendance (user_id, is_request, timestamp, status, comment) VALUES (:user_id, :is_request, :timestamp, :status, :comment)";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':is_request', $is_request, PDO::PARAM_STR);
         $stmt->bindParam(':timestamp', $timestamp, PDO::PARAM_STR);
         $stmt->bindParam(':status', $status, PDO::PARAM_STR);
         $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
@@ -207,19 +208,25 @@ function addUserRecord($user_id, $timestamp, $status, $comment): void
     }
 }
 
+function requestAttend($user_id, $timestamp, $status, $comment): void
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return;
+}
+
 /**
  * uuidと一致するユーザーのレコードを取得する関数
  *
  * @param UUID $uuid
  * @return array|null
  */
-function getUserRecord($uuid): ?array
+function getAttend($uuid): ?array
 {
     $pdo = getDatabaseConnection();
     if (!$pdo) return null;
 
     try {
-        $query = "SELECT id, timestamp, status, comment FROM attendance WHERE user_id = :user_id ORDER BY timestamp DESC";
+        $query = "SELECT id, is_request, timestamp, status, comment FROM attendance WHERE user_id = :user_id ORDER BY timestamp DESC";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':user_id', $uuid, PDO::PARAM_STR);
         $stmt->execute();

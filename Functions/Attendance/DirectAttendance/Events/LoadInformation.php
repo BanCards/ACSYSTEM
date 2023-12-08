@@ -19,4 +19,4 @@ $timestamp = getCurrentTime();
 $status = "attend";
 $comment = "カードによる出席";
 
-addUserRecord($user['id'], $timestamp, $status, $comment);
+registerAttend($user['id'], 0, $timestamp, $status, $comment);

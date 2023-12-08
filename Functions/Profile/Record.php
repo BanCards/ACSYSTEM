@@ -7,7 +7,7 @@ if (!(isLoggedIn())) {
     return;
 }
 
-$records = getUserRecord(getLoginUUID());
+$records = getAttend(getLoginUUID());
 ?>
 
 <!DOCTYPE html>
@@ -58,12 +58,10 @@ $records = getUserRecord(getLoginUUID());
                             foreach ($records as $record) {
                                 echo "<tr class='table-content'>";
                                 foreach ($record as $key => $value) {
-                                    if ($key === 'id') continue;
-                                    if ($key === 'timestamp') {
-                                        $value = applyTimeFormat($value);
-                                    } else {
-                                        $value = translate($value);
-                                    }
+                                    if ($key === 'id' || $key === 'is_request') continue;
+                                    if ($key === 'status') $value = $record['is_request'] ? translate($value) . 'を申請中...'  : translate($value);
+                                    else if ($key === 'timestamp') $value = applyTimeFormat($value);
+                                    else $value = translate($value);
                                     echo "<td class='record-item'>$value</td>";
                                 }
                                 echo "</tr>";

@@ -7,7 +7,6 @@ if (!(isLoggedIn())) {
     return;
 }
 
-//TODO(申請処理)
 if (isAttended(getLoginUUID())) {
     setError("本日は出席済みです。", "出席回数は一日一回のみです。", "13AT");
     return;
@@ -17,4 +16,4 @@ $timestamp = getCurrentTime();
 $status = $_POST['status'];
 $comment = translate($_POST['reason']);
 
-addUserRecord(getLoginUUID(), $timestamp, $status, $comment);
+registerAttend(getLoginUUID(), 1, $timestamp, $status, $comment);
