@@ -1,5 +1,5 @@
 <?php
-include('../Utils/Utils.php');
+include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 if (!(isLoggedIn())) {
@@ -22,8 +22,8 @@ $uuid = $_POST['uuid'];
     <title>ACSystem - Profile</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="../../CSS/Common.css">
-    <link rel="stylesheet" href="CSS/Profile.css">
+    <link rel="stylesheet" href="../../../CSS/Common.css">
+    <link rel="stylesheet" href="../CSS/Profile.css">
 </head>
 
 <body>

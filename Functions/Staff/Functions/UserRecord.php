@@ -1,5 +1,5 @@
 <?php
-include('../Utils/Utils.php');
+include('../../Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 if (!(isLoggedIn())) {
@@ -13,7 +13,7 @@ if (!(hasPermission(getLoginUUID()))) {
 }
 
 $uuid = $_POST['uuid'];
-$records = getUserRecord($uuid);
+$records = getAttend($uuid);
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +23,8 @@ $records = getUserRecord($uuid);
     <title>ACSystem - Profile</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="../../CSS/Common.css">
-    <link rel="stylesheet" href="CSS/UserRecord.css">
+    <link rel="stylesheet" href="../../../CSS/Common.css">
+    <link rel="stylesheet" href="../CSS/UserRecord.css">
 </head>
 
 <body>
@@ -65,8 +65,9 @@ $records = getUserRecord($uuid);
                             foreach ($records as $record) {
                                 echo "<tr class='table-content'>";
                                 foreach ($record as $key => $value) {
-                                    if ($key === 'id') continue;
-                                    if ($key === 'timestamp') $value = applyTimeFormat($value);
+                                    if ($key === 'id' || $key === 'is_request') continue;
+                                    if ($key === 'status') $value = $record['is_request'] ? translate($value) . 'を申請中...'  : translate($value);
+                                    else if ($key === 'timestamp') $value = applyTimeFormat($value);
                                     else $value = translate($value);
                                     echo "<td class='record-item'>$value</td>";
                                 }

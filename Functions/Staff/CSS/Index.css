@@ -1,0 +1,174 @@
+.content {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 700px;
+}
+
+.access {
+    border-bottom: 8px solid #333;
+}
+
+.item {
+    flex-grow: 1;
+    height: 350px;
+    justify-content: space-around;
+}
+
+.notification {
+    flex-grow: 1;
+    border-bottom: 8px solid #333;
+}
+
+h3 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.news-list {
+    list-style: none outside;
+    margin: 0;
+    padding: 0;
+    height: 300px;
+    overflow: auto;
+}
+
+.news-list li {
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 20px;
+}
+
+.news-list li:first-child {
+    border-top: 1px solid #ccc;
+}
+
+.news-list li .date {
+    margin: 0;
+    min-width: 140px;
+    font-size: 16px;
+    padding: 0 20px 0 0;
+}
+
+.news-list li .category {
+    margin: 0;
+    min-width: 140px;
+    padding: 0 20px 0 0;
+}
+
+.news-list li .category span {
+    background: #e83929;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 1;
+    width: 100px;
+}
+
+.news-list li .title {
+    margin: 0;
+}
+
+.news-list li a:hover .title {
+    color: #00f;
+}
+
+@media screen and (max-width: 767px) {
+    .news-list li a {
+        flex-wrap: wrap;
+    }
+
+    .news-list li .date {
+        min-width: 100px;
+    }
+
+    .news-list li .title {
+        margin-top: 10px;
+    }
+}
+
+.btn,
+a.btn,
+button.btn {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+}
+
+btn font {
+    padding-top: 20px;
+}
+
+a.btn--circle {
+    margin-top: 50px;
+    margin-right: 215px;
+    width: 240px;
+    height: 210px;
+    padding: 20px 0 0;
+    border-radius: 50%;
+    color: #fff;
+}
+
+#index {
+    background: #03a631;
+    box-shadow: 0 7px 0 #025a05;
+}
+
+#userlist {
+    background: #eb6877;
+    box-shadow: 0 7px 0 #e53b4e;
+}
+
+#test {
+    background: #8f68eb;
+    box-shadow: 0 7px 0 #883be5;
+}
+
+a.btn--circle:first-child {
+    margin-left: 400px;
+}
+
+a.btn--circle i {
+    margin-top: 15px;
+    font-size: 200%;
+}
+
+a.btn--circle p {
+    margin-top: 25px;
+}
+
+.fa-position-bottom {
+    position: absolute;
+    bottom: 1rem;
+    left: calc(50% - 0.5rem);
+}
+
+a.btn--circle:hover {
+    -webkit-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+    color: #fff;
+    -webkit-box-shadow: 0 3px 0 #e53b4e;
+    box-shadow: 0 3px 0 #e53b4e;
+}

@@ -75,7 +75,21 @@ function sendQuickAccesses()
     generateAccessItem("report", "Functions/Attendance/WebAttendance/WebAttendance.php", "fas fa-user-alt-slash", "欠席申請をする");
     generateAccessItem("mailbox", "Functions/Mail/Mail.php", "fas fa-envelope", "メールボックス");
     generateAccessItem("record", "Functions/Profile/Record.php", "fas fa-calendar-week", "履歴を見る");
-    generateAccessItem("test", "Functions/Staff/UserList.php", "fas fa-id-card", "ユーザー欄");
+    generateAccessItem("test", "Functions/Staff/Index.php", "fas fa-user-graduate", "スタッフ用サイトへ");
+
+    echo '</div>
+        </div>';
+}
+
+function sendQuickAccessesForStaff()
+{
+    echo '<div class="access">
+            <h3 class="access-title">クイックアクセス</h3>
+            <div class="item">';
+
+    generateAccessItem("index", "/ACSystem/Index.php", "fas fa-home", "ホームに戻る");
+    generateAccessItem("userlist", "/ACSystem/Functions/Staff/Functions/UserList.php", "fas fa-id-card", "ユーザー欄");
+    generateAccessItem("test", "#", "", "出欠申請を見る");
 
     echo '</div>
         </div>';
