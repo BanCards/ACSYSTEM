@@ -35,13 +35,7 @@ $_SESSION['editItem'] = $item;
 
           <div class="form-item_required">
             <?php
-            if ($item == "card_id_info") {
-              echo "現在の値 : " . getLoginUserCard();
-            } else if ($item == "class_info") {
-              echo "現在の値 : " . getLoginUserClass();
-            } else if ($item == "name_info") {
-              echo "現在の値 : " . getLoginUserName();
-            } else if ($item == "email_info") {
+            if ($item == "email_info") {
               echo "現在の値 : " . getLoginUserEmail();
             } else if ($item == "password_info") {
               echo "<input type='password' name='current-item-value' value='' minlength='8' maxlength='16' placeholder='現在の値' />";
