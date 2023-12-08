@@ -27,20 +27,29 @@ parentSelect.addEventListener("change", function () {
             absentReason.style.display = "inline-block";
             absentReason.name = 'reason';
             break;
+
         case "lateness":
             const latenessReason = document.querySelector(".lateness-reason");
             latenessReason.style.display = "inline-block";
             latenessReason.name = 'reason';
             break;
+
         case "leave_early":
             const leaveEarlyReason = document.querySelector(".leave_early-reason");
             leaveEarlyReason.style.display = "inline-block";
             leaveEarlyReason.name = 'reason';
             break;
+
         case "official_absence":
             const officialAbsenceReason = document.querySelector(".official_absence-reason");
             officialAbsenceReason.style.display = "inline-block";
             officialAbsenceReason.name = 'reason';
+            break;
+
+        case "other":
+            const otherReason = document.querySelector(".other-reason");
+            otherReason.style.display = "inline-block";
+            otherReason.name = 'reason';
             break;
     }
 });

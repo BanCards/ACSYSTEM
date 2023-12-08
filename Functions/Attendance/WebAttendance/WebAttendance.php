@@ -69,6 +69,11 @@ if (!(isLoggedIn())) {
                                 <option value="academic_research">学校行事</option>
                             </select>
 
+                            <select class="other-reason" name="" required>
+                                <option value="mourning">忌引き</option>
+                                <option value="attend_stop">出席停止</option>
+                            </select>
+
                         </div>
 
                         <div class="attendance-item">
