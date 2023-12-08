@@ -84,6 +84,7 @@ function translate($item): string
         'lateness' => '遅刻',
         'leave_early' => '早退',
         'official_absence' => '公欠',
+        'other' => '欠席の情報',
         'illness' => '病気',
         'accident' => '事故',
         'traffic_issues' => '交通の問題',
@@ -93,6 +94,8 @@ function translate($item): string
         'scheduled_appointment' => '必要な予定',
         'company_visit' => '企業に関する事情',
         'academic_research' => '学校行事',
+        'mourning' => '忌引き',
+        'attend_stop' => '出席停止',
         'card_id_info' => 'カード情報',
         'class_info' => 'クラス情報',
         'name_info' => '名前情報',
@@ -101,5 +104,5 @@ function translate($item): string
         'password_info' => 'パスワード情報',
     ];
 
-    return $translations[$item] ?? '';
+    return $translations[$item] ?? '(翻訳エラー)';
 }
