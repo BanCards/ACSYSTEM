@@ -17,7 +17,7 @@ function getDatabaseConnection(): PDO
     */
 
     $hostname = "localhost";
-    $database = "acsystem";
+    $database = "mtdacsystem_acsystem";
     $mysql_user = "root";
     $mysql_password = '';
     $dsn = "mysql:dbname=$database;host=$hostname;";
