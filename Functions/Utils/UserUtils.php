@@ -80,7 +80,7 @@ function getUserByCardID($card_id): ?array
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $result;
+        return $result ? $result : null;
     } catch (PDOException $e) {
         setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
         error_log("ACSystem Error: " . $e->getMessage());
@@ -106,7 +106,7 @@ function getAllUserList(): ?array
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $result;
+        return $result ? $result : null;
     } catch (PDOException $e) {
         setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
         error_log("ACSystem Error: " . $e->getMessage());
@@ -194,7 +194,7 @@ function registerAttend($user_id, $is_request, $timestamp, $status, $comment): v
         $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
-            setSuccess("出席処理が完了しました");
+            header('Location: /ACSystem/Functions/Attendance/DirectAttendance/Attended.php');
             return;
         } else {
             setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA");

@@ -7,7 +7,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
  *
  *  System for school.
  *
- *  @version 2.1.0
+ *  @version 2.1.1
  *  @author BanCards
  *  @link https://github.com/BanCards/ACSystem
  */
