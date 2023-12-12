@@ -73,7 +73,7 @@ function sendQuickAccesses()
 
     generateAccessItem("record", "Functions/Attendance/DirectAttendance/DirectAttendance.php", "fas fa-user-alt", "出席する");
     generateAccessItem("report", "Functions/Attendance/WebAttendance/WebAttendance.php", "fas fa-user-alt-slash", "欠席申請をする");
-    generateAccessItem("mailbox", "Functions/Mail/Mail.php", "fas fa-envelope", "メールボックス");
+    generateAccessItem("mailbox", "Functions/Attendance/DirectAttendance/Attended.php", "fas fa-envelope", "Attended");
     generateAccessItem("record", "Functions/Profile/Record.php", "fas fa-calendar-week", "履歴を見る");
     generateAccessItem("test", "Functions/Staff/Index.php", "fas fa-user-graduate", "スタッフ用サイトへ");
 
