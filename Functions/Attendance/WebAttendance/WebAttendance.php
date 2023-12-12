@@ -67,6 +67,7 @@ if (!(isLoggedIn())) {
                             <select class="official_absence-reason" name="" required>
                                 <option value="company_visit">企業に関する事情</option>
                                 <option value="academic_research">学校行事</option>
+                                <option value="certification_examination">資格試験</option>
                             </select>
 
                             <select class="other-reason" name="" required>

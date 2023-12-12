@@ -94,6 +94,7 @@ function translate($item): string
         'scheduled_appointment' => '必要な予定',
         'company_visit' => '企業に関する事情',
         'academic_research' => '学校行事',
+        'certification_examination' => '資格試験',
         'mourning' => '忌引き',
         'attend_stop' => '出席停止',
         'card_id_info' => 'カード情報',
