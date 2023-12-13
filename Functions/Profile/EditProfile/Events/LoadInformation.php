@@ -1,6 +1,5 @@
 <?php
 include('../../../Utils/Utils.php');
-session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 $key = str_replace('_info', '', $_SESSION['editItem']);
 $value = $_POST['new-item-value'];

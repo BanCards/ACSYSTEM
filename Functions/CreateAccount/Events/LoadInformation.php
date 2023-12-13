@@ -1,6 +1,5 @@
 <?php
 include('../../Utils/Utils.php');
-session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 //入力値受け取り
 $cardID = $_SESSION['cardID'];

@@ -1,7 +1,4 @@
-<?php
-include('../Utils/Utils.php');
-session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
-?>
+<?php include('../../Utils/Utils.php') ?>
 
 <!DOCTYPE html>
 <html lang="ja">

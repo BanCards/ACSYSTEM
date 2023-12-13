@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * セッションの接続状態を確認
+ *
+ * @return boolean
+ */
+function isSessionOnline()
+{
+    session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
+}
+
+/**
  * ログイン状態か判断する関数
  *
  * @return boolean

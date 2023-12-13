@@ -3,7 +3,8 @@ include('DatabaseUtils.php');
 include('LayoutUtils.php');
 include('SessionUtils.php');
 include('UserUtils.php');
-session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
+
+isSessionOnline();
 
 /**
  * 現在時刻を取得する関数
