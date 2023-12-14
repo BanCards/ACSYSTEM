@@ -1,7 +1,4 @@
-<?php
-include('../../Utils/Utils.php');
-session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
-?>
+<?php include('../../Utils/Utils.php') ?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -21,18 +18,17 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
     <!-- メイン -->
     <div class="main">
-      <div class="form">
-        <h1 class="attendance-title">カードで出席</h1>
-
+      <div class="dummy_form">
         <form class="attendance-form" action="Events/LoadInformation.php" method="post">
-          <div class="form-item_required">
-            <input type="text" name="cardID" id="cardID" pattern="[0-9]*" placeholder="カードを読み込ませてください" />
-          </div>
+          <input type="text" name="cardID" id="cardID" pattern="[0-9]*" placeholder="カードを読み込ませてください" />
         </form>
+      </div>
+      <div class="image">
+        <img src="../../../Images/ICTouch.png">
       </div>
     </div>
 
-    <!-- フッター -->
+    <!-- フッター -->s
     <?php sendFooters() ?>
 
   </div>
