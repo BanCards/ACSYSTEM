@@ -1,7 +1,4 @@
-<?php
-include('../../Utils/Utils.php');
-session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
-?>
+<?php include('../../Utils/Utils.php') ?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -25,7 +22,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
             <div class="form">
                 <div class="title">出席しました!</div>
-                <div class="message">...<div id="countdown"></div>秒後に自動で戻ります。</div>
+                <div class="message">...<div id="countdown"></div>秒後 に自動で戻ります。</div>
             </div>
 
         </div>
