@@ -89,7 +89,7 @@ function sendQuickAccessesForStaff()
 
     generateAccessItem("index", "/ACSystem/Index.php", "fas fa-home", "ホームに戻る");
     generateAccessItem("userlist", "/ACSystem/Functions/Staff/Functions/UserList.php", "fas fa-id-card", "ユーザー欄");
-    generateAccessItem("test", "#", "", "出欠申請を見る");
+    generateAccessItem("test", "/ACSystem/Functions/Staff/Functions/EditUserProfile/EditRecord.php", "", "出欠申請を見る");
 
     echo '</div>
         </div>';
