@@ -28,7 +28,7 @@ $_SESSION['cardID'] = $_POST['cardID'];
 
             <div class="form">
                 <h1 class="createAccount-title">アカウント作成</h1>
-                <form class="createAccount-form" action="Events/LoadInformation.php" method="post">
+                <form class="createAccount-form" action="Events/LoadInformation.php" method="post" id="createAccount-form">
 
                     <div class="form-item_required">
                         <div class="accountIndex">
@@ -46,7 +46,7 @@ $_SESSION['cardID'] = $_POST['cardID'];
                     </div>
 
                     <div class="form-item_required">
-                        <input type="text" name="name" value="" minlength="3" maxlength="64" placeholder="ユーザー名" />
+                        <input type="text" name="name" value="" placeholder="ユーザー名 (2文字～16文字)" />
                     </div>
 
                     <div class="form-item_required">
@@ -54,11 +54,11 @@ $_SESSION['cardID'] = $_POST['cardID'];
                     </div>
 
                     <div class="form-item_required">
-                        <input type="password" name="password" value="" minlength="8" maxlength="64" placeholder="パスワード" />
+                        <input type="password" name="password" value="" placeholder="パスワード (8文字～32文字)" />
                     </div>
 
                     <div class="form-item_required">
-                        <input type="password" name="rePassword" value="" minlength="8" maxlength="64" placeholder="再パスワード" />
+                        <input type="password" name="confirm_password" value="" placeholder="確認用パスワード (8文字～32文字)" />
                     </div>
 
                     <div class="submit-button">
@@ -86,6 +86,11 @@ $_SESSION['cardID'] = $_POST['cardID'];
         <?php sendFooters() ?>
 
     </div>
+
+    <div class="pop"></div>
+
+    <script src="/ACSystem/JavaScript/PopUp.js"></script>
+    <script src="JavaScript/ValidateCheck.js"></script>
 </body>
 
 </html>

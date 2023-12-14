@@ -7,26 +7,9 @@ $class = $_POST['class'];
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-$repassword = $_POST['rePassword'];
+$repassword = $_POST['confirm_password'];
 
 unset($_SESSION['cardID']);
-
-if (isEmptyItems($name, $email, $password)) return;
-
-if (mb_strlen($name) > 32) {
-    setError("名前が長すぎます。", "32字以内に収めてください。", "13LN");
-    return;
-}
-
-if (mb_strlen($password) > 32) {
-    setError("パスワードが長すぎます。", "32字以内に収めてください。", "13LP");
-    return;
-}
-
-if (!($password === $repassword)) {
-    setError("パスワードが一致しません。", "パスワードをご確認の上、再度記入してください。", "13IP");
-    return;
-}
 
 if (isDuplicatedRecord("users", "card_id", $cardID)) {
     setError("カード情報が既に登録されています。", "使用されているアカウント番号 : <strong>" . $cardID . "</strong>", "11C");
