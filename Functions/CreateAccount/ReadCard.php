@@ -1,4 +1,4 @@
-<?php include('../../Utils/Utils.php') ?>
+<?php include('../Utils/Utils.php') ?>
 
 <!DOCTYPE html>
 <html lang="ja">
