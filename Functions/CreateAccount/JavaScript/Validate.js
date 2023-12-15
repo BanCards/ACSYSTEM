@@ -1,5 +1,5 @@
-var form = document.getElementById('createAccount-form');
-var pop;
+let form = document.getElementById('createAccount-form');
+let pop;
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
