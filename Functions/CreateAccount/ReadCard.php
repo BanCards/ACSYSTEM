@@ -18,17 +18,13 @@
 
     <!-- メイン -->
     <div class="main">
-      <div class="form">
-        <h1 class="readCard-title">カード情報登録</h1>
-        <form class="createAccount-form" action="CreateAccount.php" method="post">
-          <div class="form-item_required">
-            <input type="text" name="cardID" id="cardID" pattern="[0-9]*" placeholder="カードを読み込ませてください" />
-          </div>
-
-          <div class="submit-button">
-            <button type="submit">登録</button>
-          </div>
+      <div class="dummy_form">
+        <form class="createAccount-form" action="CreateAccount.php" method="post" id="createAccount-readCard">
+          <input type="text" name="cardID" id="cardID" pattern="[0-9]*" />
         </form>
+      </div>
+      <div class="image">
+        <img src="../../Images/ICTouch.png">
       </div>
     </div>
 
@@ -39,6 +35,7 @@
 
   <script src="JavaScript/ConvertHalfWidth.js"></script>
   <script src="JavaScript/EnableKeyInput.js"></script>
+  <script src="JavaScript/DisableAutoComplete.js"></script>
 </body>
 
 </html>
