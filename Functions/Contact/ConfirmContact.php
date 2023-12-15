@@ -59,6 +59,10 @@ $_SESSION['contactContents'] = htmlspecialchars($_GET['contactContents'], ENT_QU
 
     </div>
 
+    <div class="pop"></div>
+
+    <script src="../../JavaScript/DisableAutoComplete.js"></script>
+    <script src="../../JavaScript/PopUp.js"></script>
 </body>
 
 </html>

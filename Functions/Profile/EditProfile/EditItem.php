@@ -72,13 +72,14 @@ $_SESSION['editItem'] = $item;
 
     <?php
     if ($item == "password_info")
-      echo
-      "
-      <div class='pop'></div>
-      <script src='../../../JavaScript/PopUp.js'></script>
-        <script src='JavaScript/Validate.js'></script>";
+      echo "<script src='JavaScript/Validate.js'></script>";
     ?>
   </div>
+
+  <div class="pop"></div>
+
+  <script src="../../../JavaScript/DisableAutoComplete.js"></script>
+  <script src="../../../JavaScript/PopUp.js"></script>
 </body>
 
 </html>

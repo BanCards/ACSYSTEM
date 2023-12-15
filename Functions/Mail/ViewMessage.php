@@ -58,6 +58,11 @@ if ($mail['is_read'] == false) updateQuery("mailbox", "is_read", "true", $_POST[
         <?php sendFooters() ?>
 
     </div>
+
+    <div class="pop"></div>
+
+    <script src="../../JavaScript/DisableAutoComplete.js"></script>
+    <script src="../../JavaScript/PopUp.js"></script>
 </body>
 
 </html>

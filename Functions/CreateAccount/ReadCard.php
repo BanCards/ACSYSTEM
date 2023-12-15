@@ -33,9 +33,12 @@
 
   </div>
 
+  <div class="pop"></div>
+
+  <script src="../../JavaScript/DisableAutoComplete.js"></script>
+  <script src="../../JavaScript/PopUp.js"></script>
   <script src="JavaScript/ConvertHalfWidth.js"></script>
   <script src="JavaScript/EnableKeyInput.js"></script>
-  <script src="JavaScript/DisableAutoComplete.js"></script>
 </body>
 
 </html>

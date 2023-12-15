@@ -91,6 +91,11 @@ $uuid = $_POST['uuid'];
         <?php sendFooters() ?>
 
     </div>
+
+    <div class="pop"></div>
+
+    <script src="../../../JavaScript/DisableAutoComplete.js"></script>
+    <script src="../../../JavaScript/PopUp.js"></script>
 </body>
 
 </html>

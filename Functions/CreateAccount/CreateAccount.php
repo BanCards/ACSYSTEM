@@ -89,8 +89,10 @@ $_SESSION['cardID'] = $_POST['cardID'];
 
     <div class="pop"></div>
 
+    <script src="../../JavaScript/DisableAutoComplete.js"></script>
+    <script src="../../JavaScript/PopUp.js"></script>
     <script src="/ACSystem/JavaScript/PopUp.js"></script>
-    <script src="JavaScript/ValidateCheck.js"></script>
+    <script src="JavaScript/Validate.js"></script>
 </body>
 
 </html>

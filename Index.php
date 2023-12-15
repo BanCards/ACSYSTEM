@@ -7,7 +7,7 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
  *
  *  System for school.
  *
- *  @version 2.1.3
+ *  @version 2.2.3
  *  @author BanCards
  *  @link https://github.com/BanCards/ACSystem
  */
@@ -47,6 +47,10 @@ session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
   </div>
 
+  <div class="pop"></div>
+
+  <script src="JavaScript/PopUp.js"></script>
+  <script src="JavaScript/DisableAutoComplete.js"></script>
 </body>
 
 </html>
