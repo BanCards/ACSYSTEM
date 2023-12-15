@@ -25,47 +25,34 @@ $_SESSION['editItem'] = $item;
     <div class="main">
       <div class="form" id="new-item-form">
 
-        <form action="Events/LoadInformation.php" method="POST">
+        <form action="Events/LoadInformation.php" method="POST" id="newItem-form">
           <h1 class="profile-title"><?php echo getLoginUserName() ?>のプロフィールを編集</h1>
 
           <div class="profile-item" id="new-item-value">
             新しい<?php echo translate($item) ?>を設定してください
           </div>
 
-          <div class="form-item_required">
+          <div class="form-item_required editItem">
             <?php
-            if ($item == "email_info") {
+            if ($item == "email_info")
               echo "現在の値 : " . getLoginUserEmail();
-            } else if ($item == "password_info") {
-              echo "<input type='password' name='current-item-value' value='' minlength='8' maxlength='16' placeholder='現在の値' />";
-            }
+            else if ($item == "password_info")
+              echo "<input type='password' name='current-item-value' value='' placeholder='現在の値' />";
             ?>
           </div>
 
-          <div class="form-item_required" id="item-value">
+          <div class="form-item_required editItem" id="item-value">
 
             <?php
-            if ($item == "card_id_info") {
-              echo "<input type='text' name='new-item-value' value='' id='cardID' pattern='[0-9]*' placeholder='新しいカード情報を読み込み' />";
-            } else if ($item == "class_info") {
-              echo
-              "<select name='new-item-value' required>
-                <option value='1B'>1年B組</option>
-                <option value='2B'>2年B組</option>
-              </select>";
-            } else if ($item == "name_info") {
-              echo "<input type='text' name='new-item-value' value='' minlength='3' maxlength='16' placeholder='新しい値' />";
-            } else if ($item == "email_info") {
+            if ($item == "email_info")
               echo "<input type='email' name='new-item-value' value='' pattern='[\\w\\-._]+@[\\w\\-._]+\\.[A-Za-z]+'' placeholder='新しい値' />";
-            } else if ($item == "password_info") {
-              echo "<input type='password' name='new-item-value' value='' minlength='8' maxlength='16' placeholder='新しい値' />";
-            }
+            else if ($item == "password_info")
+              echo "<input type='password' name='new-item-value' value='' placeholder='新しい値' />";
             ?>
 
           </div>
 
           <div class="attendance-items">
-
             <div class="submit-button">
               <a href="SelectEditItem.php"><button type="button" id="cancel-edit">キャンセル</button></a>
             </div>
@@ -73,7 +60,6 @@ $_SESSION['editItem'] = $item;
             <div class="submit-button">
               <button type="submit">決定</button>
             </div>
-
           </div>
 
         </form>
@@ -84,6 +70,14 @@ $_SESSION['editItem'] = $item;
     <!-- フッター -->
     <?php sendFooters() ?>
 
+    <?php
+    if ($item == "password_info")
+      echo
+      "
+      <div class='pop'></div>
+      <script src='../../../JavaScript/PopUp.js'></script>
+        <script src='JavaScript/Validate.js'></script>";
+    ?>
   </div>
 </body>
 

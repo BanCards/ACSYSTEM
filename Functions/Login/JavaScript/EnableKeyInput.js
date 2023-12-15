@@ -1,4 +1,9 @@
+let element = document.getElementById('name');t
+
 window.onload = function () {
-    var element = document.getElementById('name');
     element.focus();
-}
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    element.focus();
+})

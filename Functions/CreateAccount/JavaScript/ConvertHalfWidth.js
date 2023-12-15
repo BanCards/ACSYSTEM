@@ -1,11 +1,15 @@
-// イベントリスナーを追加して入力値を半角に変換
-document.getElementById('cardID').addEventListener('input', function () {
-    var inputValue = this.value;
-    var halfWidthValue = convertToHalfWidth(inputValue);
-    this.value = halfWidthValue;
+let input_element = document.getElementById('createAccount-readCard').cardID;
+
+input_element.addEventListener('input', function () {
+    input_element.value = convertToHalfWidth(input_element.value);
 });
 
-// 文字列を半角に変換する関数
+/**
+ * 全角入力を半角に戻す
+ *
+ * @param {string} str
+ * @returns
+ */
 function convertToHalfWidth(str) {
     return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
         return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
