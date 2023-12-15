@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('../../Utils/Utils.php');
 
 if (!(isLoggedIn())) {
