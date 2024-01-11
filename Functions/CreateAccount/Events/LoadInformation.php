@@ -4,7 +4,8 @@ include('../../Utils/Utils.php');
 //入力値受け取り
 $cardID = $_SESSION['cardID'];
 $class = $_POST['class'];
-$name = $_POST['name'];
+$upper_name = $_POST['upper_name'];
+$lower_name = $_POST['lower_name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $repassword = $_POST['confirm_password'];
@@ -21,6 +22,7 @@ if (isDuplicatedRecord("users", "email", $email)) {
     return;
 }
 
+$name = $upper_name . " " . $lower_name;
 $res = createAccount($cardID, $class, $name, $email, $password);
 
 if ($res) {

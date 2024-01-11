@@ -31,14 +31,6 @@ $_SESSION['cardID'] = $_POST['cardID'];
                 <form class="createAccount-form" action="Events/LoadInformation.php" method="post" id="createAccount-form">
 
                     <div class="form-item_required">
-                        <div class="accountIndex">
-                            アカウント番号 : <strong class="AccountIndexHolder">
-                                <?php echo $_POST['cardID']; ?>
-                            </strong>
-                        </div>
-                    </div>
-
-                    <div class="form-item_required">
                         <select name="class" required>
                             <option value="1B">1年B組</option>
                             <option value="2B">2年B組</option>
@@ -46,7 +38,11 @@ $_SESSION['cardID'] = $_POST['cardID'];
                     </div>
 
                     <div class="form-item_required">
-                        <input type="text" name="name" value="" placeholder="ユーザー名 (2文字～16文字)" />
+                        <input type="text" name="upper_name" value="" placeholder="性 (例 : 田中)" />
+                    </div>
+
+                    <div class="form-item_required">
+                        <input type="text" name="lower_name" value="" placeholder="名 (例 : 太郎)" />
                     </div>
 
                     <div class="form-item_required">
@@ -65,17 +61,9 @@ $_SESSION['cardID'] = $_POST['cardID'];
                         <button type="submit" name="createAccountButton" class="createAccountButton">作成</button>
                     </div>
 
-                    <div class="createAccount-items">
-
-                        <div class="createAccount-item">
-                            <a href="ReadCard.php"><button type="button" class="loginButton">カード再読み込み</button></a>
-                        </div>
-
-                        <div class="createAccount-item">
-                            <a href="../Login/Login.php">
-                                <button type="button" class="loginButton">ログイン</button></a>
-                        </div>
-                    </div>
+                    <a href="../Login/Login.php">
+                        <button type="button" class="loginButton">ログイン</button>
+                    </a>
 
                 </form>
             </div>
@@ -92,7 +80,7 @@ $_SESSION['cardID'] = $_POST['cardID'];
     <script src="../../JavaScript/DisableAutoComplete.js"></script>
     <script src="../../JavaScript/PopUp.js"></script>
     <script src="/ACSystem/JavaScript/PopUp.js"></script>
-    <script src="JavaScript/Validate.js"></script>
+    <script src="JavaScript/ValidateAccount.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-let element = document.getElementById('name');t
+let element = document.getElementById('name');
 
 window.onload = function () {
     element.focus();
