@@ -25,7 +25,7 @@
                 <form class="login-form" action="Events/LoadInformation.php" method="post">
 
                     <div class="form-item_required">
-                        <input type="text" name="name" value="" maxlength="64" id="name" placeholder="ユーザー名" />
+                        <input type="text" name="email" value="" maxlength="64" id="name" placeholder="メールアドレス" />
                     </div>
 
                     <div class="form-item_required">

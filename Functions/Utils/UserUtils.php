@@ -90,6 +90,36 @@ function getUserByCardID($card_id): ?array
 }
 
 /**
+ * メールアドレスと一致するユーザーを取得する関数
+ *
+ * @param string $email_address
+ * @return array|null
+ */
+function getUserByEmail($email_address): ?array
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return null;
+
+    try {
+        $query = "SELECT * FROM users WHERE email = :mail";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':mail', $email_address, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result ? $result : null;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+
+    return null;
+}
+
+/**
  * 登録されているユーザーを全取得する関数
  *
  * @return array|null

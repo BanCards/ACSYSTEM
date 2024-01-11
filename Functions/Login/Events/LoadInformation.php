@@ -2,7 +2,7 @@
 include('../../Utils/Utils.php');
 
 //入力値受け取り
-$name = $_POST['name'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
 //リクエストメソッドを確認
@@ -12,32 +12,16 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 }
 
 //空白文字チェック
-if (isEmptyItems($name, $password)) return;
+if (isEmptyItems($email, $password)) return;
 
-$pdo = getDatabaseConnection();
+$user = getUserByEmail($email);
 
-if (!$pdo) return;
-
-$table = "users";
-$nameColumn = "name";
-$passwordColumn = "password";
-
-$query = "SELECT * FROM $table WHERE $nameColumn = :nameValue AND $passwordColumn = :passwordValue";
-$stmt = $pdo->prepare($query);
-$stmt->bindValue(':nameValue', $name, PDO::PARAM_STR);
-$stmt->bindValue(':passwordValue', md5($password), PDO::PARAM_STR);
-$stmt->execute();
-
-// 結果を取得
-$result = $stmt->fetch();
-
-//一致する結果が存在するかどうか確認
-if (!($result)) {
-    setError("ユーザー名またはパスワードが間違っています。", "もう一度ご確認ください。", "13L");
+if (!$user) {
+    setError("メールアドレスまたはパスワードが間違っています", "もう一度ご確認ください。", "13L");
     return;
 }
 
 //ログイン情報をセッション間で引き渡す。
-login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
+login($user['id'], $user['card_id'], $user['class'], $user['name'], $user['email'], $user['role']);
 
 setSuccess("ログインしました");
