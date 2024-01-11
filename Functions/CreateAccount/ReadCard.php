@@ -20,7 +20,7 @@
     <div class="main">
       <div class="dummy_form">
         <form class="createAccount-form" action="CreateAccount.php" method="post" id="createAccount-readCard">
-          <input type="text" name="cardID" id="cardID" pattern="[0-9]*" />
+          <input type="number" name="cardID" id="cardID" />
         </form>
       </div>
       <div class="image">
@@ -39,6 +39,7 @@
   <script src="../../JavaScript/PopUp.js"></script>
   <script src="JavaScript/ConvertHalfWidth.js"></script>
   <script src="JavaScript/EnableKeyInput.js"></script>
+  <script src="JavaScript/ValidateCard.js"></script>
 </body>
 
 </html>
