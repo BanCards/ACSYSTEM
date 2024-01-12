@@ -224,8 +224,13 @@ function registerAttend($user_id, $is_request, $timestamp, $status, $comment): v
         $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
-            header('Location: /ACSystem/Functions/Attendance/DirectAttendance/Attended.php');
-            return;
+            if ($is_request) {
+                setSuccess("申請が完了しました。");
+                return;
+            } else {
+                header('Location: /ACSystem/Functions/Attendance/DirectAttendance/Attended.php');
+                return;
+            }
         } else {
             setError("実行中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "13CA");
             return;
@@ -236,12 +241,6 @@ function registerAttend($user_id, $is_request, $timestamp, $status, $comment): v
 
         return;
     }
-}
-
-function requestAttend($user_id, $timestamp, $status, $comment): void
-{
-    $pdo = getDatabaseConnection();
-    if (!$pdo) return;
 }
 
 /**
@@ -264,6 +263,28 @@ function getAttend($uuid): ?array
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
+function isRequesting($uuid)
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return null;
+
+    try {
+        $query = "SELECT is_request FROM attendance WHERE user_id = :user_id AND DATE(timestamp) = CURDATE()";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':user_id', $uuid, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result ? true : false;
     } catch (PDOException $e) {
         setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
         error_log("ACSystem Error: " . $e->getMessage());
