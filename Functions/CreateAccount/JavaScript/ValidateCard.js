@@ -1,4 +1,4 @@
-let form = document.getElementById('createAccount-readCard');
+let form = document.getElementById('createAccount-readCard-form');
 let pop;
 
 form.addEventListener('submit', function (event) {
@@ -15,6 +15,7 @@ form.addEventListener('submit', function (event) {
 function validate() {
     if(form.cardID.value.length < 1) {
         pop = new PopUp("読み込みエラー","再度カードを読み込んでください。");
+        return false;
     }
 
     return true;

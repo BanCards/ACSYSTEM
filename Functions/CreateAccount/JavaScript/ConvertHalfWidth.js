@@ -1,4 +1,4 @@
-let input_element = document.getElementById('createAccount-readCard').cardID;
+let input_element = document.getElementById('createAccount-readCard-form').cardID;
 
 input_element.addEventListener('input', function () {
     input_element.value = convertToHalfWidth(input_element.value);

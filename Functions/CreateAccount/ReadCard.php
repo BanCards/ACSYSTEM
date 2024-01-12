@@ -19,7 +19,7 @@
     <!-- メイン -->
     <div class="main">
       <div class="dummy_form">
-        <form class="createAccount-form" action="CreateAccount.php" method="post" id="createAccount-readCard">
+        <form class="createAccount-form" action="CreateAccount.php" method="post" id="createAccount-readCard-form">
           <input type="number" name="cardID" id="cardID" />
         </form>
       </div>
