@@ -16,7 +16,7 @@ if (isEmptyItems($email, $password)) return;
 
 $user = getUserByEmail($email);
 
-if (!$user) {
+if (!$user || ($user['password'] != hashingItem($password))) {
     setError("メールアドレスまたはパスワードが間違っています", "もう一度ご確認ください。", "13L");
     return;
 }

@@ -22,7 +22,7 @@
 
             <div class="form">
                 <h1 class="login-title">ログイン</h1>
-                <form class="login-form" action="Events/LoadInformation.php" method="post">
+                <form class="login-form" action="Events/LoadInformation.php" method="post" id="login-form">
 
                     <div class="form-item_required">
                         <input type="text" name="email" value="" maxlength="64" id="name" placeholder="メールアドレス" />
@@ -56,6 +56,7 @@
     <script src="../../JavaScript/DisableAutoComplete.js"></script>
     <script src="../../JavaScript/PopUp.js"></script>
     <script src="JavaScript/EnableKeyInput.js"></script>
+    <script src="JavaScript/ValidateInput.js"></script>
 </body>
 
 </html>
