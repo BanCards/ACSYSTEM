@@ -3,7 +3,7 @@ include('Functions/Utils/Utils.php');
 session_status() == PHP_SESSION_NONE ? session_start() : sleep(0);
 
 /**
- *  CopyRight, © 2023 Attendance Check System by ACSystem Team All rights reserved.
+ *  * CopyRight, © 2023 Attendance Check System by ACSystem Team All rights reserved.
  *
  *  System for school.
  *
