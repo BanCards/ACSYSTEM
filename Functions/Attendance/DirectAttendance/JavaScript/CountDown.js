@@ -1,4 +1,4 @@
-let time = 4;
+let time = 3;
 
 function printCount() {
     var element = document.getElementById("countdown");

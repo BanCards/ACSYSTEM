@@ -25,6 +25,18 @@
     justify-content: center;
 }
 
+#error {
+    height: 232px;
+    border-radius: 6px 6px 0px 0px;
+    background-color: #bc2a2a;
+    color: #fafafa;
+    font-size: 3rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .message {
     height: 128px;
     border-radius: 6px 6px 0px 0px;

@@ -19,7 +19,7 @@
     <!-- メイン -->
     <div class="main">
       <div class="dummy_form">
-        <form class="attendance-form" action="Events/LoadInformation.php" method="post">
+        <form class="attendance-form" action="Events/LoadInformation.php" method="post" id="attendance-form">
           <input type="text" name="cardID" id="cardID" pattern="[0-9]*" placeholder="カードを読み込ませてください" />
         </form>
       </div>
@@ -39,6 +39,7 @@
   <script src="../../../JavaScript/PopUp.js"></script>
   <script src="JavaScript/ConvertHalfWidth.js"></script>
   <script src="JavaScript/EnableKeyInput.js"></script>
+  <script src="JavaScript/ValidateCard.js"></script>
 </body>
 
 </html>
