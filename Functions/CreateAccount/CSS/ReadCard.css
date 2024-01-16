@@ -7,12 +7,23 @@
     margin-bottom: 200px;
     opacity: 0;
 }
-.image {
-    text-align: center;
+
+img {
+    position: absolute;
+    left: 30%;
 }
 
-.image img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 50px;
+.loading-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    position: relative;
+    overflow: hidden;
 }
