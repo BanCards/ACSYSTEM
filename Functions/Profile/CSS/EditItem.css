@@ -57,7 +57,7 @@
 }
 
 .form-item_required:first-of-type {
-  margin-top: 55px;
+  margin-top: 30px;
 }
 
 .attendance-items {
@@ -85,20 +85,6 @@ button:hover,
   background: #19a08c;
 }
 
-#edit-button {
-  color: blue;
-  float: right;
-}
-
-#current-item-value {
-  margin-top: 40px;
-}
-
-#new-item-value {
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
-
 input {
   font-size: 1.1em;
   padding: 18px 55px 18px;
@@ -110,28 +96,18 @@ input {
   max-width: 600px;
 }
 
-select {
-  width: 78%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #333;
-  cursor: pointer;
+#current-email,#update-message {
+  font-size: 1.1em;
+  padding: 22px 55px 18px;
+  font-family: "Source Sans Pro", arial, sans-serif;
+  border: none;
+  background: #d7d7d7;
+  height: 100%;
+  width: 61.5%;
+  max-width: 600px;
 }
 
-select:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
-}
-
-select option {
-  background-color: #fff;
-  color: #333;
-  padding: 5px;
-}
-
-#item-value {
-  margin-top: 25px;
+#cancel-edit-button {
+  background-color: #bc2a2a;
+  border-color: #bc2a2a;
 }
