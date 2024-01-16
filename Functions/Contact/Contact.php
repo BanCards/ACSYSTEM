@@ -27,7 +27,7 @@ if (!(isLoggedIn())) {
     <div class="main">
       <div class="form">
         <h1 class="contact-title">コンタクト</h1>
-        <form class="contact-form" action="ConfirmContact.php" method="GET">
+        <form class="contact-form" action="ConfirmContact.php" method="GET" id="contact-form">
 
           <div class="form-item_required">
             <input type="text" name="contactTitle" value="" placeholder="タイトル" maxlength="30">
@@ -53,6 +53,7 @@ if (!(isLoggedIn())) {
 
   <script src="../../JavaScript/DisableAutoComplete.js"></script>
   <script src="../../JavaScript/PopUp.js"></script>
+  <script src="JavaScript/ValidateContact.js"></script>
 </body>
 
 </html>

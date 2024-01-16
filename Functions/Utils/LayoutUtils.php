@@ -34,7 +34,7 @@ function sendHeaders(): void
                         </a>
                     </li>
                     <li class="contact">
-                        <a href="#">
+                        <a href="/ACSystem/Functions/Contact/Contact.php">
                             <i class="fas fa-info-circle"></i> コンタクト
                         </a>
                     </li>
@@ -132,6 +132,43 @@ function sendNotifications($notifications): void
 
     echo '  </ul>';
     echo '</div>';
+}
+
+//TODO LoadInformation -> name value
+function sendEditProfileItems($type)
+{
+    $types = ['email', 'password'];
+
+    if (!in_array($type, $types)) {
+        setError("セッションエラーが発生しました", "ACSystemチームまでご連絡ください。", "14S");
+        return false;
+    }
+
+    if ($type == 'email') {
+        echo '<div class="form-item_required" id="update-message">';
+        echo '新しいメールアドレス情報を設定してください' ;
+        echo '</div>';
+
+        echo '<div class="form-item_required" id="current-email">';
+        echo '現在のメールアドレス : ' . getLoginUserEmail();
+        echo '</div>';
+
+        echo '<div class="form-item_required">';
+        echo '<input type="mail" name="new_email" value="" pattern="[\w\-._]+@[\w\-._]+\.[A-Za-z]+" placeholder="メールアドレス" class="input_item"/>';
+        echo '</div>';
+    } else {
+        echo '<div class="form-item_required" id="update-message">';
+        echo '新しいパスワード情報を設定してください' ;
+        echo '</div>';
+
+        echo '<div class="form-item_required">';
+        echo '<input type="password" name="new_password" value="" placeholder="現在のパスワード (8文字～32文字)" class="input_item"/>';
+        echo '</div>';
+
+        echo '<div class="form-item_required">';
+        echo '<input type="password" name="confirm_password" value="" placeholder="新しいパスワード (8文字～32文字)" class="input_item"/>';
+        echo '</div>';
+    }
 }
 
 /**
