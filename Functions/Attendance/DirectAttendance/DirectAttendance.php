@@ -20,12 +20,11 @@
     <div class="main">
       <div class="dummy_form">
         <form class="attendance-form" action="Events/LoadInformation.php" method="post" id="attendance-form">
-          <input type="text" name="cardID" id="cardID" pattern="[0-9]*" placeholder="カードを読み込ませてください" />
+          <input type="number" name="cardID" id="cardID" />
         </form>
       </div>
-      <div class="image">
-        <img src="../../../Images/ICTouch.png">
-      </div>
+      <img src="../../../Images/read-card.png" alt="">
+      <div class="loading-message">カードを読み込んでください...</div>
     </div>
 
     <!-- フッター -->s
