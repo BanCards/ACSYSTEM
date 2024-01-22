@@ -4,7 +4,7 @@
 
 .form {
   max-width: 800px;
-  height: 580px;
+  height: 540px;
   margin: auto;
   text-align: center;
   -webkit-border-radius: 6px;
@@ -56,42 +56,27 @@
   margin-top: 35px;
 }
 
-.attendance-items {
+.user-profile-items {
   display: flex;
 }
 
 button {
+  margin-top: 40px;
+  margin-bottom: 25px;
+  margin-left: 150px;
   background-color: #2abca7;
-  padding: 20px 45px;
+  padding: 12px 45px;
   border-radius: 5px;
   border: 1px solid #2abca7;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   display: inline-block;
   cursor: pointer;
-  width: 30%;
   color: #fff;
+  height: 70px;
 }
 
 button:hover,
 .button:hover {
   background: #19a08c;
-}
-
-.b {
-  margin-top: 20px;
-}
-
-.a {
-  width: 200px;
-  margin-top: 25px;
-  margin-left: 135px;
-  background-color: #2abca7;
-  border-radius: 5px;
-  border: 1px solid #2abca7;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  display: inline-block;
-  cursor: pointer;
-  color: #fff;
 }

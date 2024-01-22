@@ -67,20 +67,16 @@ $uuid = $_POST['uuid'];
 
                     </div>
 
-                    <div class="attendance-items">
+                    <div class="user-profile-items">
 
-                        <div class="attendance-item">
+                        <div class="user-profile-item">
                             <button type="submit" class="a">出席状況を見る</button>
                         </div>
 
-                        <div class="attendance-item">
-                            <a href="#"><button type="button" class="a">プロフィール編集</button></a>
+                        <div class="user-profile-item">
+                            <a href="UserList.php"><button type="button" class="b">戻る</button></a>
                         </div>
 
-                    </div>
-
-                    <div class="back-button">
-                        <a href="UserList.php"><button type="button" class="b">戻る</button></a>
                     </div>
 
                 </div>
