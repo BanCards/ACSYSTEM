@@ -74,7 +74,9 @@ function sendQuickAccesses()
     generateAccessItem("record", "Functions/Attendance/DirectAttendance/DirectAttendance.php", "fas fa-user-alt", "出席する");
     generateAccessItem("report", "Functions/Attendance/WebAttendance/WebAttendance.php", "fas fa-user-alt-slash", "欠席申請をする");
     generateAccessItem("record", "Functions/Profile/Record.php", "fas fa-calendar-week", "履歴を見る");
-    generateAccessItem("test", "Functions/Staff/Index.php", "fas fa-user-graduate", "スタッフ用サイトへ");
+    if (isLoggedIn())
+        if (hasPermission(getLoginUUID()))
+            generateAccessItem("test", "Functions/Staff/Index.php", "fas fa-user-graduate", "スタッフ用サイトへ");
 
     echo '</div>
         </div>';
@@ -146,7 +148,7 @@ function sendEditProfileItems($type)
 
     if ($type == 'email') {
         echo '<div class="form-item_required" id="update-message">';
-        echo '新しいメールアドレス情報を設定してください' ;
+        echo '新しいメールアドレス情報を設定してください';
         echo '</div>';
 
         echo '<div class="form-item_required" id="current-email">';
@@ -158,7 +160,7 @@ function sendEditProfileItems($type)
         echo '</div>';
     } else {
         echo '<div class="form-item_required" id="update-message">';
-        echo '新しいパスワード情報を設定してください' ;
+        echo '新しいパスワード情報を設定してください';
         echo '</div>';
 
         echo '<div class="form-item_required">';

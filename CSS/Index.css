@@ -131,7 +131,7 @@ btn font {
 
 a.btn--circle {
   margin-top: 50px;
-  margin-right: 100px;
+  margin-right: 145px;
   width: 240px;
   height: 210px;
   padding: 20px 0 0;
@@ -157,10 +157,13 @@ a.btn--circle {
 #test {
   background: #8f68eb;
   box-shadow: 0 7px 0 #883be5;
+  width: 200px;
+  height: 170px;
+  margin-right: 10px;
 }
 
 a.btn--circle:first-child {
-  margin-left: 150px;
+  margin-left: 460px;
 }
 
 a.btn--circle i {
