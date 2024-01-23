@@ -58,7 +58,7 @@ $records = getAttend(getLoginUUID());
                                 echo "<tr class='table-content'>";
                                 foreach ($record as $key => $value) {
                                     if ($key === 'id' || $key === 'is_request') continue;
-                                    if ($key === 'status') $value = $record['is_request'] ? translate($value) . 'を申請中...'  : translate($value);
+                                    if ($key === 'status') $value = $record['is_request'] ? translate($value) . 'の情報を申請中...'  : translate($value);
                                     else if ($key === 'timestamp') $value = applyTimeFormat($value);
                                     else $value = translate($value);
                                     echo "<td class='record-item'>$value</td>";

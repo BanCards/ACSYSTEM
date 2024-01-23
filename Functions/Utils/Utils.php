@@ -85,7 +85,7 @@ function translate($item): string
         'lateness' => '遅刻',
         'leave_early' => '早退',
         'official_absence' => '公欠',
-        'other' => '欠席の情報',
+        'other' => 'その他',
         'illness' => '病気',
         'accident' => '事故',
         'traffic_issues' => '交通の問題',
