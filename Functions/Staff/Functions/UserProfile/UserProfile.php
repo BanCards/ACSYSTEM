@@ -74,7 +74,7 @@ $uuid = $_POST['uuid'];
                         </div>
 
                         <div class="user-profile-item">
-                            <a href="UserList.php"><button type="button" class="b">戻る</button></a>
+                            <a href="../UserList/UserList.php"><button type="button" class="b">戻る</button></a>
                         </div>
 
                     </div>
