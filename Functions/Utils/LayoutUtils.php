@@ -73,7 +73,6 @@ function sendQuickAccesses()
 
     generateAccessItem("record", "Functions/Attendance/DirectAttendance/DirectAttendance.php", "fas fa-user-alt", "出席する");
     generateAccessItem("report", "Functions/Attendance/WebAttendance/WebAttendance.php", "fas fa-user-alt-slash", "欠席申請をする");
-    generateAccessItem("mailbox", "Functions/Attendance/DirectAttendance/Attended.php", "fas fa-envelope", "Attended");
     generateAccessItem("record", "Functions/Profile/Record.php", "fas fa-calendar-week", "履歴を見る");
     generateAccessItem("test", "Functions/Staff/Index.php", "fas fa-user-graduate", "スタッフ用サイトへ");
 
@@ -88,8 +87,9 @@ function sendQuickAccessesForStaff()
             <div class="item">';
 
     generateAccessItem("index", "/ACSystem/Index.php", "fas fa-home", "ホームに戻る");
-    generateAccessItem("userlist", "/ACSystem/Functions/Staff/Functions/UserList.php", "fas fa-id-card", "ユーザー欄");
-    generateAccessItem("test", "/ACSystem/Functions/Staff/Functions/EditUserProfile/EditRecord.php", "", "出欠申請を見る");
+    generateAccessItem("todayattendees", "/ACSYSTEM/Functions/Staff/Functions/TodayAttendees/TodayAttendees.php", "fas fa-calendar-check", "今日の出席者");
+    generateAccessItem("userlist", "/ACSYSTEM/Functions/Staff/Functions/UserList/UserList.php", "fas fa-id-card", "ユーザー欄");
+    generateAccessItem("test", "/ACSystem/Functions/Staff/Functions/AttendRequest/AttendRequest.php", "fas fa-comment-dots", "出欠申請を見る");
 
     echo '</div>
         </div>';
