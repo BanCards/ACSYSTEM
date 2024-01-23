@@ -328,6 +328,32 @@ function isRequesting($uuid): bool
 }
 
 /**
+ * リクエスト中のレコードを全取得する関数
+ *
+ * @return array|null
+ */
+function getAllRequest(): ?array
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return null;
+
+    try {
+        $query = "SELECT user_id, timestamp, status, comment FROM attendance WHERE is_request = 1 ORDER BY timestamp DESC";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result ? $result : null;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
+/**
  * 出席したかどうか判断する関数
  *
  * @param UUID $uuid
