@@ -24,6 +24,20 @@ var circle = new Chart(ctx, {
                 display: true,
                 position: 'bottom',
             },
+            tooltip: {
+                enabled: false
+            },
+            datalabels: {
+                font: {
+                    size: 15
+                },
+                formatter: function (value) {
+                    return value.toString() + ' %';
+                }
+            },
         }
-    }
+    },
+    plugins: [
+        ChartDataLabels,
+    ]
 });
