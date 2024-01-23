@@ -146,6 +146,34 @@ function getAllUserList(): ?array
 }
 
 /**
+ * クラスと一致するユーザーを全取得する関数
+ *
+ * @param string $class
+ * @return array|null
+ */
+function getAllUserByClass($class): ?array
+{
+    $pdo = getDatabaseConnection();
+    if (!$pdo) return null;
+
+    try {
+        $query = "SELECT * FROM users WHERE class = :class";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':class', $class, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result ? $result : null;
+    } catch (PDOException $e) {
+        setError("データの取得中にエラーが発生しました。", "ACSystemチームまでご連絡ください。", "20D");
+        error_log("ACSystem Error: " . $e->getMessage());
+
+        return null;
+    }
+}
+
+/**
  * uuidと一致するユーザーのUserCardのゲッター関数
  *
  * @param UUID $uuid
@@ -271,7 +299,13 @@ function getAttend($uuid): ?array
     }
 }
 
-function isRequesting($uuid)
+/**
+ * 出席状態が申請中かどうか調べる関数
+ *
+ * @param UUID $uuid
+ * @return boolean
+ */
+function isRequesting($uuid): bool
 {
     $pdo = getDatabaseConnection();
     if (!$pdo) return null;
@@ -299,7 +333,7 @@ function isRequesting($uuid)
  * @param UUID $uuid
  * @return boolean
  */
-function isAttended($uuid)
+function isAttended($uuid): bool
 {
     $pdo = getDatabaseConnection();
     if (!$pdo) return false;
@@ -321,7 +355,13 @@ function isAttended($uuid)
     }
 }
 
-function calcAttendRate($uuid)
+/**
+ * 出席率を計算する関数
+ *
+ * @param UUID $uuid
+ * @return void
+ */
+function calcAttendRate($uuid): array
 {
     $list = ['attend' => 0, 'absent' => 0, 'lateness' => 0, 'leave_early' => 0, 'official_absence' => 0, 'other' => 0];
     $result = [];
