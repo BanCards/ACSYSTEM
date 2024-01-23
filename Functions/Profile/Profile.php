@@ -5,6 +5,8 @@ if (!(isLoggedIn())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
     return;
 }
+
+$data = calcAttendRate(getLoginUUID());
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +18,9 @@ if (!(isLoggedIn())) {
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Common.css">
     <link rel="stylesheet" href="CSS/Profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 
 <body>
@@ -68,6 +73,15 @@ if (!(isLoggedIn())) {
                 </div>
 
             </div>
+
+            <div class="attend-percentage">
+                <canvas id="circle"></canvas>
+            </div>
+            <script>
+                var data = <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>;
+            </script>
+            <script src="JavaScript/Circle.js"></script>
+
         </div>
 
         <!-- フッター -->

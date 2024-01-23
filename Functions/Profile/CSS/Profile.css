@@ -80,3 +80,11 @@ button:hover,
 .button:hover {
   background: #19a08c;
 }
+
+.attend-percentage {
+  position: absolute;
+  left: 73%;
+  top: 28%;
+  width: 500px;
+  height: 500px;
+}
