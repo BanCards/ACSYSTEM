@@ -321,6 +321,28 @@ function isAttended($uuid)
     }
 }
 
+function calcAttendRate($uuid)
+{
+    $list = ['attend' => 0, 'absent' => 0, 'lateness' => 0, 'leave_early' => 0, 'official_absence' => 0, 'other' => 0];
+    $result = [];
+    $total = 0;
+
+    foreach (getAttend($uuid) as $record) {
+        $status = $record['status'];
+        if (array_key_exists($status, $list)) {
+            $list[$status]++;
+            $total++;
+        }
+    }
+
+    foreach ($list as $key => $value) {
+        $percentage = number_format(($total > 0) ? ($value / $total) * 100 : 0, 1, '.', '');
+        $result[translate($key)] = $percentage;
+    }
+
+    return $result;
+}
+
 /**
  * メールを送信するする関数
  *
