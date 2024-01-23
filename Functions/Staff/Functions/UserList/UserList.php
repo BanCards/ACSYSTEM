@@ -1,5 +1,5 @@
 <?php
-include('../../Utils/Utils.php');
+include('../../../Utils/Utils.php');
 
 if (!(isLoggedIn())) {
     setError("ログイン情報エラー", "ログインしてください。", "12A");
@@ -21,8 +21,8 @@ $users = getAllUserList();
     <title>ACSystem - User List</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="../../../CSS/Common.css">
-    <link rel="stylesheet" href="../CSS/UsersList.css">
+    <link rel="stylesheet" href="../../../../CSS/Common.css">
+    <link rel="stylesheet" href="CSS/UsersList.css">
 </head>
 
 <body>
@@ -74,7 +74,7 @@ $users = getAllUserList();
                                     echo "<td class='record-item'>$value</td>";
                                 }
                                 echo "
-                                <form action='UserProfile.php' method='POST' name='SendUserForm{$user['id']}'>
+                                <form action='../UserProfile/UserProfile.php' method='POST' name='SendUserForm{$user['id']}'>
                                     <td class='record-item'>
                                         <input type='hidden' name='uuid' value='{$user['id']}'>
                                         <a href='javascript:SendUserForm{$user['id']}.submit()' class='detail-button'>詳細</a>
