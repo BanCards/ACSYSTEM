@@ -6,12 +6,12 @@ var circle = new Chart(ctx, {
         datasets: [{
             data: Object.values(data),
             backgroundColor: [
-                'rgba(76, 175, 80, 1)',
-                'rgba(52, 152, 219, 1)',
-                'rgba(231, 76, 60, 1)',
-                'rgba(243, 156, 18, 1)',
-                'rgba(155, 89, 182, 1)',
-                'rgba(206, 4, 113, 1)'
+                'rgba(0, 255, 0, 0.8)',
+                'rgba(255, 0, 0, 0.8)',
+                'rgba(255, 255, 0, 0.8)',
+                'rgba(0, 255, 255, 0.8)',
+                'rgba(0, 0, 255, 0.8)',
+                'rgba(255, 0, 255, 0.8)'
             ],
         }],
     },
