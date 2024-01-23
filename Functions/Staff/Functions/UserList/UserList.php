@@ -89,6 +89,10 @@ $users = getAllUserList();
                 </div>
 
             </div>
+
+            <div class="back-to-index">
+                <a href="../../Index.php"><button type="button" class="b">戻る</button></a>
+            </div>
         </div>
 
         <!-- フッター -->
