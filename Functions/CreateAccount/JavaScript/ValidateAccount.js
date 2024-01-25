@@ -13,7 +13,7 @@ form.addEventListener('submit', function (event) {
  * @returns 検証結果
  */
 function validate() {
-    if (form.upper_name.value.length < 2 || form.upper_name.value.length > 16) {
+    if (form.upper_name.value.length < 1 || form.upper_name.value.length > 16) {
         pop = new PopUp("記入エラー", "名前(性)は1文字以上16文字以内で収めてください。");
         return false;
     }
