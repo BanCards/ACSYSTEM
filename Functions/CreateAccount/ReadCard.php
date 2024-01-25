@@ -23,7 +23,7 @@
           <input type="number" name="cardID" id="cardID" />
         </form>
       </div>
-      <img src="../../Images/read-card.png" alt="">
+      <img src="Images/read-card.png" alt="">
       <div class="loading-message">カードを読み込んでください...</div>
     </div>
 
