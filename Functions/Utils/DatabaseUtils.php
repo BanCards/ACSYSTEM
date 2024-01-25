@@ -49,8 +49,11 @@ function updateQuery($table, $column, $value, $id): void
     $pdo = getDatabaseConnection();
     if (!$pdo) return;
 
-    $query = "UPDATE $table SET $column = $value WHERE $table.id = $id";
+    $query = "UPDATE $table SET $column = :value WHERE $table.id = :id";
     $stmt = $pdo->prepare($query);
+
+    $stmt->bindParam(':value', $value, PDO::PARAM_STR);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
     if ($stmt->execute()) return;
 
