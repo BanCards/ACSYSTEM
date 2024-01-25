@@ -89,8 +89,8 @@ function sendQuickAccessesForStaff()
             <div class="item">';
 
     generateAccessItem("index", "/ACSystem/Index.php", "fas fa-home", "ホームに戻る");
-    generateAccessItem("todayattendees", "/ACSYSTEM/Functions/Staff/Functions/TodayAttendees/TodayAttendees.php", "fas fa-calendar-check", "今日の出席者");
-    generateAccessItem("userlist", "/ACSYSTEM/Functions/Staff/Functions/UserList/UserList.php", "fas fa-id-card", "ユーザー欄");
+    generateAccessItem("todayattendees", "/ACSystem/Functions/Staff/Functions/TodayAttendees/TodayAttendees.php", "fas fa-calendar-check", "今日の出席者");
+    generateAccessItem("userlist", "/ACSystem/Functions/Staff/Functions/UserList/UserList.php", "fas fa-id-card", "ユーザー欄");
     generateAccessItem("test", "/ACSystem/Functions/Staff/Functions/AttendRequest/AttendRequest.php", "fas fa-comment-dots", "出欠申請を見る");
 
     echo '</div>
