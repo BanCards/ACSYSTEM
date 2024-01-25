@@ -136,7 +136,7 @@ function sendNotifications($notifications): void
     echo '</div>';
 }
 
-//TODO LoadInformation -> name value
+
 function sendEditProfileItems($type)
 {
     $types = ['email', 'password'];
@@ -147,6 +147,7 @@ function sendEditProfileItems($type)
     }
 
     if ($type == 'email') {
+        $current_email = getUserEmail(getLoginUUID());
         echo '<div class="form-item_required" id="update-message">';
         echo '新しいメールアドレス情報を設定してください';
         echo '</div>';
@@ -156,20 +157,29 @@ function sendEditProfileItems($type)
         echo '</div>';
 
         echo '<div class="form-item_required">';
-        echo '<input type="mail" name="new_email" value="" pattern="[\w\-._]+@[\w\-._]+\.[A-Za-z]+" placeholder="メールアドレス" class="input_item"/>';
+        echo '<input type="mail" name="new_item" value="" pattern="[\w\-._]+@[\w\-._]+\.[A-Za-z]+" placeholder="メールアドレス" class="input_item"/>';
         echo '</div>';
+
+        echo '<script>';
+        echo 'let current_email = ' . json_encode($current_email) . ';';
+        echo '</script>';
     } else {
+        $current_password = getUser(getLoginUUID())['password'];
         echo '<div class="form-item_required" id="update-message">';
         echo '新しいパスワード情報を設定してください';
         echo '</div>';
 
         echo '<div class="form-item_required">';
-        echo '<input type="password" name="new_password" value="" placeholder="現在のパスワード (8文字～32文字)" class="input_item"/>';
+        echo '<input type="password" name="new_item" value="" placeholder="現在のパスワード (8文字～32文字)" class="input_item" id="input_current_password"/>';
         echo '</div>';
 
         echo '<div class="form-item_required">';
-        echo '<input type="password" name="confirm_password" value="" placeholder="新しいパスワード (8文字～32文字)" class="input_item"/>';
+        echo '<input type="password" name="confirm_new_item" value="" placeholder="新しいパスワード (8文字～32文字)" class="input_item" id="input_new_password"/>';
         echo '</div>';
+
+        echo '<script>';
+        echo 'let current_password = ' . json_encode($current_password) . ';';
+        echo '</script>';
     }
 }
 

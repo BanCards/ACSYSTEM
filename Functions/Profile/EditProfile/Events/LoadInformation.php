@@ -1,80 +1,28 @@
 <?php
 include('../../../Utils/Utils.php');
 
-$key = str_replace('_info', '', $_SESSION['editItem']);
-$value = $_POST['new-item-value'];
+$input_type = $_SESSION['input_type'];
+unset($_SESSION['input_type']);
 
-unset($_SESSION['editItem']);
-
-if (isEmptyItems($value)) return;
-
-$validFields = ['email', 'password'];
-
-// $key が有効なフィールドであるか確認
-if (!(in_array($key, $validFields))) {
+$validField = ['email', 'password'];
+if (!(in_array($input_type, $validField))) {
     setError("無効なフィールド", "指定されたフィールドは更新できません。", "22D");
     return;
 }
 
-$pdo = getDatabaseConnection();
-$uuid = getLoginUUID();
-
-if ($key == 'email') {
-    if (getUserEmail($uuid) == $value) {
-        setError("同一の値です。", "同じ値を登録することはできません。", "13SP");
-        return;
-    }
-
-    if (isDuplicatedRecord("users", "email", $value)) {
-        setError("メールアドレスが既に登録されています。", "使用されているメールアドレス : <strong>" . $email . "</strong>", "11E");
-        return;
-    }
+if ($input_type == 'email') {
+    updateQuery("users", "email", $_POST['new_item'], getLoginUUID());
+} else if ($input_type == 'password') {
+    updateQuery("users", "password", md5($_POST['confirm_new_item']), getLoginUUID());
 }
 
-if ($key == "password") {
-    $currentPassword =  $_POST['current-item-value'];
-    $currentPassword = md5($currentPassword);
+$user = getUser(getLoginUUID());
+logout();
+login($user['id'], $user['card_id'], $user['class'], $user['name'], $user['email'], $user['role']);
 
-    if (isEmptyItems($currentPassword)) return;
-    if ($currentPassword == md5($value)) {
-        setError("同一の値です。", "同じ値を登録することはできません。", "13SP");
-        return;
-    }
-
-    $selectQuery = "SELECT * FROM users WHERE id = :uuid";
-    $selectStmt = $pdo->prepare($selectQuery);
-    $selectStmt->bindParam(':uuid', $uuid, PDO::PARAM_STR);
-    $selectStmt->execute();
-
-    $result = $selectStmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($result['password'] != $currentPassword) {
-        setError("現在のパスワードが一致しません。", "パスワードをご確認の上、再度記入してください。", "13IP");
-        return;
-    }
-}
-
-$updateQuery = "UPDATE users SET $key = :value WHERE id = :uuid";
-$updateStmt = $pdo->prepare($updateQuery);
-if ($key == "password") $value = md5($value);
-$updateStmt->bindValue(':value', $value, PDO::PARAM_STR);
-$updateStmt->bindValue(':uuid', $uuid, PDO::PARAM_STR);
-
-if ($updateStmt->execute()) {
-
-    $selectQuery = "SELECT * FROM users WHERE id = :uuid";
-    $selectStmt = $pdo->prepare($selectQuery);
-    $selectStmt->bindParam(':uuid', $uuid, PDO::PARAM_STR);
-    $selectStmt->execute();
-
-    $result = $selectStmt->fetch(PDO::FETCH_ASSOC);
-
-    logout();
-    login($result['id'], $result['card_id'], $result['class'], $result['name'], $result['email'], $result['role']);
-
-    $mail_title = "アカウント情報の更新が完了しました";
-    $mail_message = "
-    こんにちは {$result['name']} 様,
+$mail_title = "アカウント情報の更新が完了しました";
+$mail_message = "
+    こんにちは {$user['name']} 様,
 
     お世話になっております。ACSystem をご利用いただき、誠にありがとうございます。お知らせがあります。
 
@@ -91,11 +39,7 @@ if ($updateStmt->execute()) {
 
     ACSystem Teamより";
 
-    sendMail(1, $result['id'], $mail_title, $mail_message);
+sendMail(1, $user['id'], $mail_title, $mail_message);
 
-    setSuccess("値を更新しました");
-    return;
-} else {
-    setError("情報更新エラー", "情報を更新できませんでした。", "22D");
-    return;
-}
+setSuccess("値を更新しました");
+return;

@@ -1,8 +1,7 @@
 <?php
 include('../../Utils/Utils.php');
 
-$item = $_GET['edit-item'];
-$_SESSION['editItem'] = $item;
+$_SESSION['input_type'] = str_replace('_info', '', $_GET['edit-item']);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +27,7 @@ $_SESSION['editItem'] = $item;
         <h1 class="profile-title"><?php echo getLoginUserName() ?>のプロフィールを編集</h1>
         <form action="Events/LoadInformation.php" method="POST" id="new-item-form">
 
-          <?php sendEditProfileItems(str_replace('_info','',$item)) ?>
+          <?php sendEditProfileItems($_SESSION['input_type']) ?>
 
           <div class="attendance-items">
             <a href="SelectEditItem.php"><button type="button" id="cancel-edit-button">キャンセル</button></a>
@@ -50,6 +49,7 @@ $_SESSION['editItem'] = $item;
   <script src="../../../JavaScript/DisableAutoComplete.js"></script>
   <script src="../../../JavaScript/PopUp.js"></script>
   <script src="JavaScript/ValidateInput.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 </body>
 
 </html>
