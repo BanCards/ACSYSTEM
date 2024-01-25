@@ -3,7 +3,7 @@ include('../Utils/Utils.php');
 
 $mail = $_POST['mail'];
 
-if ($mail['is_read'] == false) updateQuery("mailbox", "is_read", "true", $_POST['mail_id']);
+if ($mail['is_read'] == false) updateQuery("mailbox", "is_read", 1, $_POST['mail_id']);
 ?>
 
 <!DOCTYPE html>
